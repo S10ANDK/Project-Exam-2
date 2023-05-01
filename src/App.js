@@ -15,8 +15,8 @@ const StyledButton = styled(Button)`
 function App() {
   return (
     <div>
-      <Typography variant="h1" color="primary">
-        we are testing this font okay
+      <Typography variant="h1" color="black">
+        Discover your next adventure with local hosts!
       </Typography>
       <Typography variant="p">hello yes yes</Typography>
       <StyledButton>click me!</StyledButton>

@@ -23,6 +23,8 @@ const customTheme = createTheme({
   typography: {
     h1: {
       fontFamily: "'Serenity', sans-serif",
+      fontSize: '3rem',
+      textTransform: 'lowercase',
     },
     h2: {
       fontFamily: "'Open Sans', sans-serif",
