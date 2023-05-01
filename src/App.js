@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import React from 'react';
+import { Button, Typography } from '@mui/material';
+import { styled } from '@mui/system';
 import './App.css';
+
+const StyledButton = styled(Button)`
+  background-color: #000000;
+  color: '#FFFFFF';
+
+  :hover {
+    color: #000000;
+  }
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Typography variant="h1" color="primary">
+        we are testing this font okay
+      </Typography>
+      <Typography variant="p">hello yes yes</Typography>
+      <StyledButton>click me!</StyledButton>
     </div>
   );
 }
