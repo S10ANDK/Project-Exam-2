@@ -10,6 +10,7 @@ const theme = {
     accentThree: 'var(--color-accent-three)',
     white: 'var(--color-white)',
     black: 'var(--color-black)',
+    borders: 'var(--color-borders)',
   },
 };
 

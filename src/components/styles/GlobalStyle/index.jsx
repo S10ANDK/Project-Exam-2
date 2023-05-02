@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
         --color-accent-three: #8C3D2B; 
         --color-white: #FFFFFF;
         --color-black: #000000;
-        --color-borders: #d0d0d0:
+        --color-borders: #e9e9e9;
         height: 100%;
         min-height: 100vh;
         margin: 0;
