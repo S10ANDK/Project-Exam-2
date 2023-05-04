@@ -97,10 +97,5 @@ export const ProfileIcon = styled.img`
 
   @media (min-width: 1000px) {
     margin-right: 10px;
-    transition: 0.3s ease-in-out;
-
-    :hover {
-      transform: rotate(-10deg);
-    }
   }
 `;
