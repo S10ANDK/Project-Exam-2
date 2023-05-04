@@ -4,6 +4,7 @@ import LoadingIndicator from '../../styles/LoadingIndicator/index.styled';
 import ErrorMessage from '../../messages/ErrorMessage';
 import NoItemsMessage from '../../messages/NoItemsMessage';
 import VenueCard from './VenueCard';
+import { VenuesContainer } from '../Venues/index.styled';
 
 /* 
     Function for fetching and displaying venues 
@@ -44,11 +45,11 @@ function DisplayVenueList() {
   }
 
   return (
-    <div>
+    <VenuesContainer>
       {venues.map((venue) => (
         <VenueCard key={venue.id} venue={venue} />
       ))}
-    </div>
+    </VenuesContainer>
   );
 }
 
