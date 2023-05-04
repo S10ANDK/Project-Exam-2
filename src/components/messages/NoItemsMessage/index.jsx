@@ -1,5 +1,5 @@
 import React from 'react';
-import { NoItemsContainer } from '../NoItemsMessage/index.styled';
+import { NoItemsContainer } from './index.styled';
 
 /*
     No products message component
