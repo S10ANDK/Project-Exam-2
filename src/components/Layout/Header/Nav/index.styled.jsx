@@ -104,7 +104,9 @@ export const NavLink = styled(Link)`
 
   :hover {
     text-decoration: underline;
-    text-underline-offset: 5px;
+    text-decoration-color: ${(props) => props.theme.color.secondary};
+    text-underline-offset: 15px;
+    text-decoration-thickness: 3px;
   }
 
   :visited {
