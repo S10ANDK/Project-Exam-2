@@ -19,33 +19,36 @@ const Nav = () => {
             </S.NavLink>
           </S.NavListItem>
           <S.NavListItem>
-            <S.NavLink onClick={() => setActive(!active)} to="/contact">
+            <S.NavLink onClick={() => setActive(!active)} to="/listing">
               list your home
             </S.NavLink>
           </S.NavListItem>
           <S.NavListItem>
-            <S.NavLink onClick={() => setActive(!active)} to="/contact">
+            <S.NavLink
+              onClick={() => setActive(!active)}
+              to="/register-venue-manager"
+            >
               become a venue manager
             </S.NavLink>
           </S.NavListItem>
           <S.NavListItem>
-            <S.NavLink onClick={() => setActive(!active)} to="/contact">
+            <S.NavLink onClick={() => setActive(!active)} to="/dashboard">
               dashboard
             </S.NavLink>
           </S.NavListItem>
           <S.NavBorder />
           <S.NavListItem>
-            <S.NavLink onClick={() => setActive(!active)} to="/contact">
+            <S.NavLink onClick={() => setActive(!active)} to="/register">
               register
             </S.NavLink>
           </S.NavListItem>
           <S.NavListItem>
-            <S.NavLink onClick={() => setActive(!active)} to="/contact">
+            <S.NavLink onClick={() => setActive(!active)} to="/login">
               login
             </S.NavLink>
           </S.NavListItem>
           <S.NavListItem>
-            <S.NavLink onClick={() => setActive(!active)} to="/contact">
+            <S.NavLink onClick={() => setActive(!active)} to="/">
               log out
             </S.NavLink>
           </S.NavListItem>
