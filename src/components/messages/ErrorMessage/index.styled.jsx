@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-export const NoProductsContainer = styled.div`
-  p {
-    color: ${(props) => props.theme.color.secondary};
-  }
+export const ErrorMessageContainer = styled.div`
+  background: ${(props) => props.theme.color.accentTwo};
 `;

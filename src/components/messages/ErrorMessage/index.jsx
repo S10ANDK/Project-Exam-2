@@ -1,5 +1,5 @@
 import React from 'react';
-import { ErrorMessageContainer } from '../NoProducts/index.styled';
+import { ErrorMessageContainer } from './index.styled';
 
 /*
     Error message component
