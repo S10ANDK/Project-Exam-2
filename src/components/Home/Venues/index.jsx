@@ -18,6 +18,7 @@ function DisplayVenueList() {
   const [startIndex, setStartIndex] = useState(0);
   const [endIndex, setEndIndex] = useState(19);
   const [filteredVenues, setFilteredVenues] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     async function getVenues() {
@@ -38,8 +39,14 @@ function DisplayVenueList() {
   }, []);
 
   const handleSearch = (searchTerm) => {
-    const filtered = venues.filter((venue) =>
-      venue.name.toLowerCase().includes(searchTerm.toLowerCase())
+    setSearchTerm(searchTerm);
+    const filtered = venues.filter(
+      (venue) =>
+        venue.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        venue.location.country
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase()) ||
+        venue.location.city.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredVenues(filtered);
     setStartIndex(0);
@@ -76,22 +83,33 @@ function DisplayVenueList() {
   return (
     <>
       <Search onSearch={handleSearch} minLength={3} />
-      <S.VenuesContainer>
-        {filteredVenues.slice(startIndex, endIndex + 1).map((venue) => (
-          <VenueCard key={venue.id} venue={venue} />
-        ))}
-      </S.VenuesContainer>
-      <S.ListButtonContainer>
-        <button onClick={handlePrevClick} disabled={startIndex === 0}>
-          Prev
-        </button>
-        <button
-          onClick={handleNextClick}
-          disabled={endIndex === filteredVenues.length - 1}
-        >
-          Next
-        </button>
-      </S.ListButtonContainer>
+
+      {filteredVenues.length === 0 && searchTerm.length >= 3 ? (
+        <S.NoSearchResultsMessage>
+          No results found for <span>&apos;{searchTerm}&apos;</span>.
+        </S.NoSearchResultsMessage>
+      ) : (
+        <>
+          <S.VenuesContainer>
+            {filteredVenues.slice(startIndex, endIndex + 1).map((venue) => (
+              <VenueCard key={venue.id} venue={venue} />
+            ))}
+          </S.VenuesContainer>
+          {filteredVenues.length > 20 ? (
+            <S.ListButtonContainer>
+              <button onClick={handlePrevClick} disabled={startIndex === 0}>
+                Prev
+              </button>
+              <button
+                onClick={handleNextClick}
+                disabled={endIndex === filteredVenues.length - 1}
+              >
+                Next
+              </button>
+            </S.ListButtonContainer>
+          ) : null}
+        </>
+      )}
     </>
   );
 }

@@ -1,12 +1,13 @@
 import React from 'react';
-import Container from '../styles/Container/index.styled';
+// import Container from '../styles/Container/index.styled';
 import DisplayVenueList from './Venues';
+import { HomeContainer } from './index.styled';
 
 function Home() {
   return (
-    <Container>
+    <HomeContainer>
       <DisplayVenueList />
-    </Container>
+    </HomeContainer>
   );
 }
 
