@@ -100,7 +100,7 @@ export const NavLink = styled(Link)`
   text-decoration: none;
   color: ${(props) => props.theme.color.white};
   padding: 15px 10px;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 
   :hover {
     text-decoration: underline;
@@ -114,7 +114,7 @@ export const NavLink = styled(Link)`
   }
 
   @media (min-width: 1000px) {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: ${(props) => props.theme.color.black};
     padding: 0;
 

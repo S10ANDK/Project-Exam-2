@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import * as S from './index.styled';
 import placeholderImage from '../../../../assets/placeholderImage.png';
 import ratingIcon from '../../../../assets/starblue.png';
+import guestIcon from '../../../../assets/user.png';
+import { VenueCardContainerFadeIn } from '../../../styles/FadeInContainer/index.styled';
 
 const VenueCard = ({ venue }) => {
   const [imageError, setImageError] = useState(false);
@@ -11,7 +13,7 @@ const VenueCard = ({ venue }) => {
   };
 
   return (
-    <S.VenueCardContainer to={`/venues/${venue.id}`}>
+    <VenueCardContainerFadeIn to={`/venues/${venue.id}`}>
       {venue.media.length > 0 ? (
         <S.VenueImage
           src={imageError ? placeholderImage : venue.media[0]}
@@ -26,16 +28,32 @@ const VenueCard = ({ venue }) => {
           <h2>{venue.name}</h2>
           {venue.rating > 0 && (
             <p>
-              <S.RatingIconStyled src={ratingIcon} />
+              <S.RatingIconStyled src={ratingIcon} alt="Rating icon" />
               {venue.rating}
             </p>
           )}
         </S.VenueNameAndRatingContainer>
-        <S.descriptionContainer>
-          <p>{venue.description}</p>
-        </S.descriptionContainer>
+
+        <S.DescriptionContainer>
+          {venue.description.length ? (
+            <p>{venue.description}</p>
+          ) : (
+            <S.NoDescriptionMessage>
+              No description provided..
+            </S.NoDescriptionMessage>
+          )}
+        </S.DescriptionContainer>
       </S.VenueCartInfoContainer>
-    </S.VenueCardContainer>
+      <S.GuestsAndPriceContainer>
+        <S.GuestsContainer>
+          <p>
+            <img src={guestIcon} alt="Guest icon" />
+            {venue.maxGuests}
+          </p>
+        </S.GuestsContainer>
+        <S.PriceContainer>{venue.price} kr NOK</S.PriceContainer>
+      </S.GuestsAndPriceContainer>
+    </VenueCardContainerFadeIn>
   );
 };
 

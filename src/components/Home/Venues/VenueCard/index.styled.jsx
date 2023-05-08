@@ -7,6 +7,7 @@ export const VenueCardContainer = styled(Link)`
   justify-content: center;
   align-items: center;
   width: 300px;
+  /* height: 401.16px; */
   margin: auto;
   border: 1px solid ${(props) => props.theme.color.borders};
   border-radius: 10px;
@@ -41,7 +42,10 @@ export const VenueNameAndRatingContainer = styled.div`
   font-size: 1.1rem;
 
   h2 {
+    font-family: Serenity, sans-serif;
+    font-size: 1.4rem;
     text-align: left;
+    letter-spacing: 0.5px;
   }
 
   p {
@@ -56,18 +60,52 @@ export const VenueNameAndRatingContainer = styled.div`
 export const RatingIconStyled = styled.img`
   width: 20px;
   height: 20px;
+  object-fit: cover;
   margin-right: 3px;
   padding-left: 3px;
   transform: translateY(3px);
 `;
 
-export const descriptionContainer = styled.div`
+export const DescriptionContainer = styled.div`
   width: 100%;
-  max-height: 60px;
+
+  height: 60px;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
   padding-bottom: 10px;
+`;
+
+export const NoDescriptionMessage = styled.p`
+  font-style: italic;
+`;
+
+export const GuestsAndPriceContainer = styled.div`
+  width: 100%;
+  max-width: 260px;
+  margin: 20px 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const GuestsContainer = styled.div`
+  p {
+    font-size: 1.2rem;
+  }
+
+  p img {
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+    margin-right: 3px;
+    transform: translateY(2px);
+  }
+`;
+
+export const PriceContainer = styled.div`
+  font-size: 1.2rem;
+  font-weight: 600;
 `;

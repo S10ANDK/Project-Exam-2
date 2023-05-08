@@ -31,6 +31,7 @@ const GlobalStyle = createGlobalStyle`
         color: var(--color-black);
         text-align: left;
         margin: 60px auto 60px 20px;
+        letter-spacing: 0.5px;
     }
 
     h2 {
@@ -52,6 +53,11 @@ const GlobalStyle = createGlobalStyle`
         font-family: Open Sans, sans-serif;
         max-width: 600px;
         margin: auto;
+    }
+
+    button {
+        font-family: Serenity, sans-serif;
+        font-size: 1rem;
     }
 `;
 
