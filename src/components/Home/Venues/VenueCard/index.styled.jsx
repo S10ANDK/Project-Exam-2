@@ -47,7 +47,7 @@ export const VenueNameAndRatingContainer = styled.div`
     text-align: left;
     letter-spacing: 0.5px;
     max-width: 220px;
-    height: 25px;
+    height: 24px;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 1;
