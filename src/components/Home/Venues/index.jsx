@@ -82,15 +82,15 @@ function DisplayVenueList() {
         ))}
       </S.VenuesContainer>
       <S.ListButtonContainer>
-        <S.PrevButton onClick={handlePrevClick} disabled={startIndex === 0}>
+        <button onClick={handlePrevClick} disabled={startIndex === 0}>
           Prev
-        </S.PrevButton>
-        <S.NextButton
+        </button>
+        <button
           onClick={handleNextClick}
           disabled={endIndex === filteredVenues.length - 1}
         >
           Next
-        </S.NextButton>
+        </button>
       </S.ListButtonContainer>
     </>
   );

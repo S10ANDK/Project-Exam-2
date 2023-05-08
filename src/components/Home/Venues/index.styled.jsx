@@ -56,17 +56,9 @@ export const ListButtonContainer = styled.div`
     :disabled {
       background: ${(props) => props.theme.color.borders};
     }
-  }
-`;
 
-export const NextButton = styled.button`
-  :hover {
-    transform: translateX(3px);
-  }
-`;
-
-export const PrevButton = styled.button`
-  :hover {
-    transform: translateX(-3px);
+    :hover {
+      background: #7fbbd2;
+    }
   }
 `;
