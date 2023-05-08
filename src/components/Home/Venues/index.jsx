@@ -4,12 +4,8 @@ import LoadingIndicator from '../../styles/LoadingIndicator/index.styled';
 import ErrorMessage from '../../messages/ErrorMessage';
 import NoItemsMessage from '../../messages/NoItemsMessage';
 import VenueCard from './VenueCard';
-import {
-  ListButtonContainer,
-  NextButton,
-  PrevButton,
-  VenuesContainer,
-} from '../Venues/index.styled';
+import * as S from '../Venues/index.styled';
+import Search from '../Search';
 
 /* 
     Function for fetching and displaying venues 
@@ -21,6 +17,7 @@ function DisplayVenueList() {
   const [isError, setIsError] = useState(false);
   const [startIndex, setStartIndex] = useState(0);
   const [endIndex, setEndIndex] = useState(19);
+  const [filteredVenues, setFilteredVenues] = useState([]);
 
   useEffect(() => {
     async function getVenues() {
@@ -29,6 +26,7 @@ function DisplayVenueList() {
         const response = await fetch(`${urls.API_URL}${urls.API_VENUES}`);
         const results = await response.json();
         setVenues(results);
+        setFilteredVenues(results);
         console.log(results);
       } catch (error) {
         setIsError(true);
@@ -36,8 +34,17 @@ function DisplayVenueList() {
         setIsLoading(false);
       }
     }
-    getVenues(urls.API_URL);
+    getVenues();
   }, []);
+
+  const handleSearch = (searchTerm) => {
+    const filtered = venues.filter((venue) =>
+      venue.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredVenues(filtered);
+    setStartIndex(0);
+    setEndIndex(19);
+  };
 
   const handlePrevClick = () => {
     if (startIndex > 0) {
@@ -47,8 +54,8 @@ function DisplayVenueList() {
   };
 
   const handleNextClick = () => {
-    if (endIndex < venues.length - 1) {
-      const newEndIndex = Math.min(endIndex + 20, venues.length - 1);
+    if (endIndex < filteredVenues.length - 1) {
+      const newEndIndex = Math.min(endIndex + 20, filteredVenues.length - 1);
       setStartIndex(startIndex + 20);
       setEndIndex(newEndIndex);
     }
@@ -68,22 +75,23 @@ function DisplayVenueList() {
 
   return (
     <>
-      <VenuesContainer>
-        {venues.slice(startIndex, endIndex + 1).map((venue) => (
+      <Search onSearch={handleSearch} minLength={3} />
+      <S.VenuesContainer>
+        {filteredVenues.slice(startIndex, endIndex + 1).map((venue) => (
           <VenueCard key={venue.id} venue={venue} />
         ))}
-      </VenuesContainer>
-      <ListButtonContainer>
-        <PrevButton onClick={handlePrevClick} disabled={startIndex === 0}>
+      </S.VenuesContainer>
+      <S.ListButtonContainer>
+        <S.PrevButton onClick={handlePrevClick} disabled={startIndex === 0}>
           Prev
-        </PrevButton>
-        <NextButton
+        </S.PrevButton>
+        <S.NextButton
           onClick={handleNextClick}
-          disabled={endIndex === venues.length - 1}
+          disabled={endIndex === filteredVenues.length - 1}
         >
           Next
-        </NextButton>
-      </ListButtonContainer>
+        </S.NextButton>
+      </S.ListButtonContainer>
     </>
   );
 }

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const NoItemsContainer = styled.div`
-  p {
-    color: ${(props) => props.theme.color.secondary};
-  }
+  text-align: center;
+  color: ${(props) => props.theme.color.secondary};
 `;

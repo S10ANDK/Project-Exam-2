@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
 export const ErrorMessageContainer = styled.div`
-  background: ${(props) => props.theme.color.accentTwo};
+  text-align: center;
+  margin-top: 70px;
+  color: ${(props) => props.theme.color.secondary};
 `;
