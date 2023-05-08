@@ -51,9 +51,22 @@ export const ListButtonContainer = styled.div`
     padding: 10px 20px;
     border: 1px solid ${(props) => props.theme.color.borders};
     border-radius: 5px;
+    transition: 0.3s ease-in-out;
 
     :disabled {
       background: ${(props) => props.theme.color.borders};
     }
+  }
+`;
+
+export const NextButton = styled.button`
+  :hover {
+    transform: translateX(3px);
+  }
+`;
+
+export const PrevButton = styled.button`
+  :hover {
+    transform: translateX(-3px);
   }
 `;

@@ -4,7 +4,12 @@ import LoadingIndicator from '../../styles/LoadingIndicator/index.styled';
 import ErrorMessage from '../../messages/ErrorMessage';
 import NoItemsMessage from '../../messages/NoItemsMessage';
 import VenueCard from './VenueCard';
-import { ListButtonContainer, VenuesContainer } from '../Venues/index.styled';
+import {
+  ListButtonContainer,
+  NextButton,
+  PrevButton,
+  VenuesContainer,
+} from '../Venues/index.styled';
 
 /* 
     Function for fetching and displaying venues 
@@ -69,15 +74,15 @@ function DisplayVenueList() {
         ))}
       </VenuesContainer>
       <ListButtonContainer>
-        <button onClick={handlePrevClick} disabled={startIndex === 0}>
+        <PrevButton onClick={handlePrevClick} disabled={startIndex === 0}>
           Prev
-        </button>
-        <button
+        </PrevButton>
+        <NextButton
           onClick={handleNextClick}
           disabled={endIndex === venues.length - 1}
         >
           Next
-        </button>
+        </NextButton>
       </ListButtonContainer>
     </>
   );

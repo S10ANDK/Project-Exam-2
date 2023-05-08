@@ -46,6 +46,13 @@ export const VenueNameAndRatingContainer = styled.div`
     font-size: 1.4rem;
     text-align: left;
     letter-spacing: 0.5px;
+    max-width: 220px;
+    height: 25px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
   }
 
   p {
