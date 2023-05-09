@@ -96,7 +96,7 @@ function DisplayVenueList() {
         </>
       )}
 
-      {filteredVenues.length > 0 ? (
+      {filteredVenues.length > 0 && filteredVenues.length === venues.length ? (
         <S.ListButtonContainer>
           <button onClick={handlePrevClick} disabled={pageIndex === 0}>
             Prev
