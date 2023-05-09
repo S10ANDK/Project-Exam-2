@@ -11,7 +11,7 @@ import Search from '../Search';
     Function for fetching and displaying venues 
 */
 
-function DisplayVenueList() {
+function DisplayVenueList({ filters }) {
   const [venues, setVenues] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -29,9 +29,17 @@ function DisplayVenueList() {
         const response = await fetch(
           `${urls.API_URL}${urls.API_VENUES}?sort=created&sortOrder=${sortOrder}&limit=${limit}&offset=${offset}`
         );
-        const results = await response.json();
+        let results = await response.json();
+
+        if (filters.length > 0) {
+          results = results.filter((venue) =>
+            filters.every((filter) => venue.meta[filter])
+          );
+        }
+
         setVenues(results);
         setFilteredVenues(results);
+
         console.log(results);
       } catch (error) {
         setIsError(true);
@@ -40,7 +48,7 @@ function DisplayVenueList() {
       }
     }
     getVenues();
-  }, [pageIndex, sortOrder]);
+  }, [pageIndex, sortOrder, filters]);
 
   const handleSearch = (searchTerm) => {
     setSearchTerm(searchTerm);

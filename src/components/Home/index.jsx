@@ -1,12 +1,15 @@
-import React from 'react';
-// import Container from '../styles/Container/index.styled';
+import React, { useState } from 'react';
 import DisplayVenueList from './Venues';
 import { HomeContainer } from './index.styled';
+import FilterButtons from './FilterButtons';
 
 function Home() {
+  const [filters, setFilters] = useState([]);
+
   return (
     <HomeContainer>
-      <DisplayVenueList />
+      <FilterButtons filters={filters} setFilters={setFilters} />
+      <DisplayVenueList filters={filters} />
     </HomeContainer>
   );
 }
