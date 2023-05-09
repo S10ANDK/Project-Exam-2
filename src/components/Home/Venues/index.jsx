@@ -11,14 +11,13 @@ import Search from '../Search';
     Function for fetching and displaying venues 
 */
 
-function DisplayVenueList({ filters }) {
+function DisplayVenueList({ filters, sortOrder }) {
   const [venues, setVenues] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [filteredVenues, setFilteredVenues] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [pageIndex, setPageIndex] = useState(0);
-  const [sortOrder, setSortOrder] = useState('desc');
 
   useEffect(() => {
     async function getVenues() {
@@ -90,11 +89,6 @@ function DisplayVenueList({ filters }) {
   return (
     <>
       <Search onSearch={handleSearch} minLength={3} />
-
-      <S.SortButtonContainer>
-        <button onClick={() => setSortOrder('asc')}>Sort Ascending</button>
-        <button onClick={() => setSortOrder('desc')}>Sort Descending</button>
-      </S.SortButtonContainer>
 
       {filteredVenues.length === 0 && searchTerm.length >= 3 ? (
         <S.NoSearchResultsMessage>

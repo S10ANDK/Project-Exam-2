@@ -35,10 +35,6 @@ export const VenuesContainer = styled.div`
   }
 `;
 
-export const SortButtonContainer = styled.div`
-  display: flex;
-`;
-
 export const ListButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
