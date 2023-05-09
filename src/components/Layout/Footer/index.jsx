@@ -1,6 +1,10 @@
 import React from 'react';
 import StyledFooter from './index.styled';
 
+/*
+  Footer component 
+*/
+
 function Footer() {
   return (
     <>

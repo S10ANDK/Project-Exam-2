@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+/*
+  Reusable Loading indicator component
+*/
+
 const LoadingIndicator = styled.div`
   text-align: center;
   margin: 50px auto 50px;

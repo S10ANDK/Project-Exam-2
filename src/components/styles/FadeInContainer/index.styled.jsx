@@ -2,6 +2,10 @@ import styled, { keyframes } from 'styled-components';
 import Container from '../Container/index.styled';
 import { VenueCardContainer } from '../../Home/Venues/VenueCard/index.styled';
 
+/*
+  Reusable container components with fade in effect
+*/
+
 const fadeIn = keyframes`
   from {
     opacity: 0;

@@ -4,6 +4,10 @@ import Header from './Header';
 import Footer from './Footer';
 import ScrollToTop from '../ScrollToTop';
 
+/*
+  Layout component
+*/
+
 function Layout() {
   return (
     <div>

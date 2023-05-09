@@ -1,6 +1,10 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 
+/*
+  Theme for the project
+*/
+
 const theme = {
   color: {
     primary: 'var(--color-primary)',

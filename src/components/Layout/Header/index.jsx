@@ -5,6 +5,10 @@ import * as S from './index.styled';
 import Logo from '../../../assets/logo.png';
 import Profile from '../../../assets/profile.png';
 
+/*
+  Header component
+*/
+
 function Header() {
   const [isSticky, setIsSticky] = useState(false);
 

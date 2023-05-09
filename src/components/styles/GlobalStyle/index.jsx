@@ -1,5 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
 
+/*
+  Global style component for default styling
+*/
+
 const GlobalStyle = createGlobalStyle`
     html {
         --color-primary: #FEFEFE;

@@ -5,6 +5,10 @@ import ratingIcon from '../../../../assets/starblue.png';
 import guestIcon from '../../../../assets/user.png';
 import { VenueCardContainerFadeIn } from '../../../styles/FadeInContainer/index.styled';
 
+/*
+  Component template for each unique venue in the venue list 
+*/
+
 const VenueCard = ({ venue }) => {
   const [imageError, setImageError] = useState(false);
 

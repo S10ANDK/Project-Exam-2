@@ -2,11 +2,11 @@ import React from 'react';
 import { NoItemsContainer } from './index.styled';
 
 /*
-    No products message component
+    No venues message component
 */
 
 function NoItemsMessage() {
-  return <NoItemsContainer>No products to show.</NoItemsContainer>;
+  return <NoItemsContainer>No venues to show.</NoItemsContainer>;
 }
 
 export default NoItemsMessage;

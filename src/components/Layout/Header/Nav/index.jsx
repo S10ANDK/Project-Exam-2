@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import * as S from './index.styled';
 
+/*
+  Navigation component 
+*/
+
 const Nav = () => {
   const [active, setActive] = useState(false);
 
