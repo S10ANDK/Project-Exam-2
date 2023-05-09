@@ -11,7 +11,13 @@ import ListNavigationButtons from './ListNavigationButtons';
     Function for fetching and displaying venues 
 */
 
-function DisplayVenueList({ filters, sortOrder, searchTerm }) {
+function DisplayVenueList({
+  filters,
+  sortOrder,
+  searchTerm,
+  minPrice,
+  maxPrice,
+}) {
   const [venues, setVenues] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -35,6 +41,14 @@ function DisplayVenueList({ filters, sortOrder, searchTerm }) {
           );
         }
 
+        if (minPrice !== '') {
+          results = results.filter((venue) => venue.price >= minPrice);
+        }
+
+        if (maxPrice !== '') {
+          results = results.filter((venue) => venue.price <= maxPrice);
+        }
+
         setVenues(results);
         setFilteredVenues(results);
       } catch (error) {
@@ -44,7 +58,7 @@ function DisplayVenueList({ filters, sortOrder, searchTerm }) {
       }
     }
     getVenues();
-  }, [pageIndex, sortOrder, filters]);
+  }, [pageIndex, sortOrder, filters, minPrice, maxPrice]);
 
   useEffect(() => {
     const filtered = venues.filter(

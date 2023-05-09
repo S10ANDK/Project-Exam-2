@@ -5,7 +5,14 @@ import { FilterButtonContainer } from './index.styled';
   Component with buttons for filtering the api results based on meta data
 */
 
-const FilterButtons = ({ filters, setFilters }) => {
+const FilterButtons = ({
+  filters,
+  setFilters,
+  minPrice,
+  setMinPrice,
+  maxPrice,
+  setMaxPrice,
+}) => {
   const handleFilterClick = (filter) => {
     setFilters((prevFilters) => {
       if (prevFilters.includes(filter)) {
@@ -42,6 +49,24 @@ const FilterButtons = ({ filters, setFilters }) => {
       >
         Pets
       </button>
+      <div>
+        <label>
+          Min Price:
+          <input
+            type="number"
+            value={minPrice}
+            onChange={(e) => setMinPrice(e.target.value)}
+          />
+        </label>
+        <label>
+          Max Price:
+          <input
+            type="number"
+            value={maxPrice}
+            onChange={(e) => setMaxPrice(e.target.value)}
+          />
+        </label>
+      </div>
     </FilterButtonContainer>
   );
 };
