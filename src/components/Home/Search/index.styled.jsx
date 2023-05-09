@@ -3,9 +3,11 @@ import styled from 'styled-components';
 const StyledSearchForm = styled.form`
   display: flex;
   justify-content: center;
+  max-width: 1000px;
+  margin: auto;
 
   @media (min-width: 940px) {
-    justify-content: right;
+    justify-content: left;
   }
 
   input {
@@ -21,6 +23,10 @@ const StyledSearchForm = styled.form`
     @media (min-width: 1400px) {
       justify-content: right;
       max-width: 300px;
+    }
+
+    @media (min-width: 1400px) {
+      max-width: 640px;
     }
   }
 `;
