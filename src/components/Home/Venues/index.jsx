@@ -18,6 +18,7 @@ function DisplayVenueList() {
   const [filteredVenues, setFilteredVenues] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [pageIndex, setPageIndex] = useState(0);
+  const [sortOrder, setSortOrder] = useState('desc');
 
   useEffect(() => {
     async function getVenues() {
@@ -26,7 +27,7 @@ function DisplayVenueList() {
         const limit = 20;
         const offset = pageIndex * limit;
         const response = await fetch(
-          `${urls.API_URL}${urls.API_VENUES}?sort=created&sortOrder=asc&limit=${limit}&offset=${offset}`
+          `${urls.API_URL}${urls.API_VENUES}?sort=created&sortOrder=${sortOrder}&limit=${limit}&offset=${offset}`
         );
         const results = await response.json();
         setVenues(results);
@@ -39,7 +40,7 @@ function DisplayVenueList() {
       }
     }
     getVenues();
-  }, [pageIndex]);
+  }, [pageIndex, sortOrder]);
 
   const handleSearch = (searchTerm) => {
     setSearchTerm(searchTerm);
@@ -81,6 +82,11 @@ function DisplayVenueList() {
   return (
     <>
       <Search onSearch={handleSearch} minLength={3} />
+
+      <S.SortButtonContainer>
+        <button onClick={() => setSortOrder('asc')}>Sort Ascending</button>
+        <button onClick={() => setSortOrder('desc')}>Sort Descending</button>
+      </S.SortButtonContainer>
 
       {filteredVenues.length === 0 && searchTerm.length >= 3 ? (
         <S.NoSearchResultsMessage>
