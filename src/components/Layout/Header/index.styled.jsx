@@ -59,7 +59,7 @@ export const Logo = styled.img`
 
   @media (min-width: 1000px) {
     width: 180px;
-    margin: 10px 0px 10px 30px;
+    margin: 15px 0px 10px 30px;
   }
 `;
 
