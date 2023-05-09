@@ -80,6 +80,18 @@ function DisplayVenueList({
     return <ErrorMessage />;
   }
 
+  if (filteredVenues.length === 0) {
+    return (
+      <S.NoSearchResultsMessage>
+        No results found
+        {minPrice !== '' || maxPrice !== ''
+          ? ` within the price range ${minPrice}-${maxPrice}`
+          : ''}
+        {searchTerm !== '' ? ` for '${searchTerm}'` : ''}
+      </S.NoSearchResultsMessage>
+    );
+  }
+
   if (venues.length <= 0) {
     return <NoVenuesMessage />;
   }
