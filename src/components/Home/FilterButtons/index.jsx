@@ -1,6 +1,10 @@
 import React from 'react';
 import { FilterButtonContainer } from './index.styled';
 
+/*
+  Component with buttons for filtering the api results based on meta data
+*/
+
 const FilterButtons = ({ filters, setFilters }) => {
   const handleFilterClick = (filter) => {
     setFilters((prevFilters) => {
