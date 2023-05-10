@@ -4,11 +4,8 @@ function PriceFilter({ setMinPrice, setMaxPrice }) {
   const [tempMinPrice, setTempMinPrice] = useState('');
   const [tempMaxPrice, setTempMaxPrice] = useState('');
 
-  const handleMinPriceSubmit = () => {
+  const handlePriceRangeSubmit = () => {
     setMinPrice(tempMinPrice);
-  };
-
-  const handleMaxPriceSubmit = () => {
     setMaxPrice(tempMaxPrice);
   };
 
@@ -21,7 +18,6 @@ function PriceFilter({ setMinPrice, setMaxPrice }) {
           value={tempMinPrice}
           onChange={(e) => setTempMinPrice(e.target.value)}
         />
-        <button onClick={handleMinPriceSubmit}>Set Min Price</button>
       </label>
       <label>
         Max Price:
@@ -30,8 +26,8 @@ function PriceFilter({ setMinPrice, setMaxPrice }) {
           value={tempMaxPrice}
           onChange={(e) => setTempMaxPrice(e.target.value)}
         />
-        <button onClick={handleMaxPriceSubmit}>Set Max Price</button>
       </label>
+      <button onClick={handlePriceRangeSubmit}>Set Price Range</button>
     </div>
   );
 }
