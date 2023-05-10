@@ -14,6 +14,7 @@ function Home() {
   const [filters, setFilters] = useState([]);
   const [sortOrder, setSortOrder] = useState('desc');
   const [searchTerm, setSearchTerm] = useState('');
+
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
 
@@ -21,12 +22,7 @@ function Home() {
     <HomeContainer>
       <Search onSearch={setSearchTerm} minLength={3} />
       <FilterButtons filters={filters} setFilters={setFilters} />
-      <PriceFilter
-        minPrice={minPrice}
-        setMinPrice={setMinPrice}
-        maxPrice={maxPrice}
-        setMaxPrice={setMaxPrice}
-      />
+      <PriceFilter setMinPrice={setMinPrice} setMaxPrice={setMaxPrice} />
       <SortButtons sortOrder={sortOrder} setSortOrder={setSortOrder} />
       <DisplayVenueList
         filters={filters}

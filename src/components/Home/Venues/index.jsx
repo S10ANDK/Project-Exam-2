@@ -20,6 +20,7 @@ function DisplayVenueList({
 }) {
   const [venues, setVenues] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  // const [loadingTimeoutDone, setLoadingTimeoutDone] = useState(true);
   const [isError, setIsError] = useState(false);
   const [filteredVenues, setFilteredVenues] = useState([]);
   const [pageIndex, setPageIndex] = useState(0);
