@@ -39,12 +39,14 @@ export const NoSearchResultsMessage = styled.div`
   text-align: center;
   color: white;
   background: #8c3d2b;
-  padding: 20px 0px;
+  padding: 20px;
   margin: 50px auto 0px;
   border-radius: 10px;
-  width: 100%;
+  height: auto;
   max-width: 1000px;
   box-shadow: ${(props) => props.theme.boxShadow};
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 
   span {
     font-weight: bold;

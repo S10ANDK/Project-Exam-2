@@ -25,7 +25,6 @@ function DisplayVenueList({
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [filteredVenues, setFilteredVenues] = useState([]);
-  // const [pageIndex, setPageIndex] = useState(0);
 
   useEffect(() => {
     async function getVenues() {
@@ -92,8 +91,9 @@ function DisplayVenueList({
       <S.NoSearchResultsMessage>
         No results found
         {minPrice !== '' || maxPrice !== ''
-          ? ` within the price range ${minPrice}-${maxPrice}`
+          ? ` within the price range of ${minPrice}-${maxPrice} kr NOK`
           : ''}
+        {maxGuests ? ` with ${maxGuests} guests` : ''}
         {searchTerm !== '' ? ` for '${searchTerm}'` : ''}
       </S.NoSearchResultsMessage>
     );
@@ -107,7 +107,7 @@ function DisplayVenueList({
     <>
       {filteredVenues.length === 0 && searchTerm.length >= 3 ? (
         <S.NoSearchResultsMessage>
-          No results found for <span>&apos;{searchTerm}&apos;</span>.
+          No results found for <span>&apos;{searchTerm}&apos;</span>
         </S.NoSearchResultsMessage>
       ) : (
         <>

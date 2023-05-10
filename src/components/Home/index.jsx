@@ -23,6 +23,7 @@ function Home() {
 
   return (
     <S.HomeContainer>
+      <h1>discover your next adventure</h1>
       <MobileFilterButton
         onButtonClick={() => setFiltersVisible((prev) => !prev)}
       />
@@ -35,7 +36,11 @@ function Home() {
           setMaxGuests={setMaxGuests}
           setPageIndex={setPageIndex}
         />
-        <PriceFilter setMinPrice={setMinPrice} setMaxPrice={setMaxPrice} />
+        <PriceFilter
+          setMinPrice={setMinPrice}
+          setMaxPrice={setMaxPrice}
+          setPageIndex={setPageIndex}
+        />
         <SortButtons
           sortOrder={sortOrder}
           setSortOrder={setSortOrder}

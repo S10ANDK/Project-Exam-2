@@ -28,6 +28,7 @@ const FilterButtons = ({
 
   const handleMaxGuestsChange = (event) => {
     setMaxGuests(event.target.value);
+    setPageIndex(0);
   };
 
   return (

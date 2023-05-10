@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import * as S from './index.styled';
 
-function PriceFilter({ setMinPrice, setMaxPrice }) {
+function PriceFilter({ setMinPrice, setMaxPrice, setPageIndex }) {
   const [tempMinPrice, setTempMinPrice] = useState('');
   const [tempMaxPrice, setTempMaxPrice] = useState('');
 
   const handlePriceRangeSubmit = () => {
     setMinPrice(tempMinPrice);
     setMaxPrice(tempMaxPrice);
+    setPageIndex(0);
   };
 
   return (

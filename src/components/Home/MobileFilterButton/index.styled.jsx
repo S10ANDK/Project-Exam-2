@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const MobileFilterButtonContainer = styled.div`
   display: block;
   text-align: center;
-  margin-top: 20px;
 
   @media (min-width: 1000px) {
     display: none;
