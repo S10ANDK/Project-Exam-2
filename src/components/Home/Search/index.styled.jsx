@@ -16,9 +16,7 @@ const StyledSearchForm = styled.form`
     height: 40px;
     margin: 30px auto 0px;
     border: 1px solid ${(props) => props.theme.color.borders};
-    border-radius: 10px;
     padding: 0px 10px;
-    outline-color: ${(props) => props.theme.color.secondary};
     box-shadow: ${(props) => props.theme.boxShadow};
 
     @media (min-width: 630px) {

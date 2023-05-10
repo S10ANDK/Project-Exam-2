@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import * as S from './index.styled';
 
 function PriceFilter({ setMinPrice, setMaxPrice }) {
   const [tempMinPrice, setTempMinPrice] = useState('');
@@ -10,7 +11,7 @@ function PriceFilter({ setMinPrice, setMaxPrice }) {
   };
 
   return (
-    <div>
+    <S.PriceFilterContainer>
       <label>
         Min Price:
         <input
@@ -28,7 +29,7 @@ function PriceFilter({ setMinPrice, setMaxPrice }) {
         />
       </label>
       <button onClick={handlePriceRangeSubmit}>Set Price Range</button>
-    </div>
+    </S.PriceFilterContainer>
   );
 }
 

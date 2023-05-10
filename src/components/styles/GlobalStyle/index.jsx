@@ -66,9 +66,10 @@ const GlobalStyle = createGlobalStyle`
     }
 
     input {
+        height: 35px;
         border: 1px solid #e9e9e9;
-        border-radius: 5px;
-        
+        border-radius: 10px;
+        outline-color: var(--color-secondary);
     }
 `;
 

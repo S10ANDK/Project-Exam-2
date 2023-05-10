@@ -18,27 +18,24 @@ function Home() {
   const [searchTerm, setSearchTerm] = useState('');
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
-  const [isFiltersVisible, setIsFiltersVisible] = useState(false);
+  const [filtersVisible, setFiltersVisible] = useState(false);
 
   return (
     <S.HomeContainer>
       <MobileFilterButton
-        setIsFiltersVisible={setIsFiltersVisible}
-        isFiltersVisible={isFiltersVisible}
+        onButtonClick={() => setFiltersVisible((prev) => !prev)}
       />
-      {isFiltersVisible && (
-        <S.SearchFiltersContainer>
-          <Search onSearch={setSearchTerm} minLength={3} />
-          <FilterButtons
-            filters={filters}
-            setFilters={setFilters}
-            maxGuests={maxGuests}
-            setMaxGuests={setMaxGuests}
-          />
-          <PriceFilter setMinPrice={setMinPrice} setMaxPrice={setMaxPrice} />
-          <SortButtons sortOrder={sortOrder} setSortOrder={setSortOrder} />
-        </S.SearchFiltersContainer>
-      )}
+      <S.SearchFiltersContainer filtersVisible={filtersVisible}>
+        <Search onSearch={setSearchTerm} minLength={3} />
+        <FilterButtons
+          filters={filters}
+          setFilters={setFilters}
+          maxGuests={maxGuests}
+          setMaxGuests={setMaxGuests}
+        />
+        <PriceFilter setMinPrice={setMinPrice} setMaxPrice={setMaxPrice} />
+        <SortButtons sortOrder={sortOrder} setSortOrder={setSortOrder} />
+      </S.SearchFiltersContainer>
       <DisplayVenueList
         filters={filters}
         sortOrder={sortOrder}

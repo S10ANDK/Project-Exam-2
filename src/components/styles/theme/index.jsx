@@ -16,7 +16,7 @@ const theme = {
     black: 'var(--color-black)',
     borders: 'var(--color-borders)',
   },
-  boxShadow: '1px 1px 1px 1px rgba(0, 0, 0, 0.07)',
+  boxShadow: '1px 1px 1px 1px rgba(0, 0, 0, 0.06)',
 };
 
 export const Theme = ({ children }) => (
