@@ -12,21 +12,21 @@ const StyledSearchForm = styled.form`
 
   input {
     width: 100%;
-    max-width: 245px;
+    max-width: 300px;
     height: 40px;
-    margin: auto 20px;
-    border: 1px solid #bdbdbd;
-    border-radius: 5px;
+    margin: 30px auto 0px;
+    border: 1px solid ${(props) => props.theme.color.borders};
+    border-radius: 10px;
     padding: 0px 10px;
     outline-color: ${(props) => props.theme.color.secondary};
+    box-shadow: ${(props) => props.theme.boxShadow};
 
-    @media (min-width: 1400px) {
-      justify-content: right;
-      max-width: 300px;
+    @media (min-width: 630px) {
+      max-width: 630px;
     }
 
-    @media (min-width: 1400px) {
-      max-width: 640px;
+    @media (min-width: 1000px) {
+      max-width: 500px;
     }
   }
 `;

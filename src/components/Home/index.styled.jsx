@@ -7,9 +7,8 @@ export const HomeContainer = styled(Container)`
 `;
 
 export const SearchFiltersContainer = styled(FadeInContainer)`
-  min-height: 50vh;
+  min-height: auto;
   @media (min-width: 1000px) {
     display: block;
-    min-height: auto;
   }
 `;

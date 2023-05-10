@@ -5,7 +5,7 @@ import { FilterButtonContainer } from './index.styled';
   Component with buttons for filtering the api results based on meta data
 */
 
-const FilterButtons = ({ filters, setFilters }) => {
+const FilterButtons = ({ filters, setFilters, maxGuests, setMaxGuests }) => {
   const handleFilterClick = (filter) => {
     setFilters((prevFilters) => {
       if (prevFilters.includes(filter)) {
@@ -14,6 +14,10 @@ const FilterButtons = ({ filters, setFilters }) => {
         return [...prevFilters, filter];
       }
     });
+  };
+
+  const handleMaxGuestsChange = (event) => {
+    setMaxGuests(event.target.value);
   };
 
   return (
@@ -42,6 +46,12 @@ const FilterButtons = ({ filters, setFilters }) => {
       >
         Pets
       </button>
+      <label>Max Guests:</label>
+      <input
+        type="number"
+        value={maxGuests || ''}
+        onChange={handleMaxGuestsChange}
+      />
     </FilterButtonContainer>
   );
 };

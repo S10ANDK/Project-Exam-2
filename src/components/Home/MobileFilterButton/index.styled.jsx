@@ -21,7 +21,7 @@ export const MobileFilterButton = styled.button`
   max-width: 300px;
   height: 40px;
   border: 1px solid ${(props) => props.theme.color.borders};
-  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.07);
+  box-shadow: ${(props) => props.theme.boxShadow};
   border-radius: 10px;
 
   @media (min-width: 630px) {

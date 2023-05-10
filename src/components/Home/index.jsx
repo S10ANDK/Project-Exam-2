@@ -13,6 +13,7 @@ import MobileFilterButton from './MobileFilterButton';
 
 function Home() {
   const [filters, setFilters] = useState([]);
+  const [maxGuests, setMaxGuests] = useState(null);
   const [sortOrder, setSortOrder] = useState('desc');
   const [searchTerm, setSearchTerm] = useState('');
   const [minPrice, setMinPrice] = useState('');
@@ -28,7 +29,12 @@ function Home() {
       {isFiltersVisible && (
         <S.SearchFiltersContainer>
           <Search onSearch={setSearchTerm} minLength={3} />
-          <FilterButtons filters={filters} setFilters={setFilters} />
+          <FilterButtons
+            filters={filters}
+            setFilters={setFilters}
+            maxGuests={maxGuests}
+            setMaxGuests={setMaxGuests}
+          />
           <PriceFilter setMinPrice={setMinPrice} setMaxPrice={setMaxPrice} />
           <SortButtons sortOrder={sortOrder} setSortOrder={setSortOrder} />
         </S.SearchFiltersContainer>
@@ -40,6 +46,7 @@ function Home() {
         setSearchTerm={setSearchTerm}
         minPrice={minPrice}
         maxPrice={maxPrice}
+        maxGuests={maxGuests}
       />
     </S.HomeContainer>
   );

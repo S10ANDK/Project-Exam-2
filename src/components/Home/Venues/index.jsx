@@ -17,6 +17,7 @@ function DisplayVenueList({
   searchTerm,
   minPrice,
   maxPrice,
+  maxGuests,
 }) {
   const [venues, setVenues] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -50,6 +51,10 @@ function DisplayVenueList({
           results = results.filter((venue) => venue.price <= maxPrice);
         }
 
+        if (maxGuests) {
+          results = results.filter((venue) => venue.maxGuests <= maxGuests);
+        }
+
         setVenues(results);
         setFilteredVenues(results);
       } catch (error) {
@@ -59,7 +64,7 @@ function DisplayVenueList({
       }
     }
     getVenues();
-  }, [pageIndex, sortOrder, filters, minPrice, maxPrice]);
+  }, [pageIndex, sortOrder, filters, minPrice, maxPrice, maxGuests]);
 
   useEffect(() => {
     const filtered = venues.filter(

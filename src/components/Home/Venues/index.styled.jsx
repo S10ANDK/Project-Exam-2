@@ -44,6 +44,7 @@ export const NoSearchResultsMessage = styled.div`
   border-radius: 10px;
   width: 100%;
   max-width: 1000px;
+  box-shadow: ${(props) => props.theme.boxShadow};
 
   span {
     font-weight: bold;
