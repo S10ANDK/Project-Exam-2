@@ -6,6 +6,7 @@ import SortButtons from './SortButtons';
 import Search from './Search';
 import PriceFilter from './PriceFilter';
 import MobileFilterButton from './MobileFilterButton';
+import MaxGuestsFilter from './MaxGuestsFilter';
 
 /*
   Renders the home page with all its components
@@ -39,6 +40,11 @@ function Home() {
         <PriceFilter
           setMinPrice={setMinPrice}
           setMaxPrice={setMaxPrice}
+          setPageIndex={setPageIndex}
+        />
+        <MaxGuestsFilter
+          maxGuests={maxGuests}
+          setMaxGuests={setMaxGuests}
           setPageIndex={setPageIndex}
         />
         <SortButtons
