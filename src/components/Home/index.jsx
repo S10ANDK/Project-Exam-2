@@ -29,24 +29,28 @@ function Home() {
         onButtonClick={() => setFiltersVisible((prev) => !prev)}
       />
       <S.SearchFiltersContainer filtersVisible={filtersVisible}>
-        <Search onSearch={setSearchTerm} minLength={3} />
-        <FilterButtons
-          filters={filters}
-          setFilters={setFilters}
-          maxGuests={maxGuests}
-          setMaxGuests={setMaxGuests}
-          setPageIndex={setPageIndex}
-        />
-        <PriceFilter
-          setMinPrice={setMinPrice}
-          setMaxPrice={setMaxPrice}
-          setPageIndex={setPageIndex}
-        />
-        <MaxGuestsFilter
-          maxGuests={maxGuests}
-          setMaxGuests={setMaxGuests}
-          setPageIndex={setPageIndex}
-        />
+        <div>
+          <Search onSearch={setSearchTerm} minLength={3} />
+          <FilterButtons
+            filters={filters}
+            setFilters={setFilters}
+            maxGuests={maxGuests}
+            setMaxGuests={setMaxGuests}
+            setPageIndex={setPageIndex}
+          />
+        </div>
+        <div>
+          <MaxGuestsFilter
+            maxGuests={maxGuests}
+            setMaxGuests={setMaxGuests}
+            setPageIndex={setPageIndex}
+          />
+          <PriceFilter
+            setMinPrice={setMinPrice}
+            setMaxPrice={setMaxPrice}
+            setPageIndex={setPageIndex}
+          />
+        </div>
         <SortButtons
           sortOrder={sortOrder}
           setSortOrder={setSortOrder}
