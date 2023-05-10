@@ -33,7 +33,7 @@ const GlobalStyle = createGlobalStyle`
         font-family: Serenity, sans-serif;
         font-size: 2rem;
         color: var(--color-black);
-        text-align: left;
+        text-align: center;
         margin: 60px auto 60px 20px;
         letter-spacing: 0.5px;
     }
