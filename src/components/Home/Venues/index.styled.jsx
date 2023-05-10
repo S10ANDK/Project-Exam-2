@@ -42,7 +42,8 @@ export const NoSearchResultsMessage = styled.div`
   padding: 20px 0px;
   margin: 50px auto 0px;
   border-radius: 10px;
-  width: 1000px;
+  width: 100%;
+  max-width: 1000px;
 
   span {
     font-weight: bold;
