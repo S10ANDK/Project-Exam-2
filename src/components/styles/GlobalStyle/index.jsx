@@ -64,6 +64,12 @@ const GlobalStyle = createGlobalStyle`
         font-size: 1rem;
         cursor: pointer;
     }
+
+    input {
+        border: 1px solid #e9e9e9;
+        border-radius: 5px;
+        
+    }
 `;
 
 export default GlobalStyle;
