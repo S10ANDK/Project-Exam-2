@@ -5,11 +5,6 @@ export const MobileFilterButtonContainer = styled.div`
   text-align: center;
   margin-top: 20px;
 
-  p {
-    font-family: Serenity, sans-serif;
-    font-size: 1.1rem;
-  }
-
   @media (min-width: 1000px) {
     display: none;
   }
@@ -19,7 +14,6 @@ export const MobileFilterButton = styled.button`
   background: ${(props) => props.theme.color.accentTwo};
   width: 100%;
   max-width: 300px;
-  height: 40px;
   border: 1px solid ${(props) => props.theme.color.borders};
   box-shadow: ${(props) => props.theme.boxShadow};
   border-radius: 10px;

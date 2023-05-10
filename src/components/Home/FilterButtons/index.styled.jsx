@@ -6,8 +6,9 @@ export const FilterButtonContainer = styled.div`
   margin-top: 20px;
 
   button {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
     width: 75px;
-    height: 35px;
     background-color: ${(props) => props.theme.color.white};
     border: 1px solid ${(props) => props.theme.color.borders};
     border-radius: 5px;
@@ -15,7 +16,6 @@ export const FilterButtonContainer = styled.div`
 
     &.active {
       outline: 2px solid ${(props) => props.theme.color.accentTwo};
-      font-weight: 600;
     }
   }
 `;
@@ -27,7 +27,7 @@ export const MaxGuestsFilterContainer = styled.div`
 
   input {
     text-align: center;
-    width: 50px;
+    width: 60px;
     margin-left: 10px;
     box-shadow: ${(props) => props.theme.boxShadow};
   }

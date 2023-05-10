@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as S from './index.styled';
 
 /*
@@ -6,14 +6,17 @@ import * as S from './index.styled';
 */
 
 function MobileFilterButton({ onButtonClick }) {
-  // const handleClick = () => {
-  //   setIsFiltersVisible(!isFiltersVisible);
-  // };
+  const [isFiltersVisible, setIsFiltersVisible] = useState(false);
+
+  const handleClick = () => {
+    setIsFiltersVisible(!isFiltersVisible);
+    onButtonClick();
+  };
 
   return (
     <S.MobileFilterButtonContainer>
-      <S.MobileFilterButton onClick={onButtonClick}>
-        <p>Filters</p>
+      <S.MobileFilterButton onClick={handleClick}>
+        {isFiltersVisible ? '▲ Close Filters' : '▼ Filters'}
       </S.MobileFilterButton>
     </S.MobileFilterButtonContainer>
   );

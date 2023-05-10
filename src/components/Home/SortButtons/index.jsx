@@ -5,11 +5,21 @@ import { SortButtonContainer } from './index.styled';
   Component with buttons for sorting the api based on ascending or descending created date
 */
 
-function SortButtons({ setSortOrder }) {
+function SortButtons({ sortOrder, setSortOrder }) {
   return (
     <SortButtonContainer>
-      <button onClick={() => setSortOrder('asc')}>Sort Ascending</button>
-      <button onClick={() => setSortOrder('desc')}>Sort Descending</button>
+      <button
+        className={sortOrder === 'asc' ? 'active' : ''}
+        onClick={() => setSortOrder('asc')}
+      >
+        Sort Ascending
+      </button>
+      <button
+        className={sortOrder === 'desc' ? 'active' : ''}
+        onClick={() => setSortOrder('desc')}
+      >
+        Sort Descending
+      </button>
     </SortButtonContainer>
   );
 }

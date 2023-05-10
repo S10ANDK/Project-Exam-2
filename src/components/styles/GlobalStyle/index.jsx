@@ -63,8 +63,11 @@ const GlobalStyle = createGlobalStyle`
 
     button {
         font-family: Serenity, sans-serif;
-        font-size: 0.9rem;
-        letter-spacing: 1px;
+        height: 40px;
+        font-size: 1.1rem;
+        letter-spacing: 1.8px;
+        border-radius: 5px;
+        border: 1px solid #e9e9e9;
         cursor: pointer;
     }
 
