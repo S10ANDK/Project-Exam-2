@@ -18,6 +18,8 @@ function PriceFilter({ setMinPrice, setMaxPrice }) {
           type="number"
           value={tempMinPrice}
           onChange={(e) => setTempMinPrice(e.target.value)}
+          min="1"
+          max="100000"
         />
       </label>
       <label>
@@ -26,6 +28,8 @@ function PriceFilter({ setMinPrice, setMaxPrice }) {
           type="number"
           value={tempMaxPrice}
           onChange={(e) => setTempMaxPrice(e.target.value)}
+          min="1"
+          max="100000"
         />
       </label>
       <button onClick={handlePriceRangeSubmit}>Set Price Range</button>

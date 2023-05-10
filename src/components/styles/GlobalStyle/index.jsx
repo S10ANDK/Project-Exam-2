@@ -42,6 +42,7 @@ const GlobalStyle = createGlobalStyle`
         font-family: Open Sans, sans-serif;
         font-size: 1.2rem;
         text-align: center;
+        letter-spacing: 0.8px;
     }
 
     a {
@@ -57,11 +58,13 @@ const GlobalStyle = createGlobalStyle`
         font-family: Open Sans, sans-serif;
         max-width: 600px;
         margin: auto;
+        letter-spacing: 0.8px;
     }
 
     button {
         font-family: Serenity, sans-serif;
-        font-size: 1rem;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
         cursor: pointer;
     }
 
@@ -69,7 +72,7 @@ const GlobalStyle = createGlobalStyle`
         height: 35px;
         border: 1px solid #e9e9e9;
         border-radius: 10px;
-        outline-color: var(--color-secondary);
+        outline-color: var(--color-accent-two);
     }
 `;
 

@@ -9,6 +9,9 @@ export const HomeContainer = styled(Container)`
 export const SearchFiltersContainer = styled(FadeInContainer)`
   display: block;
   min-height: auto;
+  width: 100%;
+  max-width: 300px;
+  margin: auto;
 
   @media (max-width: 999px) {
     display: ${(props) => (props.filtersVisible ? 'block' : 'none')};

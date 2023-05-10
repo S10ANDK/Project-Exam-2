@@ -33,6 +33,12 @@ const FilterButtons = ({ filters, setFilters, maxGuests, setMaxGuests }) => {
           Wifi
         </button>
         <button
+          className={filters.includes('pets') ? 'active' : ''}
+          onClick={() => handleFilterClick('pets')}
+        >
+          Pets
+        </button>
+        <button
           className={filters.includes('parking') ? 'active' : ''}
           onClick={() => handleFilterClick('parking')}
         >
@@ -44,22 +50,18 @@ const FilterButtons = ({ filters, setFilters, maxGuests, setMaxGuests }) => {
         >
           Breakfast
         </button>
-        <button
-          className={filters.includes('pets') ? 'active' : ''}
-          onClick={() => handleFilterClick('pets')}
-        >
-          Pets
-        </button>
       </FilterButtonContainer>
       <MaxGuestsFilterContainer>
-        <label>Max Guests:</label>
-        <input
-          type="number"
-          value={maxGuests || ''}
-          onChange={handleMaxGuestsChange}
-          min="1"
-          max="1000"
-        />
+        <label>
+          Max Guests:
+          <input
+            type="number"
+            value={maxGuests || ''}
+            onChange={handleMaxGuestsChange}
+            min="1"
+            max="1000"
+          />
+        </label>
       </MaxGuestsFilterContainer>
     </>
   );
