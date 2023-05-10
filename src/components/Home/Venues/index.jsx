@@ -18,13 +18,14 @@ function DisplayVenueList({
   minPrice,
   maxPrice,
   maxGuests,
+  pageIndex,
+  setPageIndex,
 }) {
   const [venues, setVenues] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  // const [loadingTimeoutDone, setLoadingTimeoutDone] = useState(true);
   const [isError, setIsError] = useState(false);
   const [filteredVenues, setFilteredVenues] = useState([]);
-  const [pageIndex, setPageIndex] = useState(0);
+  // const [pageIndex, setPageIndex] = useState(0);
 
   useEffect(() => {
     async function getVenues() {

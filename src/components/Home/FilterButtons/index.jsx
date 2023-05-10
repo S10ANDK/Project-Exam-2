@@ -8,7 +8,13 @@ import {
   Component with buttons for filtering the api results based on meta data
 */
 
-const FilterButtons = ({ filters, setFilters, maxGuests, setMaxGuests }) => {
+const FilterButtons = ({
+  filters,
+  setFilters,
+  maxGuests,
+  setMaxGuests,
+  setPageIndex,
+}) => {
   const handleFilterClick = (filter) => {
     setFilters((prevFilters) => {
       if (prevFilters.includes(filter)) {
@@ -17,6 +23,7 @@ const FilterButtons = ({ filters, setFilters, maxGuests, setMaxGuests }) => {
         return [...prevFilters, filter];
       }
     });
+    setPageIndex(0);
   };
 
   const handleMaxGuestsChange = (event) => {

@@ -13,13 +13,13 @@ function ListNavigationButtons({
 }) {
   const handleNextClick = () => {
     setPageIndex(pageIndex + 1);
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handlePrevClick = () => {
     if (pageIndex > 0) {
       setPageIndex(pageIndex - 1);
-      window.scrollTo(0, 0);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 

@@ -19,6 +19,7 @@ function Home() {
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
   const [filtersVisible, setFiltersVisible] = useState(false);
+  const [pageIndex, setPageIndex] = useState(0);
 
   return (
     <S.HomeContainer>
@@ -32,9 +33,14 @@ function Home() {
           setFilters={setFilters}
           maxGuests={maxGuests}
           setMaxGuests={setMaxGuests}
+          setPageIndex={setPageIndex}
         />
         <PriceFilter setMinPrice={setMinPrice} setMaxPrice={setMaxPrice} />
-        <SortButtons sortOrder={sortOrder} setSortOrder={setSortOrder} />
+        <SortButtons
+          sortOrder={sortOrder}
+          setSortOrder={setSortOrder}
+          setPageIndex={setPageIndex}
+        />
       </S.SearchFiltersContainer>
       <DisplayVenueList
         filters={filters}
@@ -44,6 +50,8 @@ function Home() {
         minPrice={minPrice}
         maxPrice={maxPrice}
         maxGuests={maxGuests}
+        pageIndex={pageIndex}
+        setPageIndex={setPageIndex}
       />
     </S.HomeContainer>
   );
