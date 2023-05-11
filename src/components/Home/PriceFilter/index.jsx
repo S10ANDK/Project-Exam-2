@@ -33,7 +33,7 @@ function PriceFilter({ setMinPrice, setMaxPrice, setPageIndex }) {
           max="100000"
         />
       </label>
-      <button onClick={handlePriceRangeSubmit}>Set Price Range</button>
+      <button onClick={handlePriceRangeSubmit}>Set Price</button>
     </S.PriceFilterContainer>
   );
 }

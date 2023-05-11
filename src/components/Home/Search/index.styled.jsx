@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const StyledSearchForm = styled.form`
   display: flex;
   justify-content: center;
+  width: 100%;
   max-width: 1000px;
   margin: auto;
 
@@ -24,7 +25,8 @@ const StyledSearchForm = styled.form`
     }
 
     @media (min-width: 1000px) {
-      max-width: 500px;
+      max-width: 600px;
+      margin: 0px auto;
     }
   }
 `;

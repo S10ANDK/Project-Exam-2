@@ -15,7 +15,7 @@ function SortButtons({ sortOrder, setSortOrder, setPageIndex }) {
           setPageIndex(0);
         }}
       >
-        Sort Ascending
+        Ascending
       </button>
       <button
         className={sortOrder === 'desc' ? 'active' : ''}
@@ -24,7 +24,7 @@ function SortButtons({ sortOrder, setSortOrder, setPageIndex }) {
           setPageIndex(0);
         }}
       >
-        Sort Descending
+        Descending
       </button>
     </SortButtonContainer>
   );
