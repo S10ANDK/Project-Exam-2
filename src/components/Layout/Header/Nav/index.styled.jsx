@@ -116,7 +116,7 @@ export const NavLink = styled(Link)`
   @media (min-width: 1000px) {
     font-size: 1.1rem;
     color: ${(props) => props.theme.color.black};
-    padding: 0;
+    padding: 15px 0px;
 
     :visited {
       color: ${(props) => props.theme.color.black};
