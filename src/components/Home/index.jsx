@@ -7,7 +7,7 @@ import Search from './Search';
 import PriceFilter from './PriceFilter';
 import MobileFilterButton from './MobileFilterButton';
 import MaxGuestsFilter from './MaxGuestsFilter';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 /*
   Renders the home page with all its components
