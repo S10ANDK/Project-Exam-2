@@ -20,9 +20,3 @@ export const RegisterForm = styled.form`
     padding: 10px;
   }
 `;
-
-export const FormErrorMessage = styled.p`
-  text-align: left;
-  color: #963a3a;
-  margin: 0px 5px 10px;
-`;

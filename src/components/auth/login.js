@@ -1,12 +1,12 @@
-import { API_URL, API_AUTH_REGISTER } from '../constants/urls';
+import { API_URL, API_AUTH_LOGIN } from '../constants/urls';
 
 const method = 'POST';
 
-export async function registerProfile(profileData) {
+export async function loginProfile(profileData) {
   try {
-    const registerUrl = `${API_URL}${API_AUTH_REGISTER}`;
+    const loginUrl = `${API_URL}${API_AUTH_LOGIN}`;
 
-    const response = await fetch(registerUrl, {
+    const response = await fetch(loginUrl, {
       headers: {
         'Content-Type': 'application/json',
       },

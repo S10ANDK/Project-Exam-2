@@ -6,6 +6,7 @@ import Container from '../styles/Container/index.styled';
 import * as S from './index.styled';
 import { registerProfile } from '../auth/register.js';
 import { Helmet } from 'react-helmet-async';
+import { FormErrorMessage } from '../styles/FormErrorMessage/index.styled.jsx';
 
 const schema = yup
   .object({
@@ -36,49 +37,52 @@ const schema = yup
   })
   .required();
 
-const onSubmit = async (data) => {
-  try {
-    await registerProfile(data); // Assuming registerProfile returns a promise
-    alert('Registration successful!'); // Replace this with your success message or action
-  } catch (err) {
-    alert('Registration failed: ' + err.message); // Replace this with your error handling
-  }
-};
-
 function Register() {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     resolver: yupResolver(schema),
   });
+
+  const onSubmit = async (data) => {
+    try {
+      await registerProfile(data);
+      reset();
+      alert('Registration successful!');
+    } catch (err) {
+      alert('Registration failed: ' + err.message);
+    }
+  };
+
   return (
     <Container>
       <Helmet>
         <title>register | holidaze</title>
         <meta name="description" content="Register with Holidaze!" />
       </Helmet>
+      <h1>Register</h1>
       <S.RegisterForm onSubmit={handleSubmit(onSubmit)}>
         <input placeholder="name" {...register('name')} />
-        <S.FormErrorMessage>{errors.name?.message}</S.FormErrorMessage>
+        <FormErrorMessage>{errors.name?.message}</FormErrorMessage>
         <input placeholder="email" {...register('email')} />
-        <S.FormErrorMessage>{errors.email?.message}</S.FormErrorMessage>
+        <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
         <input
           type="password"
           placeholder="password"
           {...register('password')}
         />
-        <S.FormErrorMessage>{errors.password?.message}</S.FormErrorMessage>
+        <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
         <input placeholder="avatar" {...register('avatar')} />
-        <S.FormErrorMessage>{errors.avatar?.message}</S.FormErrorMessage>
+        <FormErrorMessage>{errors.avatar?.message}</FormErrorMessage>
         <label htmlFor="checkbox">Venue Manager:</label>
         <input
           name="venueManager"
           type="checkbox"
           {...register('venueManager')}
         />
-        <S.FormErrorMessage>{errors.avatar?.message}</S.FormErrorMessage>
         <button type="submit" value="submit">
           Register
         </button>

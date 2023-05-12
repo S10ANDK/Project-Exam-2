@@ -4,6 +4,7 @@ import Layout from './components/Layout';
 import Home from './components/Home';
 import Register from './components/Register';
 import VenueSpecific from './components/VenueSpecific';
+import Login from './components/Login';
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
         <Route path="venues/:id" index element={<VenueSpecific />} />
 
         <Route path="register" index element={<Register />} />
+
+        <Route path="login" index element={<Login />} />
       </Route>
     </Routes>
   );
