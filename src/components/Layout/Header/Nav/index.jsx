@@ -28,14 +28,6 @@ const Nav = () => {
             </S.NavLink>
           </S.NavListItem>
           <S.NavListItem>
-            <S.NavLink
-              onClick={() => setActive(!active)}
-              to="/register-venue-manager"
-            >
-              become a venue manager
-            </S.NavLink>
-          </S.NavListItem>
-          <S.NavListItem>
             <S.NavLink onClick={() => setActive(!active)} to="/dashboard">
               dashboard
             </S.NavLink>
