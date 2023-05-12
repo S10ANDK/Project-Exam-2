@@ -41,9 +41,9 @@ function Login() {
     try {
       await loginProfile(data);
       reset();
-      alert('Registration successful!');
+      alert('Login successful!');
     } catch (err) {
-      alert('Registration failed: ' + err.message);
+      alert('Login failed: ' + err.message);
     }
   };
 

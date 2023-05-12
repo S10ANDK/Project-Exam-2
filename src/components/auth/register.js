@@ -1,4 +1,4 @@
-import { API_URL, API_AUTH_REGISTER } from '../constants/urls';
+import { API_URL, API_AUTH_REGISTER } from './constants/urls';
 
 const method = 'POST';
 

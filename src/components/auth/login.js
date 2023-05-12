@@ -1,4 +1,4 @@
-import { API_URL, API_AUTH_LOGIN } from '../constants/urls';
+import { API_URL, API_AUTH_LOGIN } from './constants/urls';
 
 const method = 'POST';
 
@@ -17,6 +17,8 @@ export async function loginProfile(profileData) {
     if (response.ok) {
       const data = await response.json();
       console.log(data);
+
+      localStorage.setItem('user', JSON.stringify(data));
     } else {
       const errorData = await response.json();
       console.error(errorData);

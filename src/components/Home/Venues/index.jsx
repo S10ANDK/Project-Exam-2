@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import * as urls from '../../constants/urls';
+import * as urls from '../../auth/constants/urls';
 import LoadingIndicator from '../../styles/LoadingIndicator/index.styled';
 import ErrorMessage from '../../messages/ErrorMessage';
 import NoVenuesMessage from '../../messages/NoVenuesMessage';
