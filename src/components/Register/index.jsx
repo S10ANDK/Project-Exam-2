@@ -65,7 +65,10 @@ function Register() {
       }
     } catch (error) {
       setRegistrationError(
-        'Registration failed. ' + 'Status code: ' + error.message
+        'Registration failed. Please try again. ' +
+          '(Status code: ' +
+          error.message +
+          ')'
       );
     }
   };
