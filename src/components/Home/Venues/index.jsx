@@ -3,6 +3,7 @@ import * as urls from '../../auth/constants/urls';
 import LoadingIndicator from '../../styles/LoadingIndicator/index.styled';
 import ErrorMessage from '../../messages/ErrorMessage';
 import NoVenuesMessage from '../../messages/NoVenuesMessage';
+import NoSearchResultsMessage from '../../messages/NoResultsMessage/index.styled';
 import VenueCard from './VenueCard';
 import * as S from '../Venues/index.styled';
 import ListNavigationButtons from './ListNavigationButtons';
@@ -88,14 +89,14 @@ function DisplayVenueList({
 
   if (filteredVenues.length === 0) {
     return (
-      <S.NoSearchResultsMessage>
+      <NoSearchResultsMessage>
         No results found
         {minPrice !== '' || maxPrice !== ''
           ? ` within the price range of ${minPrice}-${maxPrice} kr NOK`
           : ''}
         {maxGuests ? ` with ${maxGuests} guests` : ''}
         {searchTerm !== '' ? ` for '${searchTerm}'` : ''}
-      </S.NoSearchResultsMessage>
+      </NoSearchResultsMessage>
     );
   }
 
@@ -106,9 +107,9 @@ function DisplayVenueList({
   return (
     <>
       {filteredVenues.length === 0 && searchTerm.length >= 3 ? (
-        <S.NoSearchResultsMessage>
+        <NoSearchResultsMessage>
           No results found for <span>&apos;{searchTerm}&apos;</span>
-        </S.NoSearchResultsMessage>
+        </NoSearchResultsMessage>
       ) : (
         <>
           <S.VenuesContainer>
