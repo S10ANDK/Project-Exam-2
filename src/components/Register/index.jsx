@@ -3,10 +3,9 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import Container from '../styles/Container/index.styled';
-import * as S from './index.styled';
 import { registerProfile } from '../auth/register.js';
 import { Helmet } from 'react-helmet-async';
-import { FormErrorMessage } from '../styles/FormErrorMessage/index.styled.jsx';
+import { Form, FormErrorMessage } from '../styles/Form/index.styled';
 
 const schema = yup
   .object({
@@ -63,8 +62,8 @@ function Register() {
         <title>register | holidaze</title>
         <meta name="description" content="Register with Holidaze!" />
       </Helmet>
-      <h1>Register</h1>
-      <S.RegisterForm onSubmit={handleSubmit(onSubmit)}>
+      <h1>register</h1>
+      <Form onSubmit={handleSubmit(onSubmit)}>
         <input placeholder="name" {...register('name')} />
         <FormErrorMessage>{errors.name?.message}</FormErrorMessage>
         <input placeholder="email" {...register('email')} />
@@ -86,7 +85,7 @@ function Register() {
         <button type="submit" value="submit">
           Register
         </button>
-      </S.RegisterForm>
+      </Form>
     </Container>
   );
 }
