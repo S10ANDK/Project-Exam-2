@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -6,6 +6,9 @@ import Container from '../styles/Container/index.styled';
 import { registerProfile } from '../auth/register.js';
 import { Helmet } from 'react-helmet-async';
 import { Form, FormErrorMessage } from '../styles/Form/index.styled';
+import { StyledButtonRed } from '../styles/Button/index.styled';
+import * as S from './index.styled';
+import { Link, useNavigate } from 'react-router-dom';
 
 const schema = yup
   .object({
@@ -46,13 +49,20 @@ function Register() {
     resolver: yupResolver(schema),
   });
 
+  const navigate = useNavigate();
+  const [registrationSuccess, setRegistrationSuccess] = useState(false);
+  const [registrationError, setRegistrationError] = useState(null);
+
   const onSubmit = async (data) => {
     try {
       await registerProfile(data);
       reset();
-      alert('Registration successful!');
+      setRegistrationSuccess(true);
+      setTimeout(() => {
+        navigate('/login');
+      }, 3000);
     } catch (err) {
-      alert('Registration failed: ' + err.message);
+      setRegistrationError('Registration failed: ' + err.message);
     }
   };
 
@@ -63,29 +73,56 @@ function Register() {
         <meta name="description" content="Register with Holidaze!" />
       </Helmet>
       <h1>register</h1>
-      <Form onSubmit={handleSubmit(onSubmit)}>
-        <input placeholder="name" {...register('name')} />
-        <FormErrorMessage>{errors.name?.message}</FormErrorMessage>
-        <input placeholder="email" {...register('email')} />
-        <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
-        <input
-          type="password"
-          placeholder="password"
-          {...register('password')}
-        />
-        <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
-        <input placeholder="avatar" {...register('avatar')} />
-        <FormErrorMessage>{errors.avatar?.message}</FormErrorMessage>
-        <label htmlFor="checkbox">Venue Manager:</label>
-        <input
-          name="venueManager"
-          type="checkbox"
-          {...register('venueManager')}
-        />
-        <button type="submit" value="submit">
-          Register
-        </button>
-      </Form>
+      {registrationSuccess ? (
+        <S.RegistrationSuccessMessage>
+          Registration successful! Redirecting to the login page...
+        </S.RegistrationSuccessMessage>
+      ) : (
+        <Form onSubmit={handleSubmit(onSubmit)}>
+          <label>name</label>
+          <input placeholder="name" {...register('name')} />
+          <FormErrorMessage>{errors.name?.message}</FormErrorMessage>
+          <label>email</label>
+          <input placeholder="email" {...register('email')} />
+          <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
+          <label>password</label>
+          <input
+            type="password"
+            placeholder="password"
+            {...register('password')}
+          />
+          <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
+          <label>avatar</label>
+          <input placeholder="avatar (url)" {...register('avatar')} />
+          <FormErrorMessage>{errors.avatar?.message}</FormErrorMessage>
+          <S.VenueManagerSelectionContainer>
+            <p>
+              To publish your own venues as a venue manager, check the checkbox
+              below. Unleash your creativity and share your unique spaces with
+              the world!
+            </p>
+            <div>
+              <label htmlFor="checkbox">Become a venue manager:</label>
+              <input
+                name="venueManager"
+                type="checkbox"
+                {...register('venueManager')}
+              />
+            </div>
+          </S.VenueManagerSelectionContainer>
+          {registrationError && (
+            <S.RegistrationErrorMessage>
+              {registrationError}
+            </S.RegistrationErrorMessage>
+          )}
+          <S.RegisterButtonContainer>
+            <Link to={'/login'}>
+              Already a member of Holidaze? <span>Login here</span>
+            </Link>
+            <StyledButtonRed type="submit">Register</StyledButtonRed>
+          </S.RegisterButtonContainer>
+        </Form>
+      )}
     </Container>
   );
 }
