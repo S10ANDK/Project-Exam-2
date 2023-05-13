@@ -3,8 +3,12 @@ import styled from 'styled-components';
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  max-width: 600px;
+  max-width: 500px;
   margin: 20px auto 0px;
+
+  label {
+    margin-left: 3px;
+  }
 
   input,
   textarea {
@@ -22,6 +26,7 @@ export const Form = styled.form`
 `;
 
 export const FormErrorMessage = styled.p`
+  font-size: 0.8rem;
   text-align: left;
   color: ${(props) => props.theme.color.secondary};
   margin: 0px 5px 10px;
