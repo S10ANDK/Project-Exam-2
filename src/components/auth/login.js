@@ -22,8 +22,12 @@ export async function loginProfile(profileData) {
     } else {
       const errorData = await response.json();
       console.error(errorData);
+      throw new Error(JSON.stringify(errorData.statusCode));
     }
+
+    return response;
   } catch (error) {
     console.error(error);
+    throw error;
   }
 }

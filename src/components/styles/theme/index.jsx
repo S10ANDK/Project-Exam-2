@@ -15,6 +15,7 @@ const theme = {
     white: 'var(--color-white)',
     black: 'var(--color-black)',
     borders: 'var(--color-borders)',
+    error: 'var(--color-error)',
   },
   boxShadow: '1px 1px 1px 1px rgba(0, 0, 0, 0.06)',
 };

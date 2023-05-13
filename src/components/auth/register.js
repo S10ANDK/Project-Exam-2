@@ -20,8 +20,10 @@ export async function registerProfile(profileData) {
     } else {
       const errorData = await response.json();
       console.error(errorData);
+      throw new Error(JSON.stringify(errorData.statusCode));
     }
   } catch (error) {
     console.error(error);
+    throw error;
   }
 }

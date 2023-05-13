@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -6,6 +6,9 @@ import Container from '../styles/Container/index.styled';
 import { loginProfile } from '../auth/login.js';
 import { Helmet } from 'react-helmet-async';
 import { Form, FormErrorMessage } from '../styles/Form/index.styled';
+import { StyledButtonBlue } from '../styles/Button/index.styled';
+import * as S from './index.styled';
+import { Link, useNavigate } from 'react-router-dom';
 
 const schema = yup
   .object({
@@ -35,14 +38,23 @@ function Login() {
   } = useForm({
     resolver: yupResolver(schema),
   });
+  const navigate = useNavigate();
+  const [loginError, setLoginError] = useState('');
 
   const onSubmit = async (data) => {
     try {
-      await loginProfile(data);
-      reset();
-      alert('Login successful!');
-    } catch (err) {
-      alert('Login failed: ' + err.message);
+      const response = await loginProfile(data);
+      if (response.ok) {
+        reset();
+        navigate('/');
+      }
+    } catch (error) {
+      setLoginError(
+        'Login failed. Credentials might be wrong. Please try again. ' +
+          '(Status code: ' +
+          error.message +
+          ')'
+      );
     }
   };
 
@@ -54,17 +66,23 @@ function Login() {
       </Helmet>
       <h1>login</h1>
       <Form onSubmit={handleSubmit(onSubmit)}>
+        <label>email</label>
         <input placeholder="email" {...register('email')} />
         <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
+        <label>password</label>
         <input
           type="password"
           placeholder="password"
           {...register('password')}
         />
         <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
-        <button type="submit" value="submit">
-          Login
-        </button>
+        {loginError && <S.LoginErrorMessage>{loginError}</S.LoginErrorMessage>}
+        <S.LoginButtonContainer>
+          <Link to={'/login'}>
+            Not yet a member? <span>Register here</span>
+          </Link>
+          <StyledButtonBlue type="submit">Login</StyledButtonBlue>
+        </S.LoginButtonContainer>
       </Form>
     </Container>
   );

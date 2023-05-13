@@ -55,14 +55,18 @@ function Register() {
 
   const onSubmit = async (data) => {
     try {
-      await registerProfile(data);
-      reset();
-      setRegistrationSuccess(true);
-      setTimeout(() => {
-        navigate('/login');
-      }, 3000);
-    } catch (err) {
-      setRegistrationError('Registration failed: ' + err.message);
+      const response = await registerProfile(data);
+      if (response.ok) {
+        reset();
+        setRegistrationSuccess(true);
+        setTimeout(() => {
+          navigate('/login');
+        }, 3000);
+      }
+    } catch (error) {
+      setRegistrationError(
+        'Registration failed. ' + 'Status code: ' + error.message
+      );
     }
   };
 

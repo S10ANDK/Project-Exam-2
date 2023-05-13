@@ -53,6 +53,7 @@ export const RegistrationSuccessMessage = styled.div`
 `;
 
 export const RegistrationErrorMessage = styled.div`
-  text-align: center;
   display: block;
+  color: ${(props) => props.theme.color.secondary};
+  margin-bottom: 10px;
 `;
