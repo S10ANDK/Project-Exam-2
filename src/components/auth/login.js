@@ -16,7 +16,6 @@ export async function loginProfile(profileData) {
 
     if (response.ok) {
       const data = await response.json();
-      console.log(data);
 
       localStorage.setItem('user', JSON.stringify(data));
     } else {

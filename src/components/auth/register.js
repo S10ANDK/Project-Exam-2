@@ -16,7 +16,7 @@ export async function registerProfile(profileData) {
 
     if (response.ok) {
       const data = await response.json();
-      console.log(data);
+      return { ok: true, data };
     } else {
       const errorData = await response.json();
       console.error(errorData);

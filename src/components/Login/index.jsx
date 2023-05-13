@@ -78,7 +78,7 @@ function Login() {
         <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
         {loginError && <S.LoginErrorMessage>{loginError}</S.LoginErrorMessage>}
         <S.LoginButtonContainer>
-          <Link to={'/login'}>
+          <Link to={'/register'}>
             Not yet a member? <span>Register here</span>
           </Link>
           <StyledButtonBlue type="submit">Login</StyledButtonBlue>
