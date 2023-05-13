@@ -1,4 +1,20 @@
 import styled from 'styled-components';
+import { Form } from '../styles/Form/index.styled';
+
+export const RegisterForm = styled(Form)`
+  @media (min-width: 1200px) {
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 1100px;
+    margin-top: 150px;
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+  }
+`;
 
 export const VenueManagerSelectionContainer = styled.div`
   display: flex;
@@ -7,6 +23,11 @@ export const VenueManagerSelectionContainer = styled.div`
   margin: 10px auto 20px;
   border-top: 1px solid ${(props) => props.theme.color.borders};
   border-bottom: 1px solid ${(props) => props.theme.color.borders};
+
+  @media (min-width: 1200px) {
+    border-top: none;
+    margin: 0px auto 20px;
+  }
 
   p {
     font-size: 0.9rem;
@@ -32,7 +53,7 @@ export const VenueManagerSelectionContainer = styled.div`
 
 export const RegisterButtonContainer = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: row !important;
   justify-content: space-between;
   margin-top: 10px;
 
