@@ -23,6 +23,16 @@ function Header() {
     };
   }, []);
 
+  const handleLogoClick = () => {
+    if (location.pathname === '/') {
+      const scrollToOptions = {
+        top: 0,
+        behavior: 'smooth',
+      };
+      window.scrollTo(scrollToOptions);
+    }
+  };
+
   return (
     <>
       <S.Header className={isSticky ? 'sticky' : ''}>
@@ -32,7 +42,7 @@ function Header() {
               <Nav />
             </S.NavWrapper>
             <Link to={'/'}>
-              <S.Logo src={Logo} alt="Logo" />
+              <S.Logo src={Logo} alt="Logo" onClick={handleLogoClick} />
             </Link>
           </S.LogoAndNavWrapper>
           <S.ProfileWrapper>
