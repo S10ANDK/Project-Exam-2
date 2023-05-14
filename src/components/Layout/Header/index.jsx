@@ -36,7 +36,7 @@ function Header() {
             </Link>
           </S.LogoAndNavWrapper>
           <S.ProfileWrapper>
-            <Link to={'/profile'}>
+            <Link to={'/dashboard'}>
               <S.ProfileIcon src={Profile} />
             </Link>
           </S.ProfileWrapper>

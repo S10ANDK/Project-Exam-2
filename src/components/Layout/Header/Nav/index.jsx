@@ -50,7 +50,10 @@ const Nav = () => {
           {isLoggedIn ? (
             <>
               <S.NavListItem>
-                <S.NavLink onClick={() => setActive(!active)} to="/listing">
+                <S.NavLink
+                  onClick={() => setActive(!active)}
+                  to="/list-your-home"
+                >
                   list your home
                 </S.NavLink>
               </S.NavListItem>
