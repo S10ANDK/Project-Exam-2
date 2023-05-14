@@ -57,13 +57,13 @@ const Nav = () => {
                   list your home
                 </S.NavLink>
               </S.NavListItem>
-              <S.NavListItem>
+              <S.NavListItemDynamic>
                 <S.NavLink onClick={() => setActive(!active)} to="/dashboard">
                   dashboard
                 </S.NavLink>
-              </S.NavListItem>
+              </S.NavListItemDynamic>
               <S.NavBorder />
-              <S.NavListItemLogOut>
+              <S.NavListItemDynamic>
                 <S.NavLink
                   onClick={() => {
                     handleLogOut();
@@ -73,7 +73,7 @@ const Nav = () => {
                 >
                   log out
                 </S.NavLink>
-              </S.NavListItemLogOut>
+              </S.NavListItemDynamic>
             </>
           ) : (
             <>

@@ -96,7 +96,7 @@ export const NavListItem = styled.li`
   }
 `;
 
-export const NavListItemLogOut = styled(NavListItem)`
+export const NavListItemDynamic = styled(NavListItem)`
   @media (min-width: 1000px) {
     display: none;
   }
