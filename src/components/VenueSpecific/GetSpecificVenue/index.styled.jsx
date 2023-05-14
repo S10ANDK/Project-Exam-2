@@ -2,28 +2,39 @@ import styled from 'styled-components';
 
 // Carousel and modal for images
 
-export const CarouselContainer = styled.div`
-  display: flex;
-  overflow-x: scroll;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
+export const ImageContainer = styled.div`
+  position: relative;
+  display: inline-block;
 `;
 
-export const CarouselItem = styled.div`
-  flex: 0 0 auto;
-  scroll-snap-align: center;
-  margin-right: 10px;
-`;
-
-export const CarouselImage = styled.img`
+export const Image = styled.img`
   width: 300px;
   height: 200px;
   object-fit: cover;
-  border-radius: ${({ inModal }) => (inModal ? '0' : '10px')};
+  border-radius: ${({ isFirst }) => (isFirst ? '10px' : '0')};
+  transition: box-shadow 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: ${({ isFirst }) =>
+      isFirst ? '0px 0px 20px rgba(0, 0, 0, 0.35)' : 'none'};
+  }
+`;
+
+export const MoreImagesIndicator = styled.span`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  border-radius: 50%;
   cursor: pointer;
 `;
 
-export const ModalBackdrop = styled.div`
+export const ModalContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

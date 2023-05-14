@@ -61,13 +61,21 @@ function GetSpecificVenue() {
         <div>
           <h1>{venue.name}</h1>
           <p>{venue.description}</p>
-          <S.CarouselImage
-            src={venue.media[0]}
-            alt="Venue Image"
-            onClick={handleImageClick}
-          />
+          <S.ImageContainer>
+            <S.Image
+              isFirst
+              onClick={handleImageClick}
+              src={venue.media[0]}
+              alt="Venue Image"
+            />
+            {venue.media.length > 1 && (
+              <S.MoreImagesIndicator>
+                +{venue.media.length - 1}
+              </S.MoreImagesIndicator>
+            )}
+          </S.ImageContainer>
           {modalOpen && (
-            <S.ModalBackdrop onClick={closeModal}>
+            <S.ModalContainer onClick={closeModal}>
               <S.ModalContent>
                 {venue.media.map((mediaUrl, index) => (
                   <S.ModalImage
@@ -77,7 +85,7 @@ function GetSpecificVenue() {
                   />
                 ))}
               </S.ModalContent>
-            </S.ModalBackdrop>
+            </S.ModalContainer>
           )}
         </div>
       )}
