@@ -6,14 +6,23 @@ export const RegisterForm = styled(Form)`
     flex-direction: row;
     justify-content: space-between;
     max-width: 1100px;
-    margin-top: 150px;
+    margin-top: 50px;
   }
 
   div {
     display: flex;
     flex-direction: column;
-    width: 500px;
+
+    @media (min-width: 1200px) {
+      width: 500px;
+    }
   }
+`;
+
+export const RegisterMessage = styled.p`
+  text-align: center;
+  max-width: 500px;
+  margin-bottom: 50px;
 `;
 
 export const VenueManagerSelectionContainer = styled.div`
@@ -54,6 +63,7 @@ export const VenueManagerSelectionContainer = styled.div`
 export const RegisterButtonContainer = styled.div`
   display: flex;
   flex-direction: row !important;
+  align-items: center;
   justify-content: space-between;
   margin-top: 10px;
 

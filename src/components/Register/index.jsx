@@ -80,6 +80,11 @@ function Register() {
         <meta name="description" content="Register with Holidaze!" />
       </Helmet>
       <h1>register</h1>
+      <S.RegisterMessage>
+        Join our community to discover unique spaces around the world, or share
+        your own. Register today and embark on your next unforgettable journey
+        with Holidaze!
+      </S.RegisterMessage>
       {registrationSuccess ? (
         <S.RegistrationSuccessMessage>
           Registration successful! Redirecting to the login page...

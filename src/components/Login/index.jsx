@@ -5,7 +5,7 @@ import * as yup from 'yup';
 import Container from '../styles/Container/index.styled';
 import { loginProfile } from '../auth/login.js';
 import { Helmet } from 'react-helmet-async';
-import { Form, FormErrorMessage } from '../styles/Form/index.styled';
+import { FormErrorMessage } from '../styles/Form/index.styled';
 import { StyledButtonBlue } from '../styles/Button/index.styled';
 import * as S from './index.styled';
 import { Link, useNavigate } from 'react-router-dom';
@@ -65,7 +65,13 @@ function Login() {
         <meta name="description" content="Login with your Holidaze profile!" />
       </Helmet>
       <h1>login</h1>
-      <Form onSubmit={handleSubmit(onSubmit)}>
+      <S.LoginGreetingContainer>
+        <p>
+          Log in with your noroff account, and discover your next adventure with
+          Holidaze!
+        </p>
+      </S.LoginGreetingContainer>
+      <S.LoginForm onSubmit={handleSubmit(onSubmit)}>
         <label>email</label>
         <input placeholder="email" {...register('email')} />
         <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
@@ -83,7 +89,7 @@ function Login() {
           </Link>
           <StyledButtonBlue type="submit">Login</StyledButtonBlue>
         </S.LoginButtonContainer>
-      </Form>
+      </S.LoginForm>
     </Container>
   );
 }
