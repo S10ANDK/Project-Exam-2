@@ -96,6 +96,12 @@ export const NavListItem = styled.li`
   }
 `;
 
+export const NavListItemLogOut = styled(NavListItem)`
+  @media (min-width: 1000px) {
+    display: none;
+  }
+`;
+
 export const NavLink = styled(Link)`
   text-decoration: none;
   color: ${(props) => props.theme.color.white};

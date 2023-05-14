@@ -47,6 +47,7 @@ function Login() {
       if (response.ok) {
         reset();
         navigate('/');
+        window.location.reload();
       }
     } catch (error) {
       setLoginError(
