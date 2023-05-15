@@ -5,6 +5,8 @@ import * as S from './index.styled';
 import { useParams } from 'react-router-dom';
 import LoadingIndicator from '../../styles/LoadingIndicator/index.styled';
 import ErrorMessage from '../../messages/ErrorMessage';
+import placeholderImage from '../../../assets/placeholderImage.png';
+import CloseIcon from '../../../assets/close.png';
 
 function GetSpecificVenue() {
   const { id } = useParams();
@@ -12,6 +14,11 @@ function GetSpecificVenue() {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
+  const [imageError, setImageError] = useState(false);
+
+  const handleImageError = () => {
+    setImageError(true);
+  };
 
   useEffect(() => {
     const fetchVenue = async () => {
@@ -65,8 +72,9 @@ function GetSpecificVenue() {
             <S.Image
               isFirst
               onClick={handleImageClick}
-              src={venue.media[0]}
+              src={imageError ? placeholderImage : venue.media[0]}
               alt="Venue Image"
+              onError={handleImageError}
             />
             {venue.media.length > 1 && (
               <S.MoreImagesIndicator>
@@ -77,11 +85,15 @@ function GetSpecificVenue() {
           {modalOpen && (
             <S.ModalContainer onClick={closeModal}>
               <S.ModalContent>
+                <S.ModalCloseButton onClick={closeModal}>
+                  <S.ModalCloseIcon src={CloseIcon} alt="Close modal button" />
+                </S.ModalCloseButton>
                 {venue.media.map((mediaUrl, index) => (
                   <S.ModalImage
                     key={index}
-                    src={mediaUrl}
+                    src={imageError ? placeholderImage : mediaUrl}
                     alt={`Image ${index + 1}`}
+                    onError={handleImageError}
                   />
                 ))}
               </S.ModalContent>

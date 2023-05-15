@@ -17,7 +17,7 @@ export const Image = styled.img`
 
   &:hover {
     box-shadow: ${({ isFirst }) =>
-      isFirst ? '0px 0px 20px rgba(0, 0, 0, 0.35)' : 'none'};
+      isFirst ? '0px 0px 20px rgba(0, 0, 0, 0.3)' : 'none'};
   }
 `;
 
@@ -55,12 +55,36 @@ export const ModalContent = styled.div`
   padding: 20px;
   border-radius: 5px;
   text-align: center;
+  position: relative;
+`;
+
+export const ModalCloseButton = styled.button`
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 20px;
+  color: #555;
+  background: none;
+  border: none;
+  cursor: pointer;
+`;
+
+export const ModalCloseIcon = styled.img`
+  background-color: white;
+  border-bottom-right-radius: 3px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 `;
 
 export const ModalImage = styled.img`
   max-width: 100%;
   height: auto;
   margin-bottom: 20px;
+
+  &:not(:last-child) {
+    margin-right: 20px;
+  }
 `;
 
 // ----------------------------
