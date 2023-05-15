@@ -4,6 +4,8 @@ import styled from 'styled-components';
 
 export const ImageContainer = styled.div`
   text-align: center;
+  position: relative;
+  display: inline-block;
 `;
 
 export const Image = styled.img`
@@ -37,7 +39,7 @@ export const MoreImagesIndicator = styled.span`
   font-size: 24px;
   font-weight: bold;
   color: white;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   padding: 5px;
   border-radius: 50%;
   cursor: pointer;
