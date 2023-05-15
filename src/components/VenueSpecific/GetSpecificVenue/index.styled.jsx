@@ -3,13 +3,12 @@ import styled from 'styled-components';
 // Carousel and modal for images
 
 export const ImageContainer = styled.div`
-  position: relative;
-  display: inline-block;
+  text-align: center;
 `;
 
 export const Image = styled.img`
   width: 300px;
-  height: 200px;
+  height: 210px;
   object-fit: cover;
   border-radius: ${({ isFirst }) => (isFirst ? '10px' : '0')};
   transition: box-shadow 0.3s ease-in-out;
@@ -18,6 +17,16 @@ export const Image = styled.img`
   &:hover {
     box-shadow: ${({ isFirst }) =>
       isFirst ? '0px 0px 20px rgba(0, 0, 0, 0.3)' : 'none'};
+  }
+
+  @media (min-width: 500px) {
+    width: 440px;
+    height: 320px;
+  }
+
+  @media (min-width: 768px) {
+    width: 500px;
+    height: 370px;
   }
 `;
 
