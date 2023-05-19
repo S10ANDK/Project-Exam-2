@@ -3,8 +3,59 @@ import { StyledButtonRed } from '../../styles/Button/index.styled';
 
 export const SpecificVenueContainer = styled.div``;
 
+export const ContentContainer = styled.div`
+  @media (min-width: 1200px) {
+    display: grid;
+    max-width: 1200px;
+    column-gap: 60px;
+    grid-template-rows: 0.3fr 0.3fr;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 70px;
+  }
+`;
+
+export const VenueDate = styled.p`
+  font-style: Serenity, sans-serif;
+  font-size: 0.7rem;
+  font-style: italic;
+  margin: 10px auto;
+  max-width: 500px;
+
+  @media (min-width: 1200px) {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin: 0px;
+    grid-row: 2;
+    grid-column: 2;
+  }
+`;
+
+export const venueNameAndDescriptionContainer = styled.div`
+  grid-row: 1;
+  grid-column: 2;
+  max-width: 500px;
+  margin: auto;
+
+  @media (min-width: 1200px) {
+    border-bottom: 1px solid ${(props) => props.theme.color.borders};
+    height: 380px;
+  }
+`;
+
+export const VenueNameAndRatingContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 500px;
+  margin: 10px auto;
+`;
+
 export const VenueName = styled.h1`
-  margin: 10px;
+  text-align: left;
+  font-size: 1.8rem;
+  margin: 10px 0px;
 `;
 
 export const RatingContainer = styled.div`
@@ -14,7 +65,29 @@ export const RatingContainer = styled.div`
   img {
     width: 20px;
     height: 20px;
-    margin-right: 2px;
+    margin-right: 3px;
+  }
+`;
+
+export const DescriptionContainer = styled.div`
+  max-width: 500px;
+  max-height: 280px;
+  margin: auto;
+  grid-row: 2;
+  grid-column: 1;
+`;
+
+export const maxGuestsAndPriceContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  max-width: 500px;
+
+  @media (min-width: 550px) {
+    width: 500px;
+    margin: 30px auto;
   }
 `;
 
@@ -27,6 +100,7 @@ export const MaxGuestsContainer = styled(RatingContainer)`
 `;
 
 export const Price = styled.p`
+  margin-right: 0px;
   font-size: 1.2rem;
   color: ${(props) => props.theme.color.secondary};
   font-weight: 600;
@@ -41,11 +115,32 @@ export const Price = styled.p`
 export const BookingFormContainer = styled.div`
   margin-top: 40px;
   max-width: 500px;
+  grid-row: 3;
+  grid-column: 1;
+
+  @media (min-width: 550px) {
+    width: 500px;
+    margin: 40px auto 0px;
+  }
 `;
 
 export const BookingForm = styled.form`
   display: flex;
   flex-direction: column;
+
+  div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  div p {
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-left: 30px;
+    transform: translateY(-5px);
+  }
+
   label {
     margin: 20px 0px 10px;
   }
@@ -55,6 +150,7 @@ export const BookingForm = styled.form`
     height: 40px;
     margin-bottom: 10px;
     padding: 0px 10px;
+    box-shadow: ${(props) => props.theme.boxShadow};
   }
 `;
 
@@ -65,16 +161,31 @@ export const GuestInput = styled.input`
 export const SubmitBookingButton = styled(StyledButtonRed)`
   margin-top: 30px;
   width: 100%;
+  box-shadow: ${(props) => props.theme.boxShadow};
 `;
 
 export const LocationAndFacilitiesContainer = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column-reverse;
   justify-content: space-between;
-  margin-top: 40px;
+  margin-top: 60px;
   border-top: 1px solid ${(props) => props.theme.color.borders};
   padding-top: 40px;
   max-width: 500px;
+
+  @media (min-width: 550px) {
+    width: 500px;
+    margin: 40px auto 0px;
+    flex-direction: row;
+  }
+
+  @media (min-width: 1200px) {
+    grid-row: 4;
+    grid-column: 1;
+    padding-top: 0px;
+    margin-top: 100px;
+    border-top: none;
+  }
 `;
 
 export const LocationContainer = styled.div`
@@ -94,11 +205,12 @@ export const LocationContainer = styled.div`
 `;
 
 export const FacilitiesContainer = styled.div`
-  max-width: 250px;
   border: 1px solid ${(props) => props.theme.color.borders};
   border-radius: 10px;
   box-shadow: ${(props) => props.theme.boxShadow};
-  padding: 20px 25px 20px 0px;
+  padding: 20px;
+  margin-top: 40px;
+  max-height: 150px;
 
   ul li {
     margin-top: 10px;
@@ -111,21 +223,34 @@ export const FacilitiesContainer = styled.div`
   @media (min-width: 400px) {
     padding-right: 35px;
   }
+
+  @media (min-width: 550px) {
+    margin-top: 0px;
+    padding-right: 50px;
+  }
 `;
 
 // Image and modal
 
 export const ImageContainer = styled.div`
   position: relative;
-  display: inline-block;
+  display: flex;
+  justify-content: end;
+  align-items: start;
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  grid-row: 1;
+  grid-column: 1;
 `;
 
 export const Image = styled.img`
-  width: 300px;
-  height: 210px;
+  width: 100%;
+  height: 300px;
   object-fit: cover;
   border-radius: ${({ isFirst }) => (isFirst ? '10px' : '0')};
   transition: box-shadow 0.3s ease-in-out;
+  margin: auto;
   cursor: pointer;
 
   &:hover {
@@ -133,18 +258,14 @@ export const Image = styled.img`
       isFirst ? '0px 0px 20px rgba(0, 0, 0, 0.3)' : 'none'};
   }
 
-  @media (min-width: 500px) {
-    width: 440px;
-    height: 320px;
-  }
-
-  @media (min-width: 768px) {
+  @media (min-width: 550px) {
     width: 500px;
-    height: 370px;
+    height: 380px;
   }
 `;
 
 export const MoreImagesIndicator = styled.span`
+  max-width: 500px;
   position: absolute;
   top: 10px;
   right: 10px;
