@@ -7,6 +7,10 @@ import LoadingIndicator from '../../styles/LoadingIndicator/index.styled';
 import ErrorMessage from '../../messages/ErrorMessage';
 import placeholderImage from '../../../assets/placeholderImage.png';
 import CloseIcon from '../../../assets/close.png';
+import Star from '../../../assets/starblue.png';
+import MaxGuestIcon from '../../../assets/user.png';
+import LocationIcon from '../../../assets/location.png';
+// import { StyledButtonRed } from '../../styles/Button/index.styled';
 
 function GetSpecificVenue() {
   const { id } = useParams();
@@ -23,15 +27,14 @@ function GetSpecificVenue() {
   useEffect(() => {
     const fetchVenue = async () => {
       try {
-        const response = await fetch(
-          `${API_URL}${API_VENUES}/${id}?_owner&_bookings`
-        );
+        const response = await fetch(`${API_URL}${API_VENUES}/${id}`);
         if (!response.ok) {
           throw new Error('Failed to fetch venue');
         }
         const data = await response.json();
         setVenue(data);
         setIsLoading(false);
+        console.log(data);
       } catch (error) {
         setIsError(true);
         setIsLoading(false);
@@ -65,9 +68,7 @@ function GetSpecificVenue() {
       </Helmet>
 
       {venue && (
-        <div>
-          <h1>{venue.name}</h1>
-          <p>{venue.description}</p>
+        <S.SpecificVenueContainer>
           <S.ImageContainer>
             <S.Image
               isFirst
@@ -99,7 +100,90 @@ function GetSpecificVenue() {
               </S.ModalContent>
             </S.ModalContainer>
           )}
-        </div>
+          <S.VenueName>{venue.name}</S.VenueName>
+          <p>{venue.description}</p>
+          <p>
+            Published: {new Date(venue.created).toUTCString()}
+            {venue.updated !== venue.created &&
+              ` | Updated: ${new Date(venue.updated).toGMTString()}`}
+          </p>
+
+          <S.RatingContainer>
+            {venue.rating > 0 ? (
+              <>
+                <img src={Star} alt="Star rating Icon" />
+                {venue.rating}
+              </>
+            ) : (
+              <>
+                <img src={Star} alt="Star rating Icon" />
+                No rating
+              </>
+            )}
+          </S.RatingContainer>
+
+          <S.MaxGuestsContainer>
+            <img src={MaxGuestIcon} alt="Guests Icon" />
+            {venue.maxGuests}
+          </S.MaxGuestsContainer>
+
+          <S.Price>
+            {venue.price} kr NOK <span>night</span>
+          </S.Price>
+
+          <S.BookingFormContainer>
+            <S.BookingForm>
+              <label>Guests</label>
+              <S.GuestInput type="number" />
+              <label>From</label>
+              <input type="date" />
+              <label>To</label>
+              <input type="date" />
+              <S.SubmitBookingButton type="submit">
+                Book Now
+              </S.SubmitBookingButton>
+            </S.BookingForm>
+          </S.BookingFormContainer>
+
+          <S.LocationAndFacilitiesContainer>
+            <S.FacilitiesContainer>
+              <ul>
+                <li>
+                  <span>Wi-Fi:</span> {venue.meta.wifi ? 'Yes' : 'No'}
+                </li>
+                <li>
+                  <span>Pets:</span> {venue.meta.pets ? 'Yes' : 'No'}
+                </li>
+                <li>
+                  <span>Parking:</span> {venue.meta.parking ? 'Yes' : 'No'}
+                </li>
+                <li>
+                  <span>Breakfast:</span> {venue.meta.breakfast ? 'Yes' : 'No'}
+                </li>
+              </ul>
+            </S.FacilitiesContainer>
+            {venue.location.address ||
+            venue.location.city ||
+            venue.location.zip ||
+            venue.location.country ? (
+              <S.LocationContainer>
+                <img src={LocationIcon} alt="Location Icon" />
+                <div>
+                  <span>
+                    {venue.location.address
+                      ? `${venue.location.address}, `
+                      : ''}
+                  </span>
+                  <div>
+                    {venue.location.city ? `${venue.location.city} ` : ''}
+                    {venue.location.zip ? `${venue.location.zip}, ` : ''}
+                  </div>
+                  {venue.location.country || ''}
+                </div>
+              </S.LocationContainer>
+            ) : null}
+          </S.LocationAndFacilitiesContainer>
+        </S.SpecificVenueContainer>
       )}
     </>
   );

@@ -21,6 +21,7 @@ function App() {
         <Route path="login" index element={<Login />} />
 
         <Route path="dashboard" index element={<Dashboard />} />
+
         <Route path="list-your-home" index element={<CreateVenueListing />} />
       </Route>
     </Routes>
