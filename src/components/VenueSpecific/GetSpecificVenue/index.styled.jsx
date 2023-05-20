@@ -156,12 +156,6 @@ export const BookingForm = styled.form`
   display: flex;
   flex-direction: column;
 
-  div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-
   div p {
     font-size: 0.9rem;
     font-style: italic;

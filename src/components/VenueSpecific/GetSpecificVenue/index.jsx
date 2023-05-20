@@ -12,6 +12,9 @@ import MaxGuestIcon from '../../../assets/user.png';
 import LocationIcon from '../../../assets/location.png';
 import AvatarPlaceholderImage from '../../../assets/profile.png';
 import { submitBooking } from '../../api/submitBooking';
+import DatePicker from 'react-datepicker';
+import { eachDayOfInterval } from 'date-fns';
+import 'react-datepicker/dist/react-datepicker.css';
 
 function GetSpecificVenue() {
   const { id } = useParams();
@@ -25,6 +28,7 @@ function GetSpecificVenue() {
   const [dateTo, setDateTo] = useState('');
   const [guests, setGuests] = useState(1);
   const [bookingResponse, setBookingResponse] = useState(null);
+  const [bookingDates, setBookingDates] = useState([]);
 
   useEffect(() => {
     const fetchVenue = async () => {
@@ -36,7 +40,17 @@ function GetSpecificVenue() {
           throw new Error('Failed to fetch venue');
         }
         const data = await response.json();
+
+        const bookingDates = data.bookings.flatMap((booking) =>
+          eachDayOfInterval({
+            start: new Date(booking.dateFrom),
+            end: new Date(booking.dateTo),
+          })
+        );
+
         setVenue(data);
+        // setBookings(bookingDates);
+        setBookingDates(bookingDates);
         setIsLoading(false);
         console.log(data);
       } catch (error) {
@@ -190,19 +204,27 @@ function GetSpecificVenue() {
                     {'//'} max {venue.maxGuests}
                   </p>
                 </div>
-                <label>From</label>
-                <input
-                  type="date"
-                  value={dateFrom}
-                  onChange={(e) => setDateFrom(e.target.value)}
-                  required
+                <DatePicker
+                  selected={dateFrom}
+                  onChange={(date) => setDateFrom(date)}
+                  selectsStart
+                  startDate={dateFrom}
+                  endDate={dateTo}
+                  minDate={new Date()}
+                  excludeDates={bookingDates}
+                  isClearable
+                  placeholderText="From"
                 />
-                <label>To</label>
-                <input
-                  type="date"
-                  value={dateTo}
-                  onChange={(e) => setDateTo(e.target.value)}
-                  required
+                <DatePicker
+                  selected={dateTo}
+                  onChange={(date) => setDateTo(date)}
+                  selectsEnd
+                  startDate={dateFrom}
+                  endDate={dateTo}
+                  minDate={dateFrom}
+                  excludeDates={bookingDates}
+                  isClearable
+                  placeholderText="To"
                 />
                 <S.SubmitBookingButton type="submit">
                   Book Now
