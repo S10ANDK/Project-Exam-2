@@ -30,7 +30,6 @@ export async function submitBooking(venueId, dateFrom, dateTo, guests) {
     }
 
     const data = await response.json();
-    console.log(data);
 
     return data;
   } catch (error) {

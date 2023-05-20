@@ -13,7 +13,7 @@ import LocationIcon from '../../../assets/location.png';
 import AvatarPlaceholderImage from '../../../assets/profile.png';
 import { submitBooking } from '../../api/submitBooking';
 import DatePicker from 'react-datepicker';
-import { eachDayOfInterval } from 'date-fns';
+import { parseISO, eachDayOfInterval } from 'date-fns';
 import 'react-datepicker/dist/react-datepicker.css';
 
 function GetSpecificVenue() {
@@ -43,13 +43,12 @@ function GetSpecificVenue() {
 
         const bookingDates = data.bookings.flatMap((booking) =>
           eachDayOfInterval({
-            start: new Date(booking.dateFrom),
-            end: new Date(booking.dateTo),
+            start: parseISO(booking.dateFrom),
+            end: parseISO(booking.dateTo),
           })
         );
 
         setVenue(data);
-        // setBookings(bookingDates);
         setBookingDates(bookingDates);
         setIsLoading(false);
         console.log(data);
@@ -91,8 +90,6 @@ function GetSpecificVenue() {
 
     try {
       const bookingResponse = await submitBooking(id, dateFrom, dateTo, guests);
-      console.log(bookingResponse);
-      console.log(bookingResponse.id);
       setBookingResponse(bookingResponse);
     } catch (error) {
       console.error(error);
