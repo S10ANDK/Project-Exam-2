@@ -51,7 +51,6 @@ function GetSpecificVenue() {
         setVenue(data);
         setBookingDates(bookingDates);
         setIsLoading(false);
-        console.log(data);
       } catch (error) {
         setIsError(true);
         setIsLoading(false);

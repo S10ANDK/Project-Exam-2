@@ -2,7 +2,6 @@ import { API_URL, API_BOOKINGS } from '../constants/urls';
 
 const user = JSON.parse(localStorage.getItem('user'));
 const accessToken = user && user.accessToken;
-console.log(accessToken);
 
 export async function submitBooking(venueId, dateFrom, dateTo, guests) {
   const options = {
