@@ -114,20 +114,32 @@ function GetSpecificVenue() {
               {venue.updated !== venue.created &&
                 ` | Updated: ${new Date(venue.updated).toGMTString()}`}
             </S.VenueDate>
-            <S.ImageContainer>
-              <S.Image
-                isFirst
-                src={imageError ? placeholderImage : venue.media[0]}
-                alt="Venue Image"
-                onClick={handleImageClick}
-                onError={handleImageError}
-              />
-              {venue.media.length > 1 && (
-                <S.MoreImagesIndicator>
-                  +{venue.media.length - 1}
-                </S.MoreImagesIndicator>
-              )}
-            </S.ImageContainer>
+            {venue.media.length > 0 ? (
+              <S.ImageContainer>
+                <S.Image
+                  isFirst
+                  src={imageError ? placeholderImage : venue.media[0]}
+                  alt="Venue Image"
+                  onClick={handleImageClick}
+                  onError={handleImageError}
+                />
+                {venue.media.length > 1 && (
+                  <S.MoreImagesIndicator>
+                    +{venue.media.length - 1}
+                  </S.MoreImagesIndicator>
+                )}
+              </S.ImageContainer>
+            ) : (
+              <S.ImageContainer>
+                <S.Image
+                  isFirst
+                  src={placeholderImage}
+                  alt="Venue Image"
+                  onClick={handleImageClick}
+                  onError={handleImageError}
+                />
+              </S.ImageContainer>
+            )}
             {modalOpen && (
               <S.ModalContainer onClick={closeModal}>
                 <S.ModalContent>
@@ -137,14 +149,22 @@ function GetSpecificVenue() {
                       alt="Close modal button"
                     />
                   </S.ModalCloseButton>
-                  {venue.media.map((mediaUrl, index) => (
+                  {venue.media.length > 0 ? (
+                    venue.media.map((mediaUrl, index) => (
+                      <S.ModalImage
+                        key={index}
+                        src={imageError ? placeholderImage : mediaUrl}
+                        alt={`Image ${index + 1}`}
+                        onError={handleImageError}
+                      />
+                    ))
+                  ) : (
                     <S.ModalImage
-                      key={index}
-                      src={imageError ? placeholderImage : mediaUrl}
-                      alt={`Image ${index + 1}`}
+                      src={placeholderImage}
+                      alt="Placeholder Image"
                       onError={handleImageError}
                     />
-                  ))}
+                  )}
                 </S.ModalContent>
               </S.ModalContainer>
             )}
@@ -161,15 +181,23 @@ function GetSpecificVenue() {
                 </S.RatingContainer>
               </S.VenueNameAndRatingContainer>
               <S.VenueManagerContainer>
-                <S.VenueManagerAvatar
-                  src={
-                    avatarImageError
-                      ? AvatarPlaceholderImage
-                      : venue.owner.avatar
-                  }
-                  alt="Avatar by owner"
-                  onError={handleAvatarImageError}
-                />
+                {venue.owner.avatar ? (
+                  <S.VenueManagerAvatar
+                    src={
+                      avatarImageError
+                        ? AvatarPlaceholderImage
+                        : venue.owner.avatar
+                    }
+                    alt="Avatar by owner"
+                    onError={handleAvatarImageError}
+                  />
+                ) : (
+                  <S.VenueManagerAvatar
+                    src={AvatarPlaceholderImage}
+                    alt="Avatar by owner"
+                    onError={handleAvatarImageError}
+                  />
+                )}
                 <S.VenueManager>by {venue.owner.name} </S.VenueManager>
               </S.VenueManagerContainer>
               <S.DescriptionContainer>
