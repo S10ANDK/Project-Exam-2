@@ -25,13 +25,13 @@ export const VenueDate = styled.p`
     display: flex;
     align-items: center;
     justify-content: right;
-    margin: 0px;
+    margin: 0px 38px;
     grid-row: 2;
     grid-column: 2;
   }
 `;
 
-export const venueNameAndDescriptionContainer = styled.div`
+export const VenueNameAndDescriptionContainer = styled.div`
   grid-row: 1;
   grid-column: 2;
   max-width: 500px;
@@ -40,6 +40,7 @@ export const venueNameAndDescriptionContainer = styled.div`
   @media (min-width: 1200px) {
     border-bottom: 1px solid ${(props) => props.theme.color.borders};
     height: 380px;
+    width: 500px;
   }
 `;
 
@@ -50,6 +51,10 @@ export const VenueNameAndRatingContainer = styled.div`
   align-items: center;
   max-width: 500px;
   margin: 10px auto;
+
+  @media (min-width: 1200px) {
+    margin-top: 0px;
+  }
 `;
 
 export const VenueName = styled.h1`
@@ -69,12 +74,35 @@ export const RatingContainer = styled.div`
   }
 `;
 
+export const VenueManagerContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 500px;
+  text-align: left;
+  margin-bottom: 20px;
+`;
+
+export const VenueManagerAvatar = styled.img`
+  width: 25px;
+  height: 25px;
+  object-fit: cover;
+  border-radius: 5px;
+`;
+
+export const VenueManager = styled.p`
+  font-size: 0.9rem;
+  margin-left: 10px;
+`;
+
 export const DescriptionContainer = styled.div`
   max-width: 500px;
-  max-height: 280px;
+  max-height: 220px;
   margin: auto;
   grid-row: 2;
   grid-column: 1;
+  overflow: auto;
+  line-height: 25px;
 `;
 
 export const maxGuestsAndPriceContainer = styled.div`
@@ -227,6 +255,29 @@ export const FacilitiesContainer = styled.div`
   @media (min-width: 550px) {
     margin-top: 0px;
     padding-right: 50px;
+  }
+`;
+
+export const OwnerEmail = styled.p`
+  margin: 40px 0px 0px 22px;
+  grid-row: 5;
+  grid-column: 1;
+  line-height: 25px;
+
+  @media (min-width: 400px) {
+    margin: 40px auto 0px;
+    text-align: center;
+  }
+
+  @media (min-width: 1200px) {
+    margin: 40px 0px 0px 40px;
+    text-align: left;
+  }
+
+  a {
+    display: block;
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 `;
 

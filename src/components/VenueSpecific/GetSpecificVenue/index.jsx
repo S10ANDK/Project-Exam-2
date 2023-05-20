@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { API_URL, API_VENUES } from '../../auth/constants/urls';
+import { API_URL, API_VENUES } from '../../constants/urls';
 import * as S from './index.styled';
 import { useParams } from 'react-router-dom';
 import LoadingIndicator from '../../styles/LoadingIndicator/index.styled';
@@ -10,7 +10,8 @@ import CloseIcon from '../../../assets/close.png';
 import Star from '../../../assets/starblue.png';
 import MaxGuestIcon from '../../../assets/user.png';
 import LocationIcon from '../../../assets/location.png';
-// import { StyledButtonRed } from '../../styles/Button/index.styled';
+import AvatarPlaceholderImage from '../../../assets/profile.png';
+import { submitBooking } from '../../api/submitBooking';
 
 function GetSpecificVenue() {
   const { id } = useParams();
@@ -19,16 +20,17 @@ function GetSpecificVenue() {
   const [isError, setIsError] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [imageError, setImageError] = useState(false);
-
-  const handleImageError = () => {
-    setImageError(true);
-  };
+  const [avatarImageError, setAvatarImageError] = useState(false);
+  const [dateFrom, setDateFrom] = useState('');
+  const [dateTo, setDateTo] = useState('');
+  const [guests, setGuests] = useState(1);
+  const [bookingResponse, setBookingResponse] = useState(null);
 
   useEffect(() => {
     const fetchVenue = async () => {
       try {
         const response = await fetch(
-          `${API_URL}${API_VENUES}/${id}?_booking=true&_venues=true`
+          `${API_URL}${API_VENUES}/${id}?_bookings=true&_owner=true`
         );
         if (!response.ok) {
           throw new Error('Failed to fetch venue');
@@ -46,6 +48,22 @@ function GetSpecificVenue() {
     fetchVenue();
   }, [id]);
 
+  if (isLoading) {
+    return <LoadingIndicator />;
+  }
+
+  if (isError) {
+    return <ErrorMessage />;
+  }
+
+  const handleImageError = () => {
+    setImageError(true);
+  };
+
+  const handleAvatarImageError = () => {
+    setAvatarImageError(true);
+  };
+
   const handleImageClick = () => {
     setModalOpen(true);
   };
@@ -54,13 +72,18 @@ function GetSpecificVenue() {
     setModalOpen(false);
   };
 
-  if (isLoading) {
-    return <LoadingIndicator />;
-  }
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
 
-  if (isError) {
-    return <ErrorMessage />;
-  }
+    try {
+      const bookingResponse = await submitBooking(id, dateFrom, dateTo, guests);
+      console.log(bookingResponse);
+      console.log(bookingResponse.id);
+      setBookingResponse(bookingResponse);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <>
@@ -80,9 +103,9 @@ function GetSpecificVenue() {
             <S.ImageContainer>
               <S.Image
                 isFirst
-                onClick={handleImageClick}
                 src={imageError ? placeholderImage : venue.media[0]}
                 alt="Venue Image"
+                onClick={handleImageClick}
                 onError={handleImageError}
               />
               {venue.media.length > 1 && (
@@ -111,7 +134,7 @@ function GetSpecificVenue() {
                 </S.ModalContent>
               </S.ModalContainer>
             )}
-            <S.venueNameAndDescriptionContainer>
+            <S.VenueNameAndDescriptionContainer>
               <S.VenueNameAndRatingContainer>
                 <S.VenueName>{venue.name}</S.VenueName>
                 <S.RatingContainer>
@@ -123,11 +146,22 @@ function GetSpecificVenue() {
                   )}
                 </S.RatingContainer>
               </S.VenueNameAndRatingContainer>
-
+              <S.VenueManagerContainer>
+                <S.VenueManagerAvatar
+                  src={
+                    avatarImageError
+                      ? AvatarPlaceholderImage
+                      : venue.owner.avatar
+                  }
+                  alt="Avatar by owner"
+                  onError={handleAvatarImageError}
+                />
+                <S.VenueManager>by {venue.owner.name} </S.VenueManager>
+              </S.VenueManagerContainer>
               <S.DescriptionContainer>
                 {venue.description}
               </S.DescriptionContainer>
-            </S.venueNameAndDescriptionContainer>
+            </S.VenueNameAndDescriptionContainer>
 
             <S.maxGuestsAndPriceContainer>
               <S.MaxGuestsContainer>
@@ -141,28 +175,46 @@ function GetSpecificVenue() {
             </S.maxGuestsAndPriceContainer>
 
             <S.BookingFormContainer>
-              <S.BookingForm>
+              <S.BookingForm onSubmit={handleFormSubmit}>
                 <label>Guests</label>
                 <div>
                   <S.GuestInput
                     type="number"
                     min={1}
                     max={venue.maxGuests}
-                    defaultValue={1}
+                    value={guests}
+                    onChange={(e) => setGuests(e.target.value)}
+                    required
                   />
                   <p>
                     {'//'} max {venue.maxGuests}
                   </p>
                 </div>
                 <label>From</label>
-                <input type="date" />
+                <input
+                  type="date"
+                  value={dateFrom}
+                  onChange={(e) => setDateFrom(e.target.value)}
+                  required
+                />
                 <label>To</label>
-                <input type="date" />
+                <input
+                  type="date"
+                  value={dateTo}
+                  onChange={(e) => setDateTo(e.target.value)}
+                  required
+                />
                 <S.SubmitBookingButton type="submit">
                   Book Now
                 </S.SubmitBookingButton>
               </S.BookingForm>
             </S.BookingFormContainer>
+            {bookingResponse && (
+              <div>
+                <h2>Booking Successful!</h2>
+                <p>Your booking id is: {bookingResponse.id}</p>
+              </div>
+            )}
             <S.LocationAndFacilitiesContainer>
               <S.FacilitiesContainer>
                 <ul>
@@ -202,6 +254,10 @@ function GetSpecificVenue() {
                 </S.LocationContainer>
               ) : null}
             </S.LocationAndFacilitiesContainer>
+            <S.OwnerEmail>
+              Contact owner via e-mail:{' '}
+              <a href={`mailto:${venue.owner.email}`}>{venue.owner.email}</a>
+            </S.OwnerEmail>
           </S.ContentContainer>
         </S.SpecificVenueContainer>
       )}
