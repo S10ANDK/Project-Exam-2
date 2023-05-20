@@ -17,8 +17,8 @@ const schema = yup
       .email('Invalid email format')
       .trim()
       .matches(
-        /^(.+)@(stud\.noroff\.no|noroff\.no)$/,
-        'Email should be a valid stud.noroff.no or noroff.no email address'
+        /^(.+)@(stud\.noroff\.no)$/,
+        'Email should be a valid stud.noroff.no email address'
       )
       .required('Email is required'),
     password: yup
