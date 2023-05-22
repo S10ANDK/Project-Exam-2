@@ -7,6 +7,7 @@ import VenueSpecific from './components/VenueSpecific';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import CreateVenueListing from './components/venueListings/CreateVenueListing';
+import BookingSuccess from './components/BookingSuccess';
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
         <Route index element={<Home />} />
 
         <Route path="venues/:id" index element={<VenueSpecific />} />
+
+        <Route path="bookings/:id" index element={<BookingSuccess />} />
 
         <Route path="register" index element={<Register />} />
 

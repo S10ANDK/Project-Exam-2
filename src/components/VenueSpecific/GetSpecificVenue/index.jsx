@@ -14,6 +14,7 @@ import AvatarPlaceholderImage from '../../../assets/profile.png';
 import { submitBooking } from '../../api/submitBooking';
 import DatePicker from 'react-datepicker';
 import { parseISO, eachDayOfInterval, differenceInDays } from 'date-fns';
+import { useNavigate } from 'react-router-dom';
 import 'react-datepicker/dist/react-datepicker.css';
 
 function GetSpecificVenue() {
@@ -27,7 +28,6 @@ function GetSpecificVenue() {
   const [dateFrom, setDateFrom] = useState('');
   const [dateTo, setDateTo] = useState('');
   const [guests, setGuests] = useState(1);
-  const [bookingResponse, setBookingResponse] = useState(null);
   const [bookingDates, setBookingDates] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [errors, setErrors] = useState({
@@ -35,6 +35,8 @@ function GetSpecificVenue() {
     dateFrom: '',
     dateTo: '',
   });
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (dateFrom && dateTo && venue) {
@@ -117,7 +119,7 @@ function GetSpecificVenue() {
 
     if (!dateTo) {
       newErrors.dateTo = 'Date to is required';
-    } else if (dateTo < dateFrom) {
+    } else if (dateTo <= dateFrom) {
       newErrors.dateTo = 'Date To should be later than Date From';
     }
 
@@ -141,7 +143,7 @@ function GetSpecificVenue() {
           dateTo,
           guests
         );
-        setBookingResponse(bookingResponse);
+        navigate(`/bookings/${bookingResponse.id}`);
       } catch (error) {
         console.error(error);
       }
@@ -266,34 +268,6 @@ function GetSpecificVenue() {
                 {venue.price} kr NOK <span>night</span>
               </S.Price>
             </S.maxGuestsAndPriceContainer>
-            {bookingResponse && (
-              <S.BookingSuccessMessage>
-                <h2>Booking Successful!</h2>
-                <p>Your booking id is: {bookingResponse.id}</p>
-                {/* <p>
-                  Date from:{' '}
-                  <span>
-                    {new Date(bookingResponse.dateFrom)
-                      .toISOString()
-                      .slice(0, 10)}
-                  </span>
-                </p>
-                <p>
-                  Date to:{' '}
-                  <span>
-                    {new Date(bookingResponse.dateTo)
-                      .toISOString()
-                      .slice(0, 10)}
-                  </span>
-                </p>
-                <p>
-                  Guests: <span>{bookingResponse.guests}</span>
-                </p> */}
-                <p>
-                  Total Price: <span>{totalPrice} kr NOK</span>
-                </p>
-              </S.BookingSuccessMessage>
-            )}
             <S.BookingFormContainer>
               <S.BookingForm onSubmit={handleFormSubmit}>
                 <label>Guests</label>
@@ -338,7 +312,9 @@ function GetSpecificVenue() {
                 <S.FormError>
                   {errors.dateTo && <div>{errors.dateTo}</div>}
                 </S.FormError>
-                <S.TotalPrice>Total Price: {totalPrice} kr NOK</S.TotalPrice>
+                {totalPrice > 0 && (
+                  <S.TotalPrice>Total Price: {totalPrice} kr NOK</S.TotalPrice>
+                )}
                 <S.SubmitBookingButton type="submit">
                   Book Now
                 </S.SubmitBookingButton>
