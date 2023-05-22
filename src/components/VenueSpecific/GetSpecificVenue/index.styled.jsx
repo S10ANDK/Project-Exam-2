@@ -183,7 +183,7 @@ export const BookingForm = styled.form`
 `;
 
 export const FormError = styled.div`
-  color: ${(props) => props.theme.color.secondary};
+  color: ${(props) => props.theme.color.error};
   margin-bottom: 20px;
 `;
 
