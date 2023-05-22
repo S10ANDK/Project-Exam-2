@@ -78,6 +78,18 @@ const GlobalStyle = createGlobalStyle`
         border-radius: 10px;
         outline-color: var(--color-accent-two);
     }
+
+    .react-datepicker__input-container {
+        width: 60%;
+    }
+
+    .react-datepicker__close-icon::after {
+        transform: translateY(-4px) translateX(5px);
+    }
+
+    .react-datepicker__input-container input {
+        width: 100%;
+    }
 `;
 
 export default GlobalStyle;

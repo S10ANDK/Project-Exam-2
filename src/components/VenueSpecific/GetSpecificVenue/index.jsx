@@ -29,6 +29,11 @@ function GetSpecificVenue() {
   const [guests, setGuests] = useState(1);
   const [bookingResponse, setBookingResponse] = useState(null);
   const [bookingDates, setBookingDates] = useState([]);
+  const [errors, setErrors] = useState({
+    guests: '',
+    dateFrom: '',
+    dateTo: '',
+  });
 
   useEffect(() => {
     const fetchVenue = async () => {
@@ -84,14 +89,63 @@ function GetSpecificVenue() {
     setModalOpen(false);
   };
 
+  const validateForm = () => {
+    let newErrors = {
+      guests: '',
+      dateFrom: '',
+      dateTo: '',
+    };
+
+    // Validate guests
+    if (!guests || guests < 1) {
+      newErrors.guests = 'Guests must be at least 1';
+    } else if (guests > venue.maxGuests) {
+      newErrors.guests = `Max guests is ${venue.maxGuests}`;
+    }
+
+    // Validate dateFrom
+    if (!dateFrom) {
+      newErrors.dateFrom = 'Date from is required';
+    }
+
+    // Validate dateTo
+    if (!dateTo) {
+      newErrors.dateTo = 'Date to is required';
+    } else if (dateTo < dateFrom) {
+      newErrors.dateTo = 'Date To should be later than Date From';
+    }
+
+    setErrors(newErrors);
+
+    // If there are any errors, return false
+    for (let error in newErrors) {
+      if (newErrors[error]) return false;
+    }
+
+    // If there are no errors, return true
+    return true;
+  };
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      const bookingResponse = await submitBooking(id, dateFrom, dateTo, guests);
-      setBookingResponse(bookingResponse);
-    } catch (error) {
-      console.error(error);
+    // Validate the form data
+    if (validateForm()) {
+      // If the form data is valid, proceed with submitting the form
+      try {
+        const bookingResponse = await submitBooking(
+          id,
+          dateFrom,
+          dateTo,
+          guests
+        );
+        setBookingResponse(bookingResponse);
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      // If the form data is invalid, show the errors
+      console.error(errors);
     }
   };
 
@@ -215,7 +269,7 @@ function GetSpecificVenue() {
             <S.BookingFormContainer>
               <S.BookingForm onSubmit={handleFormSubmit}>
                 <label>Guests</label>
-                <div>
+                <S.GuestContainer>
                   <S.GuestInput
                     type="number"
                     min={1}
@@ -227,7 +281,7 @@ function GetSpecificVenue() {
                   <p>
                     {'//'} max {venue.maxGuests}
                   </p>
-                </div>
+                </S.GuestContainer>
                 <DatePicker
                   selected={dateFrom}
                   onChange={(date) => setDateFrom(date)}
@@ -239,6 +293,9 @@ function GetSpecificVenue() {
                   isClearable
                   placeholderText="From"
                 />
+                <S.FormError>
+                  {errors.dateFrom && <div>{errors.dateFrom}</div>}
+                </S.FormError>
                 <DatePicker
                   selected={dateTo}
                   onChange={(date) => setDateTo(date)}
@@ -250,6 +307,9 @@ function GetSpecificVenue() {
                   isClearable
                   placeholderText="To"
                 />
+                <S.FormError>
+                  {errors.dateTo && <div>{errors.dateTo}</div>}
+                </S.FormError>
                 <S.SubmitBookingButton type="submit">
                   Book Now
                 </S.SubmitBookingButton>

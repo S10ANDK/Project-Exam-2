@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { StyledButtonRed } from '../../styles/Button/index.styled';
 
+export const Error = styled.p``;
+
 export const SpecificVenueContainer = styled.div``;
 
 export const ContentContainer = styled.div`
@@ -97,12 +99,16 @@ export const VenueManager = styled.p`
 
 export const DescriptionContainer = styled.div`
   max-width: 500px;
-  max-height: 220px;
+
   margin: auto;
   grid-row: 2;
   grid-column: 1;
   overflow: auto;
   line-height: 25px;
+
+  @media (min-width: 1200px) {
+    max-height: 220px;
+  }
 `;
 
 export const maxGuestsAndPriceContainer = styled.div`
@@ -176,14 +182,28 @@ export const BookingForm = styled.form`
   }
 `;
 
+export const FormError = styled.div`
+  color: ${(props) => props.theme.color.secondary};
+  margin-bottom: 20px;
+`;
+
+export const GuestContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+`;
+
 export const GuestInput = styled.input`
   width: 100px;
 `;
 
 export const SubmitBookingButton = styled(StyledButtonRed)`
-  margin-top: 30px;
   width: 100%;
   box-shadow: ${(props) => props.theme.boxShadow};
+
+  @media (min-width: 500px) {
+    width: 64.5%;
+  }
 `;
 
 export const LocationAndFacilitiesContainer = styled.div`
