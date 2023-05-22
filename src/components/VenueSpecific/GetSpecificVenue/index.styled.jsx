@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { StyledButtonRed } from '../../styles/Button/index.styled';
 
 export const Error = styled.p``;
@@ -116,7 +116,7 @@ export const maxGuestsAndPriceContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: 30px;
+  margin: 30px auto;
   max-width: 500px;
 
   @media (min-width: 550px) {
@@ -197,12 +197,36 @@ export const GuestInput = styled.input`
   width: 100px;
 `;
 
+export const TotalPrice = styled.div`
+  margin-bottom: 20px;
+`;
+
 export const SubmitBookingButton = styled(StyledButtonRed)`
   width: 100%;
   box-shadow: ${(props) => props.theme.boxShadow};
 
   @media (min-width: 500px) {
     width: 64.5%;
+  }
+`;
+
+export const BookingSuccessMessage = styled.div`
+  border: 2px solid #228712;
+  box-shadow: ${(props) => props.theme.boxShadow};
+  border-radius: 5px;
+  padding: 10px 20px 20px;
+  max-width: 480px;
+  margin: auto;
+  /* transition: 0.3s ease-in-out; */
+  animation: ${(props) => (props.fadeOut ? fadeOut : fadeIn)} 0.3s linear
+    forwards;
+
+  p {
+    margin-bottom: 10px;
+  }
+
+  p span {
+    font-weight: 600;
   }
 `;
 
@@ -397,3 +421,13 @@ export const ModalImage = styled.img`
 `;
 
 // ----------------------------
+
+const fadeIn = keyframes`
+  from { opacity: 0; }
+  to { opacity: 1; }
+`;
+
+const fadeOut = keyframes`
+  from { opacity: 1; }
+  to { opacity: 0; }
+`;

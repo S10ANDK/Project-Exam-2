@@ -13,7 +13,7 @@ import LocationIcon from '../../../assets/location.png';
 import AvatarPlaceholderImage from '../../../assets/profile.png';
 import { submitBooking } from '../../api/submitBooking';
 import DatePicker from 'react-datepicker';
-import { parseISO, eachDayOfInterval } from 'date-fns';
+import { parseISO, eachDayOfInterval, differenceInDays } from 'date-fns';
 import 'react-datepicker/dist/react-datepicker.css';
 
 function GetSpecificVenue() {
@@ -29,11 +29,20 @@ function GetSpecificVenue() {
   const [guests, setGuests] = useState(1);
   const [bookingResponse, setBookingResponse] = useState(null);
   const [bookingDates, setBookingDates] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
   const [errors, setErrors] = useState({
     guests: '',
     dateFrom: '',
     dateTo: '',
   });
+
+  useEffect(() => {
+    if (dateFrom && dateTo && venue) {
+      const nights = differenceInDays(dateTo, dateFrom);
+      const price = nights * venue.price;
+      setTotalPrice(price);
+    }
+  }, [dateFrom, dateTo, venue]);
 
   useEffect(() => {
     const fetchVenue = async () => {
@@ -96,19 +105,16 @@ function GetSpecificVenue() {
       dateTo: '',
     };
 
-    // Validate guests
     if (!guests || guests < 1) {
       newErrors.guests = 'Guests must be at least 1';
     } else if (guests > venue.maxGuests) {
       newErrors.guests = `Max guests is ${venue.maxGuests}`;
     }
 
-    // Validate dateFrom
     if (!dateFrom) {
       newErrors.dateFrom = 'Date from is required';
     }
 
-    // Validate dateTo
     if (!dateTo) {
       newErrors.dateTo = 'Date to is required';
     } else if (dateTo < dateFrom) {
@@ -117,21 +123,17 @@ function GetSpecificVenue() {
 
     setErrors(newErrors);
 
-    // If there are any errors, return false
     for (let error in newErrors) {
       if (newErrors[error]) return false;
     }
 
-    // If there are no errors, return true
     return true;
   };
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate the form data
     if (validateForm()) {
-      // If the form data is valid, proceed with submitting the form
       try {
         const bookingResponse = await submitBooking(
           id,
@@ -144,7 +146,6 @@ function GetSpecificVenue() {
         console.error(error);
       }
     } else {
-      // If the form data is invalid, show the errors
       console.error(errors);
     }
   };
@@ -265,7 +266,34 @@ function GetSpecificVenue() {
                 {venue.price} kr NOK <span>night</span>
               </S.Price>
             </S.maxGuestsAndPriceContainer>
-
+            {bookingResponse && (
+              <S.BookingSuccessMessage>
+                <h2>Booking Successful!</h2>
+                <p>Your booking id is: {bookingResponse.id}</p>
+                {/* <p>
+                  Date from:{' '}
+                  <span>
+                    {new Date(bookingResponse.dateFrom)
+                      .toISOString()
+                      .slice(0, 10)}
+                  </span>
+                </p>
+                <p>
+                  Date to:{' '}
+                  <span>
+                    {new Date(bookingResponse.dateTo)
+                      .toISOString()
+                      .slice(0, 10)}
+                  </span>
+                </p>
+                <p>
+                  Guests: <span>{bookingResponse.guests}</span>
+                </p> */}
+                <p>
+                  Total Price: <span>{totalPrice} kr NOK</span>
+                </p>
+              </S.BookingSuccessMessage>
+            )}
             <S.BookingFormContainer>
               <S.BookingForm onSubmit={handleFormSubmit}>
                 <label>Guests</label>
@@ -310,17 +338,13 @@ function GetSpecificVenue() {
                 <S.FormError>
                   {errors.dateTo && <div>{errors.dateTo}</div>}
                 </S.FormError>
+                <S.TotalPrice>Total Price: {totalPrice} kr NOK</S.TotalPrice>
                 <S.SubmitBookingButton type="submit">
                   Book Now
                 </S.SubmitBookingButton>
               </S.BookingForm>
             </S.BookingFormContainer>
-            {bookingResponse && (
-              <div>
-                <h2>Booking Successful!</h2>
-                <p>Your booking id is: {bookingResponse.id}</p>
-              </div>
-            )}
+
             <S.LocationAndFacilitiesContainer>
               <S.FacilitiesContainer>
                 <ul>
