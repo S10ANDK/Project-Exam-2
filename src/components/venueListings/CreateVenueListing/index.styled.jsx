@@ -43,6 +43,13 @@ export const LocationHeading = styled.h2`
   border-top: 1px solid ${(props) => props.theme.color.borders};
 `;
 
+export const AddMoreImagesHeading = styled(LocationHeading)`
+  padding-top: 0px;
+  margin: 20px 0px;
+  border-top: none;
+  font-style: normal;
+`;
+
 export const AddMoreMediaButton = styled.button`
   display: flex;
   align-items: center;

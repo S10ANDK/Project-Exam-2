@@ -83,7 +83,7 @@ function CreateVenueListing() {
             />
             <p>{errors?.description?.message}</p>
 
-            <p>Add images (click the + button to add urls)</p>
+            <S.AddMoreImagesHeading>Add images:</S.AddMoreImagesHeading>
 
             {fields.map((field, index) => (
               <div key={field.id}>
