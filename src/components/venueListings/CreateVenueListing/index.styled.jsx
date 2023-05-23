@@ -44,6 +44,7 @@ export const LocationHeading = styled.h2`
 `;
 
 export const AddMoreImagesHeading = styled(LocationHeading)`
+  font-size: 0.9rem;
   padding-top: 0px;
   margin: 20px 0px;
   border-top: none;
@@ -63,6 +64,28 @@ export const AddMoreMediaButton = styled.button`
   }
   img {
     width: 30px;
+  }
+`;
+
+export const RemoveMediaButtonContainer = styled.div`
+  margin-left: auto;
+  margin-bottom: 10px;
+`;
+
+export const RemoveMediaButton = styled.button`
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease-in-out;
+
+  :hover {
+    background: #b0b0b0;
+  }
+
+  img {
+    width: 22px;
   }
 `;
 

@@ -3,6 +3,7 @@ import Container from '../../styles/Container/index.styled';
 import * as S from './index.styled';
 import { Helmet } from 'react-helmet-async';
 import PlusIcon from '../../../assets/add.png';
+import DeleteIcon from '../../../assets/delete.png';
 import submitVenue from '../../api/submitVenue';
 import listingSchema from '../validationSchema';
 import { useForm, useFieldArray } from 'react-hook-form';
@@ -21,7 +22,7 @@ function CreateVenueListing() {
       description: '',
       media: [],
       price: 0,
-      maxGuests: 0,
+      maxGuests: 1,
       rating: 0,
       meta: {
         wifi: false,
@@ -30,18 +31,18 @@ function CreateVenueListing() {
         pets: false,
       },
       location: {
-        address: 'Unknown',
-        city: 'Unknown',
-        zip: 'Unknown',
-        country: 'Unknown',
-        continent: 'Unknown',
+        address: '',
+        city: '',
+        zip: '',
+        country: '',
+        continent: '',
         lat: 0,
         lng: 0,
       },
     },
   });
 
-  const { fields, append } = useFieldArray({
+  const { fields, append, remove } = useFieldArray({
     control,
     name: 'media',
   });
@@ -97,6 +98,13 @@ function CreateVenueListing() {
                 />
                 {errors.media && errors.media[index] && (
                   <p>{errors?.media[index]?.message}</p>
+                )}
+                {index === fields.length - 1 && (
+                  <S.RemoveMediaButtonContainer>
+                    <S.RemoveMediaButton onClick={() => remove(index)}>
+                      <img src={DeleteIcon} alt="delete input" />
+                    </S.RemoveMediaButton>
+                  </S.RemoveMediaButtonContainer>
                 )}
               </div>
             ))}

@@ -11,8 +11,8 @@ const listingSchema = yup.object().shape({
         return undefined;
       }
       return value;
-    })
-    .required('At least one media URL is required'),
+    }),
+  // .required('At least one media URL is required'),
   price: yup.number().positive().required(),
   maxGuests: yup.number().positive().required(),
   rating: yup.number().max(5).default(0),
