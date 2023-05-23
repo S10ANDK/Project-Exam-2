@@ -258,6 +258,7 @@ export const LocationContainer = styled.div`
   display: flex;
   flex-direction: row;
   line-height: 22px;
+  max-width: 230px;
 
   img {
     width: 25px;

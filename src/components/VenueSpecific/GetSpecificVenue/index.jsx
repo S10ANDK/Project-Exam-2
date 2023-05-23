@@ -27,6 +27,7 @@ function GetSpecificVenue() {
   const [avatarImageError, setAvatarImageError] = useState(false);
   const [dateFrom, setDateFrom] = useState('');
   const [dateTo, setDateTo] = useState('');
+  const [dateRangeError, setDateRangeError] = useState('');
   const [guests, setGuests] = useState(1);
   const [bookingDates, setBookingDates] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -109,27 +110,20 @@ function GetSpecificVenue() {
 
     if (!guests || guests < 1) {
       newErrors.guests = 'Guests must be at least 1';
-    } else if (guests > venue.maxGuests) {
-      newErrors.guests = `Max guests is ${venue.maxGuests}`;
     }
-
     if (!dateFrom) {
-      newErrors.dateFrom = 'Date from is required';
+      newErrors.dateFrom = 'From date is required';
     }
-
     if (!dateTo) {
-      newErrors.dateTo = 'Date to is required';
-    } else if (dateTo <= dateFrom) {
-      newErrors.dateTo = 'Date To should be later than Date From';
+      newErrors.dateTo = 'To date is required';
+    }
+    if (dateFrom && dateTo && dateFrom >= dateTo) {
+      newErrors.dateTo = 'To date must be after from date';
     }
 
     setErrors(newErrors);
 
-    for (let error in newErrors) {
-      if (newErrors[error]) return false;
-    }
-
-    return true;
+    return Object.values(newErrors).every((error) => error === '');
   };
 
   const handleFormSubmit = async (e) => {
@@ -286,7 +280,32 @@ function GetSpecificVenue() {
                 </S.GuestContainer>
                 <DatePicker
                   selected={dateFrom}
-                  onChange={(date) => setDateFrom(date)}
+                  onChange={(date) => {
+                    if (dateTo) {
+                      const newDateRange = eachDayOfInterval({
+                        start: date,
+                        end: dateTo,
+                      }).map((date) => date.toISOString().split('T')[0]);
+
+                      const isOverlap = bookingDates.some((bookedDate) =>
+                        newDateRange.includes(
+                          bookedDate.toISOString().split('T')[0]
+                        )
+                      );
+
+                      if (!isOverlap) {
+                        setDateFrom(date);
+                        setDateRangeError('');
+                      } else {
+                        setDateRangeError(
+                          'Some dates in the selected range are already booked'
+                        );
+                      }
+                    } else {
+                      setDateFrom(date);
+                      setDateRangeError('');
+                    }
+                  }}
                   selectsStart
                   startDate={dateFrom}
                   endDate={dateTo}
@@ -296,11 +315,32 @@ function GetSpecificVenue() {
                   placeholderText="From"
                 />
                 <S.FormError>
-                  {errors.dateFrom && <div>{errors.dateFrom}</div>}
+                  {errors.dateTo && <div>{errors.dateTo}</div>}
+                  {dateRangeError && <div>{dateRangeError}</div>}
                 </S.FormError>
                 <DatePicker
                   selected={dateTo}
-                  onChange={(date) => setDateTo(date)}
+                  onChange={(date) => {
+                    const newDateRange = eachDayOfInterval({
+                      start: dateFrom,
+                      end: date,
+                    }).map((date) => date.toISOString().split('T')[0]);
+
+                    const isOverlap = bookingDates.some((bookedDate) =>
+                      newDateRange.includes(
+                        bookedDate.toISOString().split('T')[0]
+                      )
+                    );
+
+                    if (!isOverlap) {
+                      setDateTo(date);
+                      setDateRangeError('');
+                    } else {
+                      setDateRangeError(
+                        'Some dates in the selected range are already booked'
+                      );
+                    }
+                  }}
                   selectsEnd
                   startDate={dateFrom}
                   endDate={dateTo}
