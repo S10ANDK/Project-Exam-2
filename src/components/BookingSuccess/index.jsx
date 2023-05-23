@@ -2,7 +2,7 @@ import React from 'react';
 import Container from '../styles/Container/index.styled';
 import { useParams } from 'react-router-dom';
 import * as S from './index.styled';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 function BookingSuccess() {
   const { id } = useParams();
