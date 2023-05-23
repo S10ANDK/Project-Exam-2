@@ -69,7 +69,6 @@ export const AddMoreMediaButton = styled.button`
 
 export const RemoveMediaButtonContainer = styled.div`
   margin-left: auto;
-  margin-bottom: 10px;
 `;
 
 export const RemoveMediaButton = styled.button`
