@@ -238,7 +238,6 @@ export const BookingSuccessMessage = styled.div`
   padding: 10px 20px 20px;
   max-width: 480px;
   margin: auto;
-  /* transition: 0.3s ease-in-out; */
   animation: ${(props) => (props.fadeOut ? fadeOut : fadeIn)} 0.3s linear
     forwards;
 
