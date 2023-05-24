@@ -1,5 +1,8 @@
 import styled, { keyframes } from 'styled-components';
-import { StyledButtonRed } from '../../styles/Button/index.styled';
+import {
+  StyledButtonRed,
+  StyledButtonBlue,
+} from '../../styles/Button/index.styled';
 
 export const Error = styled.p``;
 
@@ -144,6 +147,24 @@ export const Price = styled.p`
     color: ${(props) => props.theme.color.black};
     font-weight: 400;
   }
+`;
+
+export const UpdateVenueContainer = styled.div`
+  grid-row: 3;
+  grid-column: 1;
+  width: 100%;
+  text-align: center;
+  margin: auto;
+
+  @media (min-width: 550px) {
+    width: 500px;
+    margin: 20px auto 0px;
+  }
+`;
+
+export const UpdateVenueButton = styled(StyledButtonBlue)`
+  width: 100%;
+  margin: auto;
 `;
 
 export const BookingFormContainer = styled.div`

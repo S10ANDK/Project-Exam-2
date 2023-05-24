@@ -44,18 +44,17 @@ export const FormDivThree = styled.div`
 export const FormDivFour = styled.div`
   grid-row: 3;
   grid-column: 2;
-
-  @media (min-width: 1200px) {
-    /* border-top: 1px solid ${(props) => props.theme.color.borders};
-    padding-top: 20px;
-    margin-top: 20px; */
-  }
 `;
 
 export const CheckboxWrapper = styled.div`
   border-top: 1px solid ${(props) => props.theme.color.borders};
   padding-top: 20px;
   margin-top: 20px;
+
+  @media (min-width: 1200px) {
+    border-top: none;
+    margin-top: 50px;
+  }
 `;
 
 export const CheckboxContainer = styled.div`

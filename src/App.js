@@ -7,7 +7,9 @@ import VenueSpecific from './components/VenueSpecific';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import CreateVenueListing from './components/venueListings/CreateVenueListing';
+import UpdateVenueListing from './components/venueListings/UpdateVenueListing';
 import BookingSuccess from './components/BookingSuccess';
+import SpecificBooking from './components/SpecificBooking';
 
 function App() {
   return (
@@ -17,7 +19,9 @@ function App() {
 
         <Route path="venues/:id" index element={<VenueSpecific />} />
 
-        <Route path="bookings/:id" index element={<BookingSuccess />} />
+        <Route path="booking/:id" index element={<SpecificBooking />} />
+
+        <Route path="booking-success/:id" index element={<BookingSuccess />} />
 
         <Route path="register" index element={<Register />} />
 
@@ -26,6 +30,12 @@ function App() {
         <Route path="dashboard" index element={<Dashboard />} />
 
         <Route path="list-your-home" index element={<CreateVenueListing />} />
+
+        <Route
+          path="update-your-venue/:id"
+          index
+          element={<UpdateVenueListing />}
+        />
       </Route>
     </Routes>
   );

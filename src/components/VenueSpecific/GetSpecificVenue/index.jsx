@@ -17,6 +17,9 @@ import { parseISO, eachDayOfInterval, differenceInDays } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
 import 'react-datepicker/dist/react-datepicker.css';
 
+const user = JSON.parse(localStorage.getItem('user'));
+const profileName = user && user.name;
+
 function GetSpecificVenue() {
   const { id } = useParams();
   const [venue, setVenue] = useState(null);
@@ -137,7 +140,7 @@ function GetSpecificVenue() {
           dateTo,
           guests
         );
-        navigate(`/bookings/${bookingResponse.id}`);
+        navigate(`/booking-success/${bookingResponse.id}`);
       } catch (error) {
         console.error(error);
       }
@@ -262,29 +265,77 @@ function GetSpecificVenue() {
                 {venue.price} kr NOK <span>night</span>
               </S.Price>
             </S.maxGuestsAndPriceContainer>
-            <S.BookingFormContainer>
-              <S.BookingForm onSubmit={handleFormSubmit}>
-                <label>Guests</label>
-                <S.GuestContainer>
-                  <S.GuestInput
-                    type="number"
-                    min={1}
-                    max={venue.maxGuests}
-                    value={guests}
-                    onChange={(e) => setGuests(e.target.value)}
-                    required
+            {profileName === venue.owner.name ? (
+              <S.UpdateVenueContainer>
+                <S.UpdateVenueButton
+                  onClick={() => navigate(`/update-your-venue/${venue.id}`)}
+                >
+                  Update Venue
+                </S.UpdateVenueButton>
+              </S.UpdateVenueContainer>
+            ) : (
+              <S.BookingFormContainer>
+                <S.BookingForm onSubmit={handleFormSubmit}>
+                  <label>Guests</label>
+                  <S.GuestContainer>
+                    <S.GuestInput
+                      type="number"
+                      min={1}
+                      max={venue.maxGuests}
+                      value={guests}
+                      onChange={(e) => setGuests(e.target.value)}
+                      required
+                    />
+                    <p>
+                      {'//'} max {venue.maxGuests}
+                    </p>
+                  </S.GuestContainer>
+                  <DatePicker
+                    selected={dateFrom}
+                    onChange={(date) => {
+                      if (dateTo) {
+                        const newDateRange = eachDayOfInterval({
+                          start: date,
+                          end: dateTo,
+                        }).map((date) => date.toISOString().split('T')[0]);
+
+                        const isOverlap = bookingDates.some((bookedDate) =>
+                          newDateRange.includes(
+                            bookedDate.toISOString().split('T')[0]
+                          )
+                        );
+
+                        if (!isOverlap) {
+                          setDateFrom(date);
+                          setDateRangeError('');
+                        } else {
+                          setDateRangeError(
+                            'Some dates in the selected range are already booked'
+                          );
+                        }
+                      } else {
+                        setDateFrom(date);
+                        setDateRangeError('');
+                      }
+                    }}
+                    selectsStart
+                    startDate={dateFrom}
+                    endDate={dateTo}
+                    minDate={new Date()}
+                    excludeDates={bookingDates}
+                    isClearable
+                    placeholderText="From"
                   />
-                  <p>
-                    {'//'} max {venue.maxGuests}
-                  </p>
-                </S.GuestContainer>
-                <DatePicker
-                  selected={dateFrom}
-                  onChange={(date) => {
-                    if (dateTo) {
+                  <S.FormError>
+                    {errors.dateTo && <div>{errors.dateTo}</div>}
+                    {dateRangeError && <div>{dateRangeError}</div>}
+                  </S.FormError>
+                  <DatePicker
+                    selected={dateTo}
+                    onChange={(date) => {
                       const newDateRange = eachDayOfInterval({
-                        start: date,
-                        end: dateTo,
+                        start: dateFrom,
+                        end: date,
                       }).map((date) => date.toISOString().split('T')[0]);
 
                       const isOverlap = bookingDates.some((bookedDate) =>
@@ -294,72 +345,36 @@ function GetSpecificVenue() {
                       );
 
                       if (!isOverlap) {
-                        setDateFrom(date);
+                        setDateTo(date);
                         setDateRangeError('');
                       } else {
                         setDateRangeError(
                           'Some dates in the selected range are already booked'
                         );
                       }
-                    } else {
-                      setDateFrom(date);
-                      setDateRangeError('');
-                    }
-                  }}
-                  selectsStart
-                  startDate={dateFrom}
-                  endDate={dateTo}
-                  minDate={new Date()}
-                  excludeDates={bookingDates}
-                  isClearable
-                  placeholderText="From"
-                />
-                <S.FormError>
-                  {errors.dateTo && <div>{errors.dateTo}</div>}
-                  {dateRangeError && <div>{dateRangeError}</div>}
-                </S.FormError>
-                <DatePicker
-                  selected={dateTo}
-                  onChange={(date) => {
-                    const newDateRange = eachDayOfInterval({
-                      start: dateFrom,
-                      end: date,
-                    }).map((date) => date.toISOString().split('T')[0]);
-
-                    const isOverlap = bookingDates.some((bookedDate) =>
-                      newDateRange.includes(
-                        bookedDate.toISOString().split('T')[0]
-                      )
-                    );
-
-                    if (!isOverlap) {
-                      setDateTo(date);
-                      setDateRangeError('');
-                    } else {
-                      setDateRangeError(
-                        'Some dates in the selected range are already booked'
-                      );
-                    }
-                  }}
-                  selectsEnd
-                  startDate={dateFrom}
-                  endDate={dateTo}
-                  minDate={dateFrom}
-                  excludeDates={bookingDates}
-                  isClearable
-                  placeholderText="To"
-                />
-                <S.FormError>
-                  {errors.dateTo && <div>{errors.dateTo}</div>}
-                </S.FormError>
-                {totalPrice > 0 && (
-                  <S.TotalPrice>Total Price: {totalPrice} kr NOK</S.TotalPrice>
-                )}
-                <S.SubmitBookingButton type="submit">
-                  Book Now
-                </S.SubmitBookingButton>
-              </S.BookingForm>
-            </S.BookingFormContainer>
+                    }}
+                    selectsEnd
+                    startDate={dateFrom}
+                    endDate={dateTo}
+                    minDate={dateFrom}
+                    excludeDates={bookingDates}
+                    isClearable
+                    placeholderText="To"
+                  />
+                  <S.FormError>
+                    {errors.dateTo && <div>{errors.dateTo}</div>}
+                  </S.FormError>
+                  {totalPrice > 0 && (
+                    <S.TotalPrice>
+                      Total Price: {totalPrice} kr NOK
+                    </S.TotalPrice>
+                  )}
+                  <S.SubmitBookingButton type="submit">
+                    Book Now
+                  </S.SubmitBookingButton>
+                </S.BookingForm>
+              </S.BookingFormContainer>
+            )}
 
             <S.LocationAndFacilitiesContainer>
               <S.FacilitiesContainer>

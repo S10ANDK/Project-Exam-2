@@ -7,6 +7,7 @@ import submitVenue from '../../api/submitVenue';
 import listingSchema from '../validationSchema';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useNavigate } from 'react-router-dom';
 
 function CreateVenueListing() {
   const {
@@ -41,6 +42,8 @@ function CreateVenueListing() {
     },
   });
 
+  const navigate = useNavigate();
+
   const { fields, append, remove } = useFieldArray({
     control,
     name: 'media',
@@ -51,6 +54,7 @@ function CreateVenueListing() {
     try {
       const response = await submitVenue(data);
       console.log('Response:', response);
+      navigate(`/venues/${response.id}`);
     } catch (error) {
       console.error('Submission error:', error);
     }
