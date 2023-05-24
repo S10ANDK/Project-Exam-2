@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import * as S from './index.styled';
 import { useLocation, useNavigate } from 'react-router-dom';
+import venueManagerStatus from '../../../api/localStorage/venueManagerStatus';
 
 /*
   Navigation component 
@@ -49,14 +50,16 @@ const Nav = () => {
           </S.NavListItem>
           {isLoggedIn ? (
             <>
-              <S.NavListItem>
-                <S.NavLink
-                  onClick={() => setActive(!active)}
-                  to="/list-your-home"
-                >
-                  list your home
-                </S.NavLink>
-              </S.NavListItem>
+              {venueManagerStatus === true && (
+                <S.NavListItem>
+                  <S.NavLink
+                    onClick={() => setActive(!active)}
+                    to="/list-your-home"
+                  >
+                    list your home
+                  </S.NavLink>
+                </S.NavListItem>
+              )}
               <S.NavListItemDynamic>
                 <S.NavLink onClick={() => setActive(!active)} to="/dashboard">
                   dashboard
