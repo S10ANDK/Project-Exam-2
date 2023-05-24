@@ -1,21 +1,14 @@
+// import React, { useState, useEffect } from 'react';
 import React from 'react';
 import Container from '../styles/Container/index.styled';
+// import profileName from '../api/localStorage/profileName';
 
 /*
-  Layout component
+  Dashboard component
 */
 
 function Dashboard() {
   return <Container></Container>;
 }
-
-// const user = JSON.parse(localStorage.getItem('user'));
-// const accessToken = user && user.accessToken;
-// console.log(accessToken);
-// const options = {
-//   headers: {
-//     Authorization: `Bearer ${accessToken}`,
-//   },
-// };
 
 export default Dashboard;

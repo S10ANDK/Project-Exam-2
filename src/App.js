@@ -9,7 +9,7 @@ import Dashboard from './components/Dashboard';
 import CreateVenueListing from './components/venueListings/CreateVenueListing';
 import UpdateVenueListing from './components/venueListings/UpdateVenueListing';
 import BookingSuccess from './components/BookingSuccess';
-import SpecificBooking from './components/SpecificBooking';
+import BookingSpecific from './components/BookingSpecific';
 import StyleGuide from './components/StyleGuide';
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
 
         <Route path="venues/:id" index element={<VenueSpecific />} />
 
-        <Route path="booking/:id" index element={<SpecificBooking />} />
+        <Route path="booking/:id" index element={<BookingSpecific />} />
 
         <Route path="booking-success/:id" index element={<BookingSuccess />} />
 

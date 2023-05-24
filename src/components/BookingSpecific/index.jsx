@@ -5,8 +5,8 @@ import Container from '../styles/Container/index.styled';
   Specific Booking component
 */
 
-function SpecificBooking() {
+function BookingSpecific() {
   return <Container></Container>;
 }
 
-export default SpecificBooking;
+export default BookingSpecific;

@@ -15,10 +15,8 @@ import { submitBooking } from '../../api/submitBooking';
 import DatePicker from 'react-datepicker';
 import { parseISO, eachDayOfInterval, differenceInDays } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
+import profileName from '../../api/localStorage/profileName';
 import 'react-datepicker/dist/react-datepicker.css';
-
-const user = JSON.parse(localStorage.getItem('user'));
-const profileName = user && user.name;
 
 function GetSpecificVenue() {
   const { id } = useParams();
