@@ -251,6 +251,16 @@ export const BookingSuccessMessage = styled.div`
   }
 `;
 
+export const LoginMessageContainer = styled.p`
+  text-align: left;
+  margin-left: 35px;
+
+  :hover {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+`;
+
 export const LocationAndFacilitiesContainer = styled.div`
   display: flex;
   flex-direction: column-reverse;
@@ -320,6 +330,11 @@ export const FacilitiesContainer = styled.div`
     margin-top: 0px;
     padding-right: 50px;
   }
+`;
+
+export const BookingsOnVenueContainer = styled.div`
+  grid-row: 4;
+  grid-column: 2;
 `;
 
 export const OwnerEmail = styled.p`
