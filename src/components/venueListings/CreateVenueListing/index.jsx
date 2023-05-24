@@ -122,7 +122,7 @@ function CreateVenueListing() {
             </S.AddMoreMediaButton>
 
             <label htmlFor="price">price</label>
-            <input name="price" type="number" {...register('price')} />
+            <input name="price" type="number" min={0} {...register('price')} />
             {errors.price && errors.price.message && (
               <p>{errors.price.message}</p>
             )}
