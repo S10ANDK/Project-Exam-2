@@ -1,14 +1,17 @@
-// import React, { useState, useEffect } from 'react';
 import React from 'react';
 import Container from '../styles/Container/index.styled';
-// import profileName from '../api/localStorage/profileName';
+import GetProfile from './GetProfile';
 
 /*
   Dashboard component
 */
 
 function Dashboard() {
-  return <Container></Container>;
+  return (
+    <Container>
+      <GetProfile />
+    </Container>
+  );
 }
 
 export default Dashboard;
