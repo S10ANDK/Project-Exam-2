@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Form } from '../../styles/Form/index.styled';
-import { StyledButtonRed } from '../../styles/Button/index.styled';
+import { StyledButtonBlue } from '../../styles/Button/index.styled';
 import Container from '../../styles/Container/index.styled';
 
 export const ListVenueContainer = styled(Container)``;
@@ -127,14 +127,33 @@ export const RemoveMediaButton = styled.button`
   }
 `;
 
-export const PublishButton = styled(StyledButtonRed)`
+export const ButtonsContainer = styled.div`
+  display: flex;
+  flex-direction: row !important;
+  justify-content: right;
+  grid-row: 4;
+  grid-column: 1 / 3;
+`;
+
+export const UpdateButton = styled(StyledButtonBlue)`
   width: 100%;
-  margin-top: 40px;
+  margin: 40px 20px 0px 0px;
 
   @media (min-width: 1200px) {
-    grid-row: 4;
-    grid-column: 1 / 3;
-    justify-self: right;
-    max-width: 270px;
+    max-width: 380px;
+  }
+`;
+
+export const DeleteButton = styled(UpdateButton)`
+  max-width: 100px;
+  margin-right: 0px;
+  background: #333;
+
+  :hover {
+    background: #1f1f1f;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 140px;
   }
 `;

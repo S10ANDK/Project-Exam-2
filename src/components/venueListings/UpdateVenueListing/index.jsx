@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { API_URL, API_VENUES } from '../../constants/urls';
+import { useParams } from 'react-router-dom';
 import * as S from './index.styled';
 import { Helmet } from 'react-helmet-async';
 import PlusIcon from '../../../assets/add.png';
@@ -8,46 +10,94 @@ import listingSchema from '../validationSchema';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
+import ErrorMessage from '../../messages/ErrorMessage';
+import LoadingIndicator from '../../styles/LoadingIndicator/index.styled';
 
 function UpdateVenueListing() {
+  const { id } = useParams();
+  const [venue, setVenue] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+  const navigate = useNavigate();
+
+  const defaultVenueValues = {
+    name: '',
+    description: '',
+    media: [],
+    price: 0,
+    maxGuests: 1,
+    rating: 0,
+    meta: {
+      wifi: false,
+      parking: false,
+      breakfast: false,
+      pets: false,
+    },
+    location: {
+      address: '',
+      city: '',
+      zip: '',
+      country: '',
+      continent: '',
+      lat: 0,
+      lng: 0,
+    },
+  };
+
   const {
     register,
     handleSubmit,
     control,
     formState: { errors },
+    reset,
   } = useForm({
     resolver: yupResolver(listingSchema),
-    defaultValues: {
-      name: '',
-      description: '',
-      media: [],
-      price: 0,
-      maxGuests: 1,
-      rating: 0,
-      meta: {
-        wifi: false,
-        parking: false,
-        breakfast: false,
-        pets: false,
-      },
-      location: {
-        address: '',
-        city: '',
-        zip: '',
-        country: '',
-        continent: '',
-        lat: 0,
-        lng: 0,
-      },
-    },
+    defaultValues: defaultVenueValues,
   });
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    if (venue) {
+      reset(venue);
+    } else {
+      reset(defaultVenueValues);
+    }
+  }, [venue, reset]);
 
   const { fields, append, remove } = useFieldArray({
     control,
     name: 'media',
   });
+
+  useEffect(() => {
+    const fetchVenue = async () => {
+      try {
+        const response = await fetch(
+          `${API_URL}${API_VENUES}/${id}?_bookings=true&_owner=true`
+        );
+        if (!response.ok) {
+          throw new Error('Failed to fetch venue');
+        }
+        const data = await response.json();
+        console.log(data);
+
+        setVenue(data);
+        setIsLoading(false);
+      } catch (error) {
+        setIsError(true);
+        setIsLoading(false);
+      }
+    };
+
+    fetchVenue();
+  }, [id]);
+
+  if (isLoading) {
+    return <LoadingIndicator />;
+  }
+
+  if (isError) {
+    return <ErrorMessage />;
+  }
 
   const onSubmit = async (data) => {
     console.log('Submitted data:', data);
@@ -223,7 +273,11 @@ function UpdateVenueListing() {
               />
             </div>
           </S.FormDivFour>
-          <S.PublishButton type="submit">publish</S.PublishButton>
+          <S.ButtonsContainer>
+            {' '}
+            <S.UpdateButton type="submit">update</S.UpdateButton>
+            <S.DeleteButton type="button">delete</S.DeleteButton>
+          </S.ButtonsContainer>
         </S.ListVenueForm>
       </S.ListVenueContainer>
     </>
