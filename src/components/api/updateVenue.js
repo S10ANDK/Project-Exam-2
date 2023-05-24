@@ -4,12 +4,12 @@ const user = JSON.parse(localStorage.getItem('user'));
 const accessToken = user && user.accessToken;
 
 /*
-    Function for creating venue, POST request
+    Function for updating venue, PUT request
 */
 
-export async function submitVenue(data) {
+export async function updateVenue(id, data) {
   const options = {
-    method: 'POST',
+    method: 'PUT',
     headers: {
       Authorization: `Bearer ${accessToken}`,
       'Content-Type': 'application/json',
@@ -19,7 +19,7 @@ export async function submitVenue(data) {
 
   try {
     console.log(data);
-    const response = await fetch(`${API_URL}${API_VENUES}`, options);
+    const response = await fetch(`${API_URL}${API_VENUES}/${id}`, options);
 
     if (!response.ok) {
       throw new Error('Failed to submit venue');
@@ -35,4 +35,4 @@ export async function submitVenue(data) {
   }
 }
 
-export default submitVenue;
+export default updateVenue;

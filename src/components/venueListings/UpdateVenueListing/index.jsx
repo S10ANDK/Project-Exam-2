@@ -5,7 +5,7 @@ import * as S from './index.styled';
 import { Helmet } from 'react-helmet-async';
 import PlusIcon from '../../../assets/add.png';
 import DeleteIcon from '../../../assets/delete.png';
-import submitVenue from '../../api/submitVenue';
+import updateVenue from '../../api/updateVenue';
 import listingSchema from '../validationSchema';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -102,7 +102,7 @@ function UpdateVenueListing() {
   const onSubmit = async (data) => {
     console.log('Submitted data:', data);
     try {
-      const response = await submitVenue(data);
+      const response = await updateVenue(id, data);
       console.log('Response:', response);
       navigate(`/venues/${response.id}`);
     } catch (error) {
@@ -274,7 +274,6 @@ function UpdateVenueListing() {
             </div>
           </S.FormDivFour>
           <S.ButtonsContainer>
-            {' '}
             <S.UpdateButton type="submit">update</S.UpdateButton>
             <S.DeleteButton type="button">delete</S.DeleteButton>
           </S.ButtonsContainer>
