@@ -1,5 +1,4 @@
 import React from 'react';
-import Container from '../../styles/Container/index.styled';
 import * as S from './index.styled';
 import { Helmet } from 'react-helmet-async';
 import PlusIcon from '../../../assets/add.png';
@@ -66,10 +65,10 @@ function CreateVenueListing() {
         <meta name="description" content="List your home on Holidaze" />
       </Helmet>
 
-      <Container>
+      <S.ListVenueContainer>
         <h1>List your home</h1>
         <S.ListVenueForm onSubmit={handleSubmit(onSubmit)}>
-          <div>
+          <S.FormDivOne>
             <label htmlFor="name">name</label>
             <input name="name" type="text" {...register('name')} />
             {errors?.name && <p>{errors.name.message}</p>}
@@ -123,9 +122,9 @@ function CreateVenueListing() {
             {errors.price && errors.price.message && (
               <p>{errors.price.message}</p>
             )}
-          </div>
+          </S.FormDivOne>
 
-          <div>
+          <S.FormDivTwo>
             <label htmlFor="maxGuests">maximum guests</label>
             <input name="maxGuests" type="number" {...register('maxGuests')} />
 
@@ -140,85 +139,89 @@ function CreateVenueListing() {
             {errors.rating && errors.rating.message && (
               <p>{errors.rating.message}</p>
             )}
-          </div>
-          <S.CheckboxWrapper>
-            <S.CheckboxContainer>
-              <label htmlFor="meta.breakfast">breakfast</label>
-              <input
-                name="meta.breakfast"
-                type="checkbox"
-                {...register('meta.breakfast')}
-              />
-            </S.CheckboxContainer>
+            <S.CheckboxWrapper>
+              <S.CheckboxContainer>
+                <label htmlFor="meta.breakfast">breakfast</label>
+                <input
+                  name="meta.breakfast"
+                  type="checkbox"
+                  {...register('meta.breakfast')}
+                />
+              </S.CheckboxContainer>
 
-            <S.CheckboxContainer>
-              <label htmlFor="meta.parking">parking</label>
-              <input
-                name="meta.parking"
-                type="checkbox"
-                {...register('meta.parking')}
-              />
-            </S.CheckboxContainer>
+              <S.CheckboxContainer>
+                <label htmlFor="meta.parking">parking</label>
+                <input
+                  name="meta.parking"
+                  type="checkbox"
+                  {...register('meta.parking')}
+                />
+              </S.CheckboxContainer>
 
-            <S.CheckboxContainer>
-              <label htmlFor="meta.pets">pets</label>
-              <input
-                name="meta.pets"
-                type="checkbox"
-                {...register('meta.pets')}
-              />
-            </S.CheckboxContainer>
+              <S.CheckboxContainer>
+                <label htmlFor="meta.pets">pets</label>
+                <input
+                  name="meta.pets"
+                  type="checkbox"
+                  {...register('meta.pets')}
+                />
+              </S.CheckboxContainer>
 
-            <S.CheckboxContainer>
-              <label htmlFor="meta.wifi">wifi</label>
-              <input
-                name="meta.wifi"
-                type="checkbox"
-                {...register('meta.wifi')}
-              />
-            </S.CheckboxContainer>
-          </S.CheckboxWrapper>
+              <S.CheckboxContainer>
+                <label htmlFor="meta.wifi">wifi</label>
+                <input
+                  name="meta.wifi"
+                  type="checkbox"
+                  {...register('meta.wifi')}
+                />
+              </S.CheckboxContainer>
+            </S.CheckboxWrapper>
+          </S.FormDivTwo>
           <S.LocationHeading>location (optional)</S.LocationHeading>
-          <div>
-            <label htmlFor="location.address">address</label>
-            <input
-              name="location.address"
-              type="text"
-              {...register('location.address')}
-            />
+          <S.FormDivThree>
+            <div>
+              <label htmlFor="location.address">address</label>
+              <input
+                name="location.address"
+                type="text"
+                {...register('location.address')}
+              />
 
-            <label htmlFor="location.city">city</label>
-            <input
-              name="location.city"
-              type="text"
-              {...register('location.city')}
-            />
+              <label htmlFor="location.city">city</label>
+              <input
+                name="location.city"
+                type="text"
+                {...register('location.city')}
+              />
 
-            <label htmlFor="location.zip">zip</label>
-            <input
-              name="location.zip"
-              type="text"
-              {...register('location.zip')}
-            />
-          </div>
-          <div>
-            <label htmlFor="location.country">country</label>
-            <input
-              name="location.country"
-              type="text"
-              {...register('location.country')}
-            />
+              <label htmlFor="location.zip">zip</label>
+              <input
+                name="location.zip"
+                type="text"
+                {...register('location.zip')}
+              />
+            </div>
+          </S.FormDivThree>
+          <S.FormDivFour>
+            <div>
+              <label htmlFor="location.country">country</label>
+              <input
+                name="location.country"
+                type="text"
+                {...register('location.country')}
+              />
 
-            <label htmlFor="location.continent">continent</label>
-            <input
-              name="location.continent"
-              type="text"
-              {...register('location.continent')}
-            />
-          </div>
+              <label htmlFor="location.continent">continent</label>
+              <input
+                name="location.continent"
+                type="text"
+                {...register('location.continent')}
+              />
+            </div>
+          </S.FormDivFour>
           <S.PublishButton type="submit">publish</S.PublishButton>
         </S.ListVenueForm>
-      </Container>
+      </S.ListVenueContainer>
     </>
   );
 }

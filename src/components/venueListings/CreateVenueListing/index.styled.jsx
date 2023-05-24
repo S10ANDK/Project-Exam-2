@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import { Form } from '../../styles/Form/index.styled';
 import { StyledButtonRed } from '../../styles/Button/index.styled';
+import Container from '../../styles/Container/index.styled';
+
+export const ListVenueContainer = styled(Container)``;
 
 export const ListVenueForm = styled(Form)`
   div {
@@ -11,6 +14,41 @@ export const ListVenueForm = styled(Form)`
   input,
   textarea {
     margin-bottom: 20px;
+  }
+
+  @media (min-width: 1200px) {
+    max-width: 1200px;
+    display: grid;
+    width: 100%;
+    grid-template-columns: 2;
+    grid-template-rows: 4;
+    column-gap: 120px;
+  }
+`;
+
+export const FormDivOne = styled.div`
+  grid-row: 1;
+  grid-column: 1;
+`;
+
+export const FormDivTwo = styled.div`
+  grid-row: 1;
+  grid-column: 2;
+`;
+
+export const FormDivThree = styled.div`
+  grid-row: 3;
+  grid-column: 1;
+`;
+
+export const FormDivFour = styled.div`
+  grid-row: 3;
+  grid-column: 2;
+
+  @media (min-width: 1200px) {
+    /* border-top: 1px solid ${(props) => props.theme.color.borders};
+    padding-top: 20px;
+    margin-top: 20px; */
   }
 `;
 
@@ -41,6 +79,8 @@ export const LocationHeading = styled.h2`
   padding-top: 20px;
   margin: 20px 0px 30px;
   border-top: 1px solid ${(props) => props.theme.color.borders};
+  grid-row: 2;
+  grid-column: 1 / 3;
 `;
 
 export const AddMoreImagesHeading = styled(LocationHeading)`
@@ -90,5 +130,12 @@ export const RemoveMediaButton = styled.button`
 
 export const PublishButton = styled(StyledButtonRed)`
   width: 100%;
-  margin-top: 10px;
+  margin-top: 40px;
+
+  @media (min-width: 1200px) {
+    grid-row: 4;
+    grid-column: 1 / 3;
+    justify-self: right;
+    max-width: 270px;
+  }
 `;
