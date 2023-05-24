@@ -190,13 +190,19 @@ function UpdateVenueListing() {
 
           <S.FormDivTwo>
             <label htmlFor="maxGuests">maximum guests</label>
-            <input name="maxGuests" type="number" {...register('maxGuests')} />
+            <input
+              name="maxGuests"
+              type="number"
+              min={0}
+              {...register('maxGuests')}
+            />
 
             <label htmlFor="rating">rating</label>
             <input
               name="rating"
               type="number"
               defaultValue={0}
+              min={0}
               max={5}
               {...register('rating')}
             />
