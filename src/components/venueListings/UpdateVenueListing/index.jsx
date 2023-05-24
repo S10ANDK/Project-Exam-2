@@ -12,6 +12,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
 import ErrorMessage from '../../messages/ErrorMessage';
 import LoadingIndicator from '../../styles/LoadingIndicator/index.styled';
+import deleteVenue from '../../api/deleteVenue';
 
 function UpdateVenueListing() {
   const { id } = useParams();
@@ -98,6 +99,15 @@ function UpdateVenueListing() {
   if (isError) {
     return <ErrorMessage />;
   }
+
+  const handleDelete = async () => {
+    try {
+      await deleteVenue(id);
+      navigate('/');
+    } catch (error) {
+      console.error('Deletion error:', error);
+    }
+  };
 
   const onSubmit = async (data) => {
     console.log('Submitted data:', data);
@@ -275,7 +285,9 @@ function UpdateVenueListing() {
           </S.FormDivFour>
           <S.ButtonsContainer>
             <S.UpdateButton type="submit">update</S.UpdateButton>
-            <S.DeleteButton type="button">delete</S.DeleteButton>
+            <S.DeleteButton type="button" onClick={handleDelete}>
+              delete
+            </S.DeleteButton>
           </S.ButtonsContainer>
         </S.ListVenueForm>
       </S.ListVenueContainer>
