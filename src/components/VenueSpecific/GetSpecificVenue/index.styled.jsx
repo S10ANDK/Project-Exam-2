@@ -290,6 +290,10 @@ export const LocationContainer = styled.div`
   div span {
     font-weight: 600;
   }
+
+  @media (min-width: 550px) {
+    min-width: 200px;
+  }
 `;
 
 export const FacilitiesContainer = styled.div`
