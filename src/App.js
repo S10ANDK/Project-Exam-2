@@ -10,6 +10,7 @@ import CreateVenueListing from './components/venueListings/CreateVenueListing';
 import UpdateVenueListing from './components/venueListings/UpdateVenueListing';
 import BookingSuccess from './components/BookingSuccess';
 import SpecificBooking from './components/SpecificBooking';
+import StyleGuide from './components/StyleGuide';
 
 function App() {
   return (
@@ -36,6 +37,8 @@ function App() {
           index
           element={<UpdateVenueListing />}
         />
+
+        <Route path="style-guide" index element={<StyleGuide />} />
       </Route>
     </Routes>
   );
