@@ -16,7 +16,7 @@ import DatePicker from 'react-datepicker';
 import { parseISO, eachDayOfInterval, differenceInDays } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
 import profileName from '../../api/localStorage/profileName';
-import BookingCard from '../../Dashboard/GetProfile/BookingCard';
+import BookingCard from './BookingCard';
 import 'react-datepicker/dist/react-datepicker.css';
 
 function GetSpecificVenue() {
@@ -147,6 +147,9 @@ function GetSpecificVenue() {
       console.error(errors);
     }
   };
+
+  console.log(venue.owner.name);
+  console.log(venue.bookings.length);
 
   return (
     <>
@@ -420,19 +423,22 @@ function GetSpecificVenue() {
                 </S.LocationContainer>
               ) : null}
             </S.LocationAndFacilitiesContainer>
+            <S.OwnerEmail>
+              Contact owner via e-mail:{' '}
+              <a href={`mailto:${venue.owner.email}`}>{venue.owner.email}</a>
+            </S.OwnerEmail>
             {profileName === venue.owner.name ? (
               <S.BookingsOnVenueContainer>
-                <p>Bookings on venue</p>
+                <S.BookingsOnVenueHeadingContainer>
+                  <h2>Bookings on venue:</h2>
+                  <p>{venue.bookings.length}</p>
+                </S.BookingsOnVenueHeadingContainer>
                 {venue.bookings.length > 0 &&
                   venue.bookings.map((booking) => (
                     <BookingCard key={booking.id} booking={booking} />
                   ))}
               </S.BookingsOnVenueContainer>
             ) : null}
-            <S.OwnerEmail>
-              Contact owner via e-mail:{' '}
-              <a href={`mailto:${venue.owner.email}`}>{venue.owner.email}</a>
-            </S.OwnerEmail>
           </S.ContentContainer>
         </S.SpecificVenueContainer>
       )}

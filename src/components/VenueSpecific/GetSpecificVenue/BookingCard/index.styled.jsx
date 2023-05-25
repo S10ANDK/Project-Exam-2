@@ -1,20 +1,15 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { StyledButtonBlue } from '../../../styles/Button/index.styled';
 
-export const BookingCard = styled(Link)`
+export const BookingCard = styled.div`
   display: block;
-  max-width: 500px;
+  max-width: 465px;
   margin: 20px auto;
   border: 1px solid ${(props) => props.theme.color.borders};
   border-radius: 10px;
-  padding: 0px 20px 20px;
+  padding: 20px 20px 20px;
   box-shadow: 1px 2px 2px 2px rgba(0, 0, 0, 0.08);
-
-  :hover {
-    border: 1px solid #dbdbdb;
-    /* box-shadow: 2px 3px 3px 2.5px rgba(0, 0, 0, 0.08); */
-  }
 `;
 
 export const CreatedAndUpdatedDate = styled.p`
@@ -22,9 +17,7 @@ export const CreatedAndUpdatedDate = styled.p`
 `;
 
 export const BookingId = styled.p`
-  @media (min-width: 550px) {
-    margin-top: 20px;
-  }
+  margin-top: 15px;
 `;
 
 export const VenueBookingName = styled.h2`

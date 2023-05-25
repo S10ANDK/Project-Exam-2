@@ -331,6 +331,23 @@ export const FacilitiesContainer = styled.div`
   }
 `;
 
+export const BookingsOnVenueHeadingContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 300px;
+  margin: 40px auto 0px;
+
+  p {
+    margin-right: 0px;
+  }
+
+  @media (min-width: 550px) {
+    max-width: 500px;
+  }
+`;
+
 export const BookingsOnVenueContainer = styled.div`
   grid-row: 4;
   grid-column: 2;
@@ -341,6 +358,11 @@ export const OwnerEmail = styled.p`
   grid-row: 5;
   grid-column: 1;
   line-height: 25px;
+  a {
+    display: block;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
 
   @media (min-width: 400px) {
     margin: 40px auto 0px;
@@ -350,12 +372,10 @@ export const OwnerEmail = styled.p`
   @media (min-width: 1200px) {
     margin: 40px 0px 0px 40px;
     text-align: left;
-  }
 
-  a {
-    display: block;
-    text-decoration: underline;
-    text-underline-offset: 2px;
+    a {
+      display: inline;
+    }
   }
 `;
 

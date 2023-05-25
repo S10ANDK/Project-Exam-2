@@ -8,11 +8,11 @@ import { useNavigate } from 'react-router-dom';
 import profileName from '../../api/localStorage/profileName';
 import accessToken from '../../api/localStorage/accessToken';
 import VenueCard from './VenueCard';
-import BookingCard from './BookingCard';
 import updateAvatar from '../../api/updateAvatar';
 import closeIcon from '../../../assets/close.png';
 import AvatarPlaceholderImage from '../../../assets/profile.png';
 import * as Yup from 'yup';
+import BookingCard from './BookingCard';
 
 const schema = Yup.object().shape({
   avatarUrl: Yup.string()
@@ -180,10 +180,12 @@ function GetProfile() {
           ))}
 
         <p>Bookings by you: {profile._count.bookings}</p>
-        {profile.bookings.length > 0 &&
-          profile.bookings.map((booking) => (
-            <BookingCard key={booking.id} booking={booking} />
-          ))}
+        <S.BookingsContainer>
+          {profile.bookings.length > 0 &&
+            profile.bookings.map((booking) => (
+              <BookingCard key={booking.id} booking={booking} />
+            ))}
+        </S.BookingsContainer>
       </Container>
     )
   );

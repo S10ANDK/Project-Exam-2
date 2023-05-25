@@ -7,7 +7,6 @@ function BookingCard({ booking }) {
 
   return (
     <S.BookingCard key={booking.id} to={`/booking/${booking.id}`}>
-      <S.VenueBookingName>{booking.venue.name}</S.VenueBookingName>
       <S.BookingId>
         Booking ID: <span>{booking.id}</span>
       </S.BookingId>
@@ -16,7 +15,6 @@ function BookingCard({ booking }) {
         <S.DateToAndFromContainer>
           From {dateFrom} to {dateTo}
         </S.DateToAndFromContainer>
-        <S.ManageButton>View Booking</S.ManageButton>
       </S.Wrapper>
     </S.BookingCard>
   );

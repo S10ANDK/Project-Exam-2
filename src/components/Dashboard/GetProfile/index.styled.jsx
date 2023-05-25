@@ -92,3 +92,7 @@ export const RemoveAvatarButton = styled(SubmitButton)`
     background: #d7d7d7;
   }
 `;
+
+export const BookingsContainer = styled.div`
+  margin: 40px auto;
+`;
