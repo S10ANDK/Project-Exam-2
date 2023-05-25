@@ -81,7 +81,7 @@ export const NavList = styled.ul`
   @media (min-width: 1000px) {
     flex-direction: row;
     justify-content: right;
-    margin-right: 40px;
+    margin-right: 10px;
     margin-left: 0;
   }
 `;
