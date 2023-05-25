@@ -16,7 +16,7 @@ async function deleteVenue(id) {
   const response = await fetch(`${API_URL}${API_BOOKINGS}/${id}`, options);
 
   if (!response.ok) {
-    throw new Error(`Failed to delete venue: ${response.status}`);
+    throw new Error(`Failed to delete booking: ${response.status}`);
   }
 }
 

@@ -20,7 +20,7 @@ export async function updateVenue(id, data) {
     const response = await fetch(`${API_URL}${API_VENUES}/${id}`, options);
 
     if (!response.ok) {
-      throw new Error('Failed to submit venue');
+      throw new Error('Failed to update venue');
     }
 
     const responseData = await response.json();
