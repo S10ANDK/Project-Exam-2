@@ -83,6 +83,23 @@ export const ProfileWrapper = styled.div`
   }
 `;
 
+export const ProfileIconContainer = styled.div`
+  @media (min-width: 550px) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  @media (min-width: 1000px) {
+    border: 2px solid ${(props) => props.theme.color.borders};
+    border-radius: 20px 5px 5px 20px;
+
+    :hover {
+      border: 2px solid ${(props) => props.theme.color.secondary};
+    }
+  }
+`;
+
 export const ProfileIcon = styled.img`
   width: 35px;
   cursor: pointer;
@@ -93,5 +110,20 @@ export const ProfileIcon = styled.img`
 
   @media (min-width: 1000px) {
     margin-right: 10px;
+  }
+`;
+
+export const DashboardLink = styled.p`
+  display: none;
+  font-size: 1rem !important;
+  text-decoration: none;
+  padding: 15px 10px;
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+  margin-right: 10px;
+  padding-left: 25px;
+
+  @media (min-width: 1000px) {
+    display: block;
   }
 `;

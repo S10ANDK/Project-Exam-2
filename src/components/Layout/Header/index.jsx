@@ -52,15 +52,21 @@ function Header() {
             </Link>
           </S.LogoAndNavWrapper>
           <S.ProfileWrapper>
-            {isLoggedIn ? (
-              <Link to={'/dashboard'}>
-                <S.ProfileIcon src={Profile} />
-              </Link>
-            ) : (
-              <Link to={'/login'}>
-                <S.ProfileIcon src={Profile} />
-              </Link>
-            )}
+            <Link to={isLoggedIn ? '/dashboard' : '/login'}>
+              <S.ProfileIconContainer>
+                {isLoggedIn ? (
+                  <>
+                    <S.DashboardLink>dashboard</S.DashboardLink>
+                    <S.ProfileIcon src={Profile} />
+                  </>
+                ) : (
+                  <>
+                    <S.DashboardLink>login</S.DashboardLink>
+                    <S.ProfileIcon src={Profile} />
+                  </>
+                )}
+              </S.ProfileIconContainer>
+            </Link>
           </S.ProfileWrapper>
         </S.HeaderContentWrapper>
       </S.Header>

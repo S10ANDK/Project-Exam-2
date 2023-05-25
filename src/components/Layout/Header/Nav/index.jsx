@@ -81,7 +81,7 @@ const Nav = () => {
                   register
                 </S.NavLink>
               </S.NavListItem>
-              <S.NavListItem>
+              <S.NavListItemDynamic>
                 <S.NavLink
                   onClick={() => {
                     setActive(!active);
@@ -90,7 +90,7 @@ const Nav = () => {
                 >
                   login
                 </S.NavLink>
-              </S.NavListItem>
+              </S.NavListItemDynamic>
             </>
           )}
         </S.NavList>

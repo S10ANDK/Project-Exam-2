@@ -107,6 +107,7 @@ export const NavLink = styled(Link)`
   color: ${(props) => props.theme.color.white};
   padding: 15px 10px;
   font-size: 1.2rem;
+  letter-spacing: 0.5px;
 
   :hover {
     text-decoration: underline;
