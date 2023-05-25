@@ -11,6 +11,12 @@ import Profile from '../../../assets/profile.png';
 
 function Header() {
   const [isSticky, setIsSticky] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const user = localStorage.getItem('user');
+    setIsLoggedIn(!!user);
+  }, [isLoggedIn]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,9 +52,15 @@ function Header() {
             </Link>
           </S.LogoAndNavWrapper>
           <S.ProfileWrapper>
-            <Link to={'/dashboard'}>
-              <S.ProfileIcon src={Profile} />
-            </Link>
+            {isLoggedIn ? (
+              <Link to={'/dashboard'}>
+                <S.ProfileIcon src={Profile} />
+              </Link>
+            ) : (
+              <Link to={'/login'}>
+                <S.ProfileIcon src={Profile} />
+              </Link>
+            )}
           </S.ProfileWrapper>
         </S.HeaderContentWrapper>
       </S.Header>

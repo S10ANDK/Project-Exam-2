@@ -21,11 +21,6 @@ const Nav = () => {
   };
 
   useEffect(() => {
-    const user = localStorage.getItem('user');
-    setIsLoggedIn(!!user);
-  }, []);
-
-  useEffect(() => {
     setActive(false);
   }, [location]);
 
