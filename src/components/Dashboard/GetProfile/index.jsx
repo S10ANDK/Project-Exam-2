@@ -152,8 +152,11 @@ function GetProfile() {
         <S.UserDetailsContainer>
           <S.Username>{profile.name}</S.Username>
           <p>{profile.email}</p>
-          {profile.venueManager === true}
-          <p>Venue Manager: {profile.venueManager ? 'Yes' : 'No'}</p>
+          {profile.venueManager === true ? (
+            <p>Venue Manager</p>
+          ) : (
+            <p>Customer</p>
+          )}
         </S.UserDetailsContainer>
 
         {isModalOpen && (
