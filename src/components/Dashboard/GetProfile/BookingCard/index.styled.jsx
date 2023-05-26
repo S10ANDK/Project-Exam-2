@@ -8,12 +8,16 @@ export const BookingCard = styled(Link)`
   margin: 20px auto;
   border: 1px solid ${(props) => props.theme.color.borders};
   border-radius: 10px;
-  padding: 0px 20px 20px;
+  padding: 10px 20px 30px;
   box-shadow: 1px 2px 2px 2px rgba(0, 0, 0, 0.08);
 
   :hover {
     border: 1px solid #dbdbdb;
-    /* box-shadow: 2px 3px 3px 2.5px rgba(0, 0, 0, 0.08); */
+    box-shadow: 2px 3px 3px 2.5px rgba(0, 0, 0, 0.08);
+  }
+
+  @media (min-width: 550px) {
+    padding: 10px 20px 20px;
   }
 `;
 

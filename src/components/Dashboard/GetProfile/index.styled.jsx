@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 import { StyledButtonBlue } from '../../styles/Button/index.styled';
+import Container from '../../styles/Container/index.styled';
+
+export const DashboardContainer = styled(Container)`
+  margin-top: 40px;
+`;
 
 export const LogOutButton = styled.button``;
 

@@ -3,7 +3,6 @@ import { API_URL, API_PROFILES } from '../../constants/urls';
 import * as S from './index.styled';
 import LoadingIndicator from '../../styles/LoadingIndicator/index.styled';
 import ErrorMessage from '../../messages/ErrorMessage';
-import Container from '../../styles/Container/index.styled';
 import { useNavigate } from 'react-router-dom';
 import profileName from '../../api/localStorage/profileName';
 import accessToken from '../../api/localStorage/accessToken';
@@ -121,7 +120,7 @@ function GetProfile() {
 
   return (
     isLoggedIn && (
-      <Container>
+      <S.DashboardContainer>
         <S.LogOutButton onClick={handleLogOut}>Log out</S.LogOutButton>
 
         {profile.avatar && profile.avatar.length > 0 ? (
@@ -186,7 +185,7 @@ function GetProfile() {
               <BookingCard key={booking.id} booking={booking} />
             ))}
         </S.BookingsContainer>
-      </Container>
+      </S.DashboardContainer>
     )
   );
 }
