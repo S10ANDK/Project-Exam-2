@@ -32,6 +32,7 @@ export const DashboardSectionOne = styled.div`
 
 export const DashboardSectionTwo = styled.div`
   width: 100%;
+  min-height: 300px;
 `;
 
 export const UserDetailsContainer = styled.div`
