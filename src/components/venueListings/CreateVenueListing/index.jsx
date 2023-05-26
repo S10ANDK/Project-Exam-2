@@ -51,6 +51,14 @@ function CreateVenueListing() {
 
   const onSubmit = async (data) => {
     console.log('Submitted data:', data);
+
+    const { location } = data;
+    for (let key in location) {
+      if (location[key] === '') {
+        location[key] = 'Unknown';
+      }
+    }
+
     try {
       const response = await submitVenue(data);
       console.log('Response:', response);

@@ -111,12 +111,19 @@ function UpdateVenueListing() {
 
   const onSubmit = async (data) => {
     console.log('Submitted data:', data);
+
+    for (let key in data.location) {
+      if (data.location[key] === '') {
+        data.location[key] = 'Unknown';
+      }
+    }
+
     try {
       const response = await updateVenue(id, data);
       console.log('Response:', response);
       navigate(`/venues/${response.id}`);
     } catch (error) {
-      console.error('Submission error:', error);
+      console.log('Submission error:', error);
     }
   };
 
