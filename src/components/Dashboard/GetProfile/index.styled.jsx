@@ -54,6 +54,7 @@ export const LogOutButtonContainer = styled.div`
 
 export const LogOutButton = styled.button`
   transition: 0.3s ease-in-out;
+  padding: 5px 15px;
 
   :hover {
     background: #d7d7d7;

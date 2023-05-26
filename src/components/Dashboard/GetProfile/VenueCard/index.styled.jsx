@@ -95,6 +95,7 @@ export const GuestIcon = styled.img`
 `;
 
 export const Price = styled.p`
+  font-size: 1.1rem;
   margin-right: 0px;
   text-align: right;
   span {

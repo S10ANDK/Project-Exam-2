@@ -25,11 +25,8 @@ export const BookingCardContent = styled.div`
   padding: 10px 20px 20px;
 `;
 
-export const CreatedAndUpdatedDate = styled.p`
-  font-style: italic;
-`;
-
 export const BookingId = styled.p`
+  font-size: 0.9rem;
   @media (min-width: 550px) {
     margin-top: 20px;
   }
@@ -46,11 +43,8 @@ export const VenueBookingName = styled.h2`
 `;
 
 export const Guests = styled.p`
+  font-size: 0.9rem;
   margin-top: 10px;
-
-  @media (min-width: 550px) {
-    margin-top: 20px;
-  }
 `;
 
 export const Wrapper = styled.div`
@@ -59,7 +53,7 @@ export const Wrapper = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 5px;
   }
 `;
 
