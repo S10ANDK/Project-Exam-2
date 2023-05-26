@@ -1,6 +1,5 @@
 import React from 'react';
 import Container from '../styles/Container/index.styled';
-import { Helmet } from 'react-helmet-async';
 import GetBookingSpecific from './GetBookingSpecific';
 
 /*
@@ -10,10 +9,6 @@ import GetBookingSpecific from './GetBookingSpecific';
 function BookingSpecific() {
   return (
     <>
-      <Helmet>
-        <title>booking success | holidaze</title>
-        <meta name="description" content="Booking success page" />
-      </Helmet>
       <Container>
         <GetBookingSpecific />
       </Container>

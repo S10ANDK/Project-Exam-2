@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import * as S from './index.styled';
 import Container from '../../styles/Container/index.styled';
 import { API_URL, API_BOOKINGS } from '../../constants/urls';
@@ -76,37 +77,46 @@ function GetBookingSpecific() {
   }
 
   return (
-    <Container>
-      <S.BookingContainer>
-        <S.BookingContent>
-          <S.CreatedDate>Booking made on {dateCreated}</S.CreatedDate>
-          <S.VenueName>{booking.venue.name}</S.VenueName>
-          <S.VenueImageContainer>
-            <S.VenueImage src={booking.venue.media[0]} />
-          </S.VenueImageContainer>
-          <S.BookingID>
-            Booking ID: <span>{booking.id}</span>
-          </S.BookingID>
-          <S.Guests>Guests: {booking.guests}</S.Guests>
-          <S.DateToAndFrom>
-            From {dateFrom} to {dateTo}
-          </S.DateToAndFrom>
-          <S.CostContainer>
-            <p>
-              {booking.venue.price} kr NOK | night x {nights}
-            </p>
-          </S.CostContainer>
-          <S.TotalPrice>
-            Total price: <span>{totalPrice} kr NOK</span>
-          </S.TotalPrice>
-          <S.ViewVenuePageButton
-            onClick={() => navigate(`/venues/${booking.venue.id}`)}
-          >
-            View Venue Page
-          </S.ViewVenuePageButton>
-        </S.BookingContent>
-      </S.BookingContainer>
-    </Container>
+    <>
+      <Helmet>
+        <title>booking on {booking.venue.name} | holidaze</title>
+        <meta
+          name="description"
+          content={`"Your booking on ${booking.venue.name}"`}
+        />
+      </Helmet>
+      <Container>
+        <S.BookingContainer>
+          <S.BookingContent>
+            <S.CreatedDate>Booking made on {dateCreated}</S.CreatedDate>
+            <S.VenueName>{booking.venue.name}</S.VenueName>
+            <S.VenueImageContainer>
+              <S.VenueImage src={booking.venue.media[0]} />
+            </S.VenueImageContainer>
+            <S.BookingID>
+              Booking ID: <span>{booking.id}</span>
+            </S.BookingID>
+            <S.Guests>Guests: {booking.guests}</S.Guests>
+            <S.DateToAndFrom>
+              From {dateFrom} to {dateTo}
+            </S.DateToAndFrom>
+            <S.CostContainer>
+              <p>
+                {booking.venue.price} kr NOK | night x {nights}
+              </p>
+            </S.CostContainer>
+            <S.TotalPrice>
+              Total price: <span>{totalPrice} kr NOK</span>
+            </S.TotalPrice>
+            <S.ViewVenuePageButton
+              onClick={() => navigate(`/venues/${booking.venue.id}`)}
+            >
+              View Venue Page
+            </S.ViewVenuePageButton>
+          </S.BookingContent>
+        </S.BookingContainer>
+      </Container>
+    </>
   );
 }
 

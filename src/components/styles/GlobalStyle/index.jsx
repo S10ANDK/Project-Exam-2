@@ -37,6 +37,7 @@ const GlobalStyle = createGlobalStyle`
         text-align: center;
         margin: 60px auto 60px 20px;
         letter-spacing: 0.5px;
+        text-transform: lowercase;
     }
 
     h2 {

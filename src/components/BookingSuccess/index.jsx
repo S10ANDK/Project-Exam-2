@@ -35,7 +35,7 @@ function BookingSuccess() {
       </Helmet>
 
       <Container>
-        <h1>Booking Successful!</h1>
+        <h1>booking successful!</h1>
         <S.RedirectionContainer>
           <p>
             You will be redirected to your booking details in {countdown}{' '}
