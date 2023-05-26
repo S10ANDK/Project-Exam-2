@@ -6,7 +6,6 @@ import NoVenuesMessage from '../../messages/NoVenuesMessage';
 import NoSearchResultsMessage from '../../messages/NoResultsMessage/index.styled';
 import VenueCard from './VenueCard';
 import * as S from '../Venues/index.styled';
-import ListNavigationButtons from './ListNavigationButtons';
 
 /* 
     Function for fetching and displaying venues 
@@ -19,8 +18,6 @@ function DisplayVenueList({
   minPrice,
   maxPrice,
   maxGuests,
-  pageIndex,
-  setPageIndex,
 }) {
   const [venues, setVenues] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -31,10 +28,8 @@ function DisplayVenueList({
     async function getVenues() {
       try {
         setIsLoading(true);
-        const limit = 20;
-        const offset = pageIndex * limit;
         const response = await fetch(
-          `${urls.API_URL}${urls.API_VENUES}?sort=created&sortOrder=${sortOrder}&limit=${limit}&offset=${offset}`
+          `${urls.API_URL}${urls.API_VENUES}?sort=created&sortOrder=${sortOrder}`
         );
         let results = await response.json();
 
@@ -65,7 +60,7 @@ function DisplayVenueList({
       }
     }
     getVenues();
-  }, [pageIndex, sortOrder, filters, minPrice, maxPrice, maxGuests]);
+  }, [sortOrder, filters, minPrice, maxPrice, maxGuests]);
 
   useEffect(() => {
     const filtered = venues.filter(
@@ -111,23 +106,12 @@ function DisplayVenueList({
           No results found for <span>&apos;{searchTerm}&apos;</span>
         </NoSearchResultsMessage>
       ) : (
-        <>
-          <S.VenuesContainer>
-            {filteredVenues.map((venue) => (
-              <VenueCard key={venue.id} venue={venue} />
-            ))}
-          </S.VenuesContainer>
-        </>
+        <S.VenuesContainer>
+          {filteredVenues.map((venue) => (
+            <VenueCard key={venue.id} venue={venue} />
+          ))}
+        </S.VenuesContainer>
       )}
-
-      {filteredVenues.length > 0 && filteredVenues.length === venues.length ? (
-        <ListNavigationButtons
-          pageIndex={pageIndex}
-          setPageIndex={setPageIndex}
-          venues={venues}
-          filteredVenues={filteredVenues}
-        />
-      ) : null}
     </>
   );
 }
