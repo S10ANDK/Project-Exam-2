@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { StyledButtonBlue } from '../../styles/Button/index.styled';
-// import * as S from '../../Dashboard/GetProfile/BookingCard/index.styled';
 
 export const BookingContainer = styled.div`
   max-width: 600px;
@@ -59,7 +58,6 @@ export const Guests = styled.p`
 `;
 
 export const DateToAndFrom = styled.h2`
-  /* text-align: left; */
   color: ${(props) => props.theme.color.secondary};
   font-size: 1.1rem;
   font-weight: 600;

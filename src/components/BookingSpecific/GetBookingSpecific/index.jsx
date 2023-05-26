@@ -56,7 +56,6 @@ function GetBookingSpecific() {
           throw new Error('Failed to fetch booking');
         }
         const data = await response.json();
-        console.log(data);
         setBooking(data);
         setIsLoading(false);
       } catch (error) {
