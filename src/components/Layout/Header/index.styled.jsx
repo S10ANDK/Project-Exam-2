@@ -96,7 +96,6 @@ export const ProfileIconContainer = styled.div`
     transition: box-shadow 0.3s ease;
 
     :hover {
-      /* border: 2px solid ${(props) => props.theme.color.secondary}; */
       box-shadow: 1px 1px 2px 1px rgba(217, 65, 93, 0.1);
     }
   }
