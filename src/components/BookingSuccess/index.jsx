@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Container from '../styles/Container/index.styled';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import * as S from './index.styled';
 import { Helmet } from 'react-helmet-async';
 
@@ -10,6 +10,22 @@ import { Helmet } from 'react-helmet-async';
 
 function BookingSuccess() {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const [countdown, setCountdown] = useState(4);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCountdown((prevCountdown) => {
+        if (prevCountdown <= 1) {
+          clearInterval(timer);
+          navigate(`/booking/${id}`);
+        }
+        return prevCountdown - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [id, navigate]);
 
   return (
     <>
@@ -20,14 +36,12 @@ function BookingSuccess() {
 
       <Container>
         <h1>Booking Successful!</h1>
-        <S.IdContainer>
+        <S.RedirectionContainer>
           <p>
-            Your booking ID is: <span>{id}</span>
+            You will be redirected to your booking details in {countdown}{' '}
+            seconds.
           </p>
-        </S.IdContainer>
-        <S.ButtonContainer>
-          <S.ContinueButton to="/">Continue</S.ContinueButton>
-        </S.ButtonContainer>
+        </S.RedirectionContainer>
       </Container>
     </>
   );
