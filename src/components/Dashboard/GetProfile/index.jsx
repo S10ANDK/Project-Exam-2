@@ -14,7 +14,7 @@ import * as Yup from 'yup';
 import BookingCard from './BookingCard';
 import Container from '../../styles/Container/index.styled';
 import venueManagerStatus from '../../api/localStorage/venueManagerStatus';
-import { RegistrationErrorMessage } from '../../Register/index.styled';
+import { FormErrorMessage } from '../../styles/Form/index.styled';
 
 const schema = Yup.object().shape({
   avatarUrl: Yup.string()
@@ -168,9 +168,7 @@ function GetProfile() {
                 required
               />
               {errors.avatarUrl && (
-                <RegistrationErrorMessage>
-                  {errors.avatarUrl}
-                </RegistrationErrorMessage>
+                <FormErrorMessage>{errors.avatarUrl}</FormErrorMessage>
               )}
               <S.CloseButton onClick={closeModal}>
                 <img src={closeIcon} />
