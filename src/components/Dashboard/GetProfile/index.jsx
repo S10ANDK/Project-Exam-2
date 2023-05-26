@@ -13,6 +13,7 @@ import AvatarPlaceholderImage from '../../../assets/profile.png';
 import * as Yup from 'yup';
 import BookingCard from './BookingCard';
 import Container from '../../styles/Container/index.styled';
+import venueManagerStatus from '../../api/localStorage/venueManagerStatus';
 
 const schema = Yup.object().shape({
   avatarUrl: Yup.string()
@@ -117,7 +118,7 @@ function GetProfile() {
   return (
     isLoggedIn && (
       <Container>
-        <h1>Dashboard</h1>
+        <S.Heading>Dashboard</S.Heading>
         <S.DashboardContent>
           <S.DashboardSectionOne>
             <S.LogOutButtonContainer>
@@ -150,11 +151,12 @@ function GetProfile() {
                 </S.UpdateAvatarButton>
               </S.AvatarContainer>
             )}
-
-            <S.Username>{profile.name}</S.Username>
-            <p>{profile.email}</p>
-            {profile.venueManager === true}
-            <p>Venue Manager: {profile.venueManager ? 'Yes' : 'No'}</p>
+            <S.UserDetailsContainer>
+              <S.Username>{profile.name}</S.Username>
+              <p>{profile.email}</p>
+              {profile.venueManager === true}
+              <p>Venue Manager: {profile.venueManager ? 'Yes' : 'No'}</p>
+            </S.UserDetailsContainer>
 
             {isModalOpen && (
               <S.Overlay onClick={closeModal}>
@@ -187,10 +189,18 @@ function GetProfile() {
               <h2>Bookings by you: </h2> <h2>{profile._count.bookings}</h2>
             </S.SecondaryHeadingContainer>
             <S.BookingsContainer>
-              {profile.bookings.length > 0 &&
+              {profile.bookings.length > 0 ? (
                 profile.bookings.map((booking) => (
                   <BookingCard key={booking.id} booking={booking} />
-                ))}
+                ))
+              ) : (
+                <S.DashboardMessageContainer>
+                  <S.DashboardMessage>
+                    You have made no bookings. You can find venues to book by
+                    clicking <S.StyledLink to="/">here</S.StyledLink>.
+                  </S.DashboardMessage>
+                </S.DashboardMessageContainer>
+              )}
             </S.BookingsContainer>
           </S.DashboardSectionOne>
           <S.DashboardSectionTwo>
@@ -198,10 +208,30 @@ function GetProfile() {
               <h2>Venues by you: </h2>
               <h2>{profile._count.venues}</h2>
             </S.VenueHeadingContainer>
-            {profile.venues.length > 0 &&
-              profile.venues.map((venue) => (
-                <VenueCard key={venue.id} venue={venue} />
-              ))}
+
+            {venueManagerStatus === true ? (
+              profile.venues.length > 0 ? (
+                profile.venues.map((venue) => (
+                  <VenueCard key={venue.id} venue={venue} />
+                ))
+              ) : (
+                <S.DashboardMessageContainer>
+                  <S.DashboardMessage>
+                    You have no venues listed. You can publish a venue by
+                    clicking{' '}
+                    <S.StyledLink to="/list-your-home">here</S.StyledLink>.
+                  </S.DashboardMessage>
+                </S.DashboardMessageContainer>
+              )
+            ) : (
+              <S.DashboardMessageContainer>
+                <S.DashboardMessage>
+                  You need a venue manager account in order to list a venue.
+                  Please make a new venue manager account if you wish to publish
+                  your own venues.
+                </S.DashboardMessage>
+              </S.DashboardMessageContainer>
+            )}
           </S.DashboardSectionTwo>
         </S.DashboardContent>
       </Container>

@@ -1,5 +1,18 @@
 import styled from 'styled-components';
 import { StyledButtonBlue } from '../../styles/Button/index.styled';
+import { Link } from 'react-router-dom';
+
+export const Heading = styled.h1`
+  border-bottom: 1px solid ${(props) => props.theme.color.borders};
+  padding-bottom: 60px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (min-width: 1200px) {
+    max-width: 1200px;
+  }
+`;
 
 export const DashboardContent = styled.div`
   @media (min-width: 1200px) {
@@ -7,22 +20,28 @@ export const DashboardContent = styled.div`
     flex-direction: row-reverse;
     justify-content: space-evenly;
   }
-
-  @media (min-width: 1800px) {
-    justify-content: space-between;
-    margin: 0px 80px;
-  }
 `;
 
 export const DashboardSectionOne = styled.div`
-  text-align: center;
-
-  > * {
-    margin-bottom: 20px;
+  @media (min-width: 550px) {
+    width: 100%;
   }
 `;
 
-export const DashboardSectionTwo = styled.div``;
+export const DashboardSectionTwo = styled.div`
+  width: 100%;
+`;
+
+export const UserDetailsContainer = styled.div`
+  text-align: center;
+  margin: auto;
+  max-width: 500px;
+
+  > * {
+    margin: 20px;
+    letter-spacing: 0.9px;
+  }
+`;
 
 export const LogOutButtonContainer = styled.div`
   width: 100%;
@@ -54,6 +73,8 @@ export const AvatarImage = styled.img`
 
 export const UpdateAvatarButton = styled(StyledButtonBlue)`
   background: ${(props) => props.theme.color.primary};
+  font-family: Open Sans, sans-serif;
+  font-size: 0.9rem;
   border: none;
   color: ${(props) => props.theme.color.black};
   margin-left: auto;
@@ -151,7 +172,7 @@ export const SecondaryHeadingContainer = styled.div`
   margin: auto;
 
   padding-top: 20px;
-  margin-top: 20px;
+  margin-top: 30px;
   border-top: 1px solid ${(props) => props.theme.color.borders};
 
   p {
@@ -170,6 +191,29 @@ export const VenueHeadingContainer = styled(SecondaryHeadingContainer)`
   }
 `;
 
+export const StyledLink = styled(Link)`
+  font-family: Serenity, sans-serif;
+  font-size: 1.4rem;
+  text-align: center;
+  font-weight: 600;
+  color: ${(props) => props.theme.color.secondary} !important;
+
+  :hover {
+    text-decoration: underline;
+  }
+`;
+
 export const BookingsContainer = styled.div`
   margin: 20px auto;
+`;
+
+export const DashboardMessageContainer = styled.div`
+  max-width: 500px;
+  margin: 10px auto 0px;
+  border: 1px solid ${(props) => props.theme.color.borders};
+  border-radius: 5px;
+`;
+
+export const DashboardMessage = styled.p`
+  padding: 20px 20px;
 `;
