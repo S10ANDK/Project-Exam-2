@@ -2,13 +2,45 @@ import styled from 'styled-components';
 import { StyledButtonBlue } from '../../styles/Button/index.styled';
 import Container from '../../styles/Container/index.styled';
 
-export const DashboardContainer = styled(Container)`
-  margin-top: 40px;
+export const DashboardContainer = styled(Container)``;
+
+export const DashboardContent = styled.div`
+  @media (min-width: 1200px) {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+  }
 `;
 
-export const LogOutButton = styled.button``;
+export const DashboardSectionOne = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const DashboardSectionTwo = styled.div``;
+
+export const LogOutButtonContainer = styled.div`
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  text-align: right;
+`;
+
+export const LogOutButton = styled.button`
+  transition: 0.3s ease-in-out;
+
+  :hover {
+    background: #d7d7d7;
+  }
+`;
+
+export const AvatarContainer = styled.div`
+  text-align: center;
+`;
 
 export const AvatarImage = styled.img`
+  display: block;
+  margin: 20px auto 0px;
   width: 200px;
   height: 200px;
   border-radius: 100px;
@@ -19,6 +51,7 @@ export const UpdateAvatarButton = styled(StyledButtonBlue)`
   background: ${(props) => props.theme.color.primary};
   border: none;
   color: ${(props) => props.theme.color.black};
+  margin-left: auto;
 
   :hover {
     background: ${(props) => props.theme.color.primary};
@@ -98,6 +131,32 @@ export const RemoveAvatarButton = styled(SubmitButton)`
   }
 `;
 
+export const Username = styled.p`
+  font-family: Serenity, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+`;
+
+export const SecondaryHeadingContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 500px;
+  margin: auto;
+  p {
+    font-size: 1.2rem;
+    font-family: Serenity, sans-serif;
+    font-weight: 600;
+    margin: 0;
+  }
+`;
+
+export const BookingHeadingContainer = styled(SecondaryHeadingContainer)`
+  padding-top: 20px;
+  margin-top: 20px;
+  border-top: 1px solid ${(props) => props.theme.color.borders};
+`;
+
 export const BookingsContainer = styled.div`
-  margin: 40px auto;
+  margin: 20px auto;
 `;

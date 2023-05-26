@@ -5,7 +5,7 @@ import { StyledButtonBlue } from '../../../styles/Button/index.styled';
 export const BookingCard = styled(Link)`
   display: block;
   max-width: 500px;
-  margin: 20px auto;
+  margin: 0px auto 20px;
   border: 1px solid ${(props) => props.theme.color.borders};
   border-radius: 10px;
   padding: 0px;

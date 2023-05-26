@@ -29,7 +29,6 @@ function GetProfile() {
   const [isError, setIsError] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newAvatarUrl, setNewAvatarUrl] = useState('');
-  // const [imageError, setImageError] = useState(false);
   const [avatarImageError, setAvatarImageError] = useState(false);
   const [errors, setErrors] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -110,10 +109,6 @@ function GetProfile() {
     closeModal();
   };
 
-  // const handleImageError = () => {
-  //   setImageError(true);
-  // };
-
   const handleAvatarImageError = () => {
     setAvatarImageError(true);
   };
@@ -121,70 +116,94 @@ function GetProfile() {
   return (
     isLoggedIn && (
       <S.DashboardContainer>
-        <S.LogOutButton onClick={handleLogOut}>Log out</S.LogOutButton>
+        <h1>Dashboard</h1>
+        <S.DashboardContent>
+          <S.DashboardSectionOne>
+            <S.LogOutButtonContainer>
+              <S.LogOutButton onClick={handleLogOut}>Log out</S.LogOutButton>
+            </S.LogOutButtonContainer>
+            {profile.avatar && profile.avatar.length > 0 ? (
+              <S.AvatarContainer>
+                <S.AvatarImage
+                  src={
+                    avatarImageError ? AvatarPlaceholderImage : profile.avatar
+                  }
+                  alt={`Avatar by ${profile.name}`}
+                  onError={handleAvatarImageError}
+                  onClick={openModal}
+                />
 
-        {profile.avatar && profile.avatar.length > 0 ? (
-          <S.AvatarImage
-            src={avatarImageError ? AvatarPlaceholderImage : profile.avatar}
-            alt={`Avatar by ${profile.name}`}
-            onError={handleAvatarImageError}
-            onClick={openModal}
-          />
-        ) : (
-          <img
-            src={AvatarPlaceholderImage}
-            alt={`Avatar by ${profile.name}`}
-            onClick={openModal}
-          />
-        )}
-        <S.UpdateAvatarButton onClick={openModal}>
-          Update Avatar
-        </S.UpdateAvatarButton>
-        <p>{profile.name}</p>
-        <p>{profile.email}</p>
-        {profile.venueManager === true}
-        <p>Venue Manager: {profile.venueManager ? 'Yes' : 'No'}</p>
+                <S.UpdateAvatarButton onClick={openModal}>
+                  Update Avatar
+                </S.UpdateAvatarButton>
+              </S.AvatarContainer>
+            ) : (
+              <S.AvatarContainer>
+                <S.AvatarImage
+                  src={AvatarPlaceholderImage}
+                  alt={`Avatar by ${profile.name}`}
+                  onClick={openModal}
+                />
+                <S.UpdateAvatarButton onClick={openModal}>
+                  Update Avatar
+                </S.UpdateAvatarButton>
+              </S.AvatarContainer>
+            )}
 
-        {isModalOpen && (
-          <S.Overlay onClick={closeModal}>
-            <S.Modal onClick={(e) => e.stopPropagation()}>
-              <S.ModalHeading>Update Avatar</S.ModalHeading>
-              <S.StyledInput
-                type="url"
-                value={newAvatarUrl}
-                onChange={(e) => setNewAvatarUrl(e.target.value)}
-                placeholder="Enter new avatar URL"
-                required
-              />
-              {errors.avatarUrl && <p>{errors.avatarUrl}</p>}
-              <S.CloseButton onClick={closeModal}>
-                <img src={closeIcon} />
-              </S.CloseButton>
-              <S.SubmitButton onClick={handleAvatarUpdate}>
-                Submit
-              </S.SubmitButton>
-              {profile.avatar && profile.avatar.length > 0 && (
-                <S.RemoveAvatarButton onClick={handleAvatarClear}>
-                  Remove Avatar
-                </S.RemoveAvatarButton>
-              )}
-            </S.Modal>
-          </S.Overlay>
-        )}
+            <S.Username>{profile.name}</S.Username>
+            <p>{profile.email}</p>
+            {profile.venueManager === true}
+            <p>Venue Manager: {profile.venueManager ? 'Yes' : 'No'}</p>
 
-        <p>Venues by you: {profile._count.venues}</p>
-        {profile.venues.length > 0 &&
-          profile.venues.map((venue) => (
-            <VenueCard key={venue.id} venue={venue} />
-          ))}
+            {isModalOpen && (
+              <S.Overlay onClick={closeModal}>
+                <S.Modal onClick={(e) => e.stopPropagation()}>
+                  <S.ModalHeading>Update Avatar</S.ModalHeading>
+                  <S.StyledInput
+                    type="url"
+                    value={newAvatarUrl}
+                    onChange={(e) => setNewAvatarUrl(e.target.value)}
+                    placeholder="Enter new avatar URL"
+                    required
+                  />
+                  {errors.avatarUrl && <p>{errors.avatarUrl}</p>}
+                  <S.CloseButton onClick={closeModal}>
+                    <img src={closeIcon} />
+                  </S.CloseButton>
+                  <S.SubmitButton onClick={handleAvatarUpdate}>
+                    Submit
+                  </S.SubmitButton>
+                  {profile.avatar && profile.avatar.length > 0 && (
+                    <S.RemoveAvatarButton onClick={handleAvatarClear}>
+                      Remove Avatar
+                    </S.RemoveAvatarButton>
+                  )}
+                </S.Modal>
+              </S.Overlay>
+            )}
 
-        <p>Bookings by you: {profile._count.bookings}</p>
-        <S.BookingsContainer>
-          {profile.bookings.length > 0 &&
-            profile.bookings.map((booking) => (
-              <BookingCard key={booking.id} booking={booking} />
-            ))}
-        </S.BookingsContainer>
+            <S.BookingHeadingContainer>
+              <h2>Bookings by you:</h2>
+              <h2>{profile._count.bookings}</h2>
+            </S.BookingHeadingContainer>
+            <S.BookingsContainer>
+              {profile.bookings.length > 0 &&
+                profile.bookings.map((booking) => (
+                  <BookingCard key={booking.id} booking={booking} />
+                ))}
+            </S.BookingsContainer>
+          </S.DashboardSectionOne>
+          <S.DashboardSectionTwo>
+            <S.SecondaryHeadingContainer>
+              <h2>Venues by you: </h2>
+              <h2>{profile._count.venues}</h2>
+            </S.SecondaryHeadingContainer>
+            {profile.venues.length > 0 &&
+              profile.venues.map((venue) => (
+                <VenueCard key={venue.id} venue={venue} />
+              ))}
+          </S.DashboardSectionTwo>
+        </S.DashboardContent>
       </S.DashboardContainer>
     )
   );
