@@ -76,7 +76,7 @@ export const NavWrapper = styled.div`
 export const ProfileWrapper = styled.div`
   display: flex;
   align-items: center;
-  margin: 15px 10px 10px;
+  margin: 10px 10px;
 
   @media (min-width: 1000px) {
     margin-right: 30px;
