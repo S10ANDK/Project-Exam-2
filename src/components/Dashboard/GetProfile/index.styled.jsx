@@ -48,9 +48,13 @@ export const UserDetailsContainer = styled.div`
 
 export const LogOutButtonContainer = styled.div`
   width: 100%;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: auto;
   text-align: right;
+
+  @media (min-width: 1400px) {
+    max-width: 1200px;
+  }
 `;
 
 export const LogOutButton = styled.button`
