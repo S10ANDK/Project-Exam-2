@@ -16,7 +16,6 @@ export async function updateAvatar(name, avatarUrl) {
   };
 
   try {
-    console.log(avatarUrl);
     const response = await fetch(
       `${API_URL}${API_PROFILES}/${name}/media`,
       options
