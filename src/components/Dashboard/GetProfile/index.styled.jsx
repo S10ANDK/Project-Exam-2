@@ -23,6 +23,8 @@ export const DashboardContent = styled.div`
 `;
 
 export const DashboardSectionOne = styled.div`
+  min-height: 300px;
+
   @media (min-width: 550px) {
     width: 100%;
   }
@@ -45,7 +47,7 @@ export const UserDetailsContainer = styled.div`
 
 export const LogOutButtonContainer = styled.div`
   width: 100%;
-  max-width: 500px;
+  max-width: 1200px;
   margin: auto;
   text-align: right;
 `;
@@ -67,8 +69,13 @@ export const AvatarImage = styled.img`
   margin: 20px auto 0px;
   width: 200px;
   height: 200px;
-  border-radius: 100px;
+  border-radius: 200px;
   cursor: pointer;
+
+  @media (min-width: 1200px) {
+    width: 260px;
+    height: 260px;
+  }
 `;
 
 export const UpdateAvatarButton = styled(StyledButtonBlue)`
@@ -169,10 +176,8 @@ export const SecondaryHeadingContainer = styled.div`
   justify-content: space-between;
   width: 100%;
   max-width: 500px;
-  margin: auto;
-
+  margin: 50px auto 0px;
   padding-top: 20px;
-  margin-top: 30px;
   border-top: 1px solid ${(props) => props.theme.color.borders};
 
   p {
@@ -180,14 +185,6 @@ export const SecondaryHeadingContainer = styled.div`
     font-family: Serenity, sans-serif;
     font-weight: 600;
     margin: 0;
-  }
-`;
-
-export const VenueHeadingContainer = styled(SecondaryHeadingContainer)`
-  margin-top: 40px;
-  @media (min-width: 1200px) {
-    margin-top: 20px;
-    border-top: none;
   }
 `;
 
@@ -204,7 +201,7 @@ export const StyledLink = styled(Link)`
 `;
 
 export const BookingsContainer = styled.div`
-  margin: 20px auto;
+  margin: 10px auto;
 `;
 
 export const DashboardMessageContainer = styled.div`
