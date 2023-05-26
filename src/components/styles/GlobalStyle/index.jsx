@@ -70,6 +70,7 @@ const GlobalStyle = createGlobalStyle`
         letter-spacing: 1.8px;
         border-radius: 5px;
         border: 1px solid #e9e9e9;
+        text-transform: lowercase;
         cursor: pointer;
     }
 
