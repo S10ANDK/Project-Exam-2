@@ -16,7 +16,6 @@ export async function updateVenue(id, data) {
   };
 
   try {
-    console.log(data);
     const response = await fetch(`${API_URL}${API_VENUES}/${id}`, options);
 
     if (!response.ok) {
