@@ -24,7 +24,6 @@ export async function updateVenue(id, data) {
     }
 
     const responseData = await response.json();
-    console.log(responseData);
 
     return responseData;
   } catch (error) {

@@ -27,7 +27,6 @@ export async function updateAvatar(name, avatarUrl) {
     }
 
     const responseData = await response.json();
-    console.log(responseData);
 
     return responseData;
   } catch (error) {

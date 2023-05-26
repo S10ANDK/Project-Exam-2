@@ -16,7 +16,6 @@ export async function submitVenue(data) {
   };
 
   try {
-    console.log(data);
     const response = await fetch(`${API_URL}${API_VENUES}`, options);
 
     if (!response.ok) {
@@ -24,7 +23,6 @@ export async function submitVenue(data) {
     }
 
     const responseData = await response.json();
-    console.log(responseData);
 
     return responseData;
   } catch (error) {

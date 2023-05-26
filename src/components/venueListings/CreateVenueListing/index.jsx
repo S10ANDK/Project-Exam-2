@@ -54,8 +54,6 @@ function CreateVenueListing() {
   });
 
   const onSubmit = async (data) => {
-    console.log('Submitted data:', data);
-
     const { location } = data;
     for (let key in location) {
       if (location[key] === '') {
@@ -65,14 +63,11 @@ function CreateVenueListing() {
 
     try {
       const response = await submitVenue(data);
-      console.log('Response:', response);
       navigate(`/venues/${response.id}`);
     } catch (error) {
       console.error('Submission error:', error);
     }
   };
-
-  console.log('Form errors:', errors);
 
   return (
     <>
