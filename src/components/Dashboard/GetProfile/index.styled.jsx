@@ -176,7 +176,7 @@ export const SecondaryHeadingContainer = styled.div`
   justify-content: space-between;
   width: 100%;
   max-width: 500px;
-  margin: 50px auto 0px;
+  margin: 50px auto 20px;
   padding-top: 20px;
   border-top: 1px solid ${(props) => props.theme.color.borders};
 
@@ -201,7 +201,7 @@ export const StyledLink = styled(Link)`
 `;
 
 export const BookingsContainer = styled.div`
-  margin: 20px auto;
+  margin: auto;
 `;
 
 export const DashboardMessageContainer = styled.div`
