@@ -346,6 +346,10 @@ export const BookingsOnVenueHeadingContainer = styled.div`
   @media (min-width: 550px) {
     max-width: 500px;
   }
+
+  @media (min-width: 1200px) {
+    margin: 80px auto 0px;
+  }
 `;
 
 export const BookingsOnVenueContainer = styled.div`
