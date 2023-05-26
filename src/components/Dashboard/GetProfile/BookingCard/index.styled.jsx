@@ -15,6 +15,10 @@ export const BookingCard = styled(Link)`
     border: 1px solid #dbdbdb;
     box-shadow: 2px 3px 3px 2.5px rgba(0, 0, 0, 0.08);
   }
+
+  @media (min-width: 550px) {
+    min-width: 500px;
+  }
 `;
 
 export const BookingCardContent = styled.div`

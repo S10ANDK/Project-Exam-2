@@ -1,8 +1,5 @@
 import styled from 'styled-components';
 import { StyledButtonBlue } from '../../styles/Button/index.styled';
-import Container from '../../styles/Container/index.styled';
-
-export const DashboardContainer = styled(Container)``;
 
 export const DashboardContent = styled.div`
   @media (min-width: 1200px) {
@@ -10,11 +7,19 @@ export const DashboardContent = styled.div`
     flex-direction: row-reverse;
     justify-content: space-evenly;
   }
+
+  @media (min-width: 1800px) {
+    justify-content: space-between;
+    margin: 0px 80px;
+  }
 `;
 
 export const DashboardSectionOne = styled.div`
-  display: flex;
-  flex-direction: column;
+  text-align: center;
+
+  > * {
+    margin-bottom: 20px;
+  }
 `;
 
 export const DashboardSectionTwo = styled.div``;
@@ -133,7 +138,7 @@ export const RemoveAvatarButton = styled(SubmitButton)`
 
 export const Username = styled.p`
   font-family: Serenity, sans-serif;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 600;
 `;
 
@@ -141,8 +146,14 @@ export const SecondaryHeadingContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 100%;
   max-width: 500px;
   margin: auto;
+
+  padding-top: 20px;
+  margin-top: 20px;
+  border-top: 1px solid ${(props) => props.theme.color.borders};
+
   p {
     font-size: 1.2rem;
     font-family: Serenity, sans-serif;
@@ -151,10 +162,12 @@ export const SecondaryHeadingContainer = styled.div`
   }
 `;
 
-export const BookingHeadingContainer = styled(SecondaryHeadingContainer)`
-  padding-top: 20px;
-  margin-top: 20px;
-  border-top: 1px solid ${(props) => props.theme.color.borders};
+export const VenueHeadingContainer = styled(SecondaryHeadingContainer)`
+  margin-top: 40px;
+  @media (min-width: 1200px) {
+    margin-top: 20px;
+    border-top: none;
+  }
 `;
 
 export const BookingsContainer = styled.div`

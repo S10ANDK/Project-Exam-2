@@ -12,6 +12,7 @@ import closeIcon from '../../../assets/close.png';
 import AvatarPlaceholderImage from '../../../assets/profile.png';
 import * as Yup from 'yup';
 import BookingCard from './BookingCard';
+import Container from '../../styles/Container/index.styled';
 
 const schema = Yup.object().shape({
   avatarUrl: Yup.string()
@@ -115,7 +116,7 @@ function GetProfile() {
 
   return (
     isLoggedIn && (
-      <S.DashboardContainer>
+      <Container>
         <h1>Dashboard</h1>
         <S.DashboardContent>
           <S.DashboardSectionOne>
@@ -182,10 +183,9 @@ function GetProfile() {
               </S.Overlay>
             )}
 
-            <S.BookingHeadingContainer>
-              <h2>Bookings by you:</h2>
-              <h2>{profile._count.bookings}</h2>
-            </S.BookingHeadingContainer>
+            <S.SecondaryHeadingContainer>
+              <h2>Bookings by you: </h2> <h2>{profile._count.bookings}</h2>
+            </S.SecondaryHeadingContainer>
             <S.BookingsContainer>
               {profile.bookings.length > 0 &&
                 profile.bookings.map((booking) => (
@@ -194,17 +194,17 @@ function GetProfile() {
             </S.BookingsContainer>
           </S.DashboardSectionOne>
           <S.DashboardSectionTwo>
-            <S.SecondaryHeadingContainer>
+            <S.VenueHeadingContainer>
               <h2>Venues by you: </h2>
               <h2>{profile._count.venues}</h2>
-            </S.SecondaryHeadingContainer>
+            </S.VenueHeadingContainer>
             {profile.venues.length > 0 &&
               profile.venues.map((venue) => (
                 <VenueCard key={venue.id} venue={venue} />
               ))}
           </S.DashboardSectionTwo>
         </S.DashboardContent>
-      </S.DashboardContainer>
+      </Container>
     )
   );
 }
