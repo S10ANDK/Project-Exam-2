@@ -9,16 +9,18 @@ import { Helmet } from 'react-helmet-async';
 
 function Dashboard() {
   return (
-    <Container>
+    <>
       <Helmet>
-        <title>Dashboard | holidaze</title>
+        <title>dashboard | holidaze</title>
         <meta
           name="description"
           content="Dashboard page with all information about your profile"
         />
       </Helmet>
-      <GetProfile />
-    </Container>
+      <Container>
+        <GetProfile />
+      </Container>
+    </>
   );
 }
 
