@@ -435,10 +435,12 @@ function GetSpecificVenue() {
                   ))}
               </S.BookingsOnVenueContainer>
             ) : null}
-            <S.OwnerEmail>
-              Contact owner via e-mail:{' '}
-              <a href={`mailto:${venue.owner.email}`}>{venue.owner.email}</a>
-            </S.OwnerEmail>
+            {profileName !== venue.owner.name && (
+              <S.OwnerEmail>
+                Contact owner via e-mail:{' '}
+                <a href={`mailto:${venue.owner.email}`}>{venue.owner.email}</a>
+              </S.OwnerEmail>
+            )}
           </S.ContentContainer>
         </S.SpecificVenueContainer>
       )}
