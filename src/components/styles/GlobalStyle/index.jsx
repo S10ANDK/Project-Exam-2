@@ -14,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
         --color-white: #FFFFFF;
         --color-black: #000000;
         --color-borders: #e9e9e9;
-        --color-error: #9b0e0e;
+        --color-error: #b31e1e;
         height: 100%;
         min-height: 100vh;
         margin: 0;

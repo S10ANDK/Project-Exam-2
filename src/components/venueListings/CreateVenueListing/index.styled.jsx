@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import { Form } from '../../styles/Form/index.styled';
 import { StyledButtonRed } from '../../styles/Button/index.styled';
 import Container from '../../styles/Container/index.styled';
-import { RegistrationErrorMessage } from '../../Register/index.styled';
+import * as S from '../../styles/Form/index.styled';
 
-export const FormErrorMessage = styled(RegistrationErrorMessage)`
+export const FormErrorMessage = styled(S.FormErrorMessage)`
   margin: 0px 0px 30px;
 `;
 

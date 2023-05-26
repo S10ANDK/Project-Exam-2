@@ -26,8 +26,8 @@ export const Form = styled.form`
 `;
 
 export const FormErrorMessage = styled.p`
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   text-align: left;
-  color: ${(props) => props.theme.color.secondary};
+  color: ${(props) => props.theme.color.error};
   margin: 0px 5px 10px;
 `;
