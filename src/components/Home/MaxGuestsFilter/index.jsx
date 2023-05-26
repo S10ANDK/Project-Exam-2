@@ -1,6 +1,10 @@
 import React from 'react';
 import * as S from './index.styled';
 
+/*
+  Component for filtering venues based on maximum guests for a venue
+*/
+
 function MaxGuestsFilter({ maxGuests, setMaxGuests, setPageIndex }) {
   const handleMaxGuestsChange = (event) => {
     setMaxGuests(event.target.value);

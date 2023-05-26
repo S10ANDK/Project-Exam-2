@@ -2,7 +2,7 @@ import React from 'react';
 import { NoItemsContainer } from './index.styled';
 
 /*
-    No venues message component
+    Reusable no venues message component
 */
 
 function NoItemsMessage() {

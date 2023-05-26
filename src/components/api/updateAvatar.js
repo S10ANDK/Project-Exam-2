@@ -2,7 +2,7 @@ import { API_URL, API_PROFILES } from '../constants/urls';
 import accessToken from './localStorage/accessToken';
 
 /*
-    Function for updating venue, PUT request
+    Reusable function for updating venue, PUT request
 */
 
 export async function updateAvatar(name, avatarUrl) {

@@ -19,6 +19,10 @@ import profileName from '../../api/localStorage/profileName';
 import BookingCard from './BookingCard';
 import 'react-datepicker/dist/react-datepicker.css';
 
+/*
+  Component for dynamically getting a specific venue, and displaying the content. 
+*/
+
 function GetSpecificVenue() {
   const { id } = useParams();
   const [venue, setVenue] = useState(null);
@@ -128,6 +132,10 @@ function GetSpecificVenue() {
     return Object.values(newErrors).every((error) => error === '');
   };
 
+  /*
+    Handler for submitting a booking for a venue. 
+  */
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
@@ -147,9 +155,6 @@ function GetSpecificVenue() {
       console.error(errors);
     }
   };
-
-  console.log(venue.owner.name);
-  console.log(venue.bookings.length);
 
   return (
     <>

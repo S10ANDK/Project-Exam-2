@@ -14,6 +14,10 @@ import ErrorMessage from '../../messages/ErrorMessage';
 import LoadingIndicator from '../../styles/LoadingIndicator/index.styled';
 import deleteVenue from '../../api/deleteVenue';
 
+/*
+  Component for updating a venue, submitting and handling form data
+*/
+
 function UpdateVenueListing() {
   const { id } = useParams();
   const [venue, setVenue] = useState(null);

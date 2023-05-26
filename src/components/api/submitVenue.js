@@ -2,7 +2,7 @@ import { API_URL, API_VENUES } from '../constants/urls';
 import accessToken from './localStorage/accessToken';
 
 /*
-    Function for creating venue, POST request
+    Reusable function for creating venue, POST request
 */
 
 export async function submitVenue(data) {

@@ -1,5 +1,9 @@
 import { API_URL, API_AUTH_LOGIN } from '../constants/urls';
 
+/*
+    Function for logging in user, POST request
+*/
+
 const method = 'POST';
 
 export async function loginProfile(profileData) {

@@ -23,7 +23,7 @@ const Search = ({ onSearch, minLength }) => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // prevent form submission from refreshing the page
+    e.preventDefault();
     searchRef.current.blur();
   };
 

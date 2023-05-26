@@ -29,6 +29,10 @@ const schema = yup
   })
   .required();
 
+/*
+  Component for logging the user in, submitting form data
+*/
+
 function Login() {
   const {
     register,

@@ -2,7 +2,7 @@ import { API_URL, API_BOOKINGS } from '../constants/urls';
 import accessToken from './localStorage/accessToken';
 
 /*
-    Function for submitting booking, POST request
+    Reusable function for submitting booking, POST request
 */
 
 export async function submitBooking(venueId, dateFrom, dateTo, guests) {

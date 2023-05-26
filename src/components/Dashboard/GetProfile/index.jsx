@@ -23,7 +23,7 @@ const schema = Yup.object().shape({
 });
 
 /*
-  Get profile component
+  Get profile component, for fetching and displaying profile data 
 */
 
 function GetProfile() {

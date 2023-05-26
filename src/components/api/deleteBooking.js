@@ -2,7 +2,7 @@ import { API_URL, API_BOOKINGS } from '../constants/urls';
 import accessToken from './localStorage/accessToken';
 
 /*
-    Function for deleting booking, DELETE request
+    Reusable function for deleting booking, DELETE request
 */
 
 async function deleteVenue(id) {

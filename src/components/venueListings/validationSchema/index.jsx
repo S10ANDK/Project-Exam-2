@@ -1,5 +1,9 @@
 import * as yup from 'yup';
 
+/*
+  validation schema with yup, reusable
+*/
+
 const listingSchema = yup.object().shape({
   name: yup.string().required(),
   description: yup.string().required(),
@@ -12,7 +16,6 @@ const listingSchema = yup.object().shape({
       }
       return value;
     }),
-  // .required('At least one media URL is required'),
   price: yup.number().positive().required(),
   maxGuests: yup.number().positive().required(),
   rating: yup.number().max(5).default(0),

@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+/*
+    Reusable No search results message component
+*/
+
 const NoSearchResultsMessage = styled.div`
   text-align: center;
   border: 2px solid ${(props) => props.theme.color.accentThree};

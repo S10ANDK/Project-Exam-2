@@ -1,6 +1,10 @@
 import React from 'react';
 import * as S from './index.styled';
 
+/*
+  Card component for Bookings
+*/
+
 function BookingCard({ booking }) {
   const dateFrom = new Date(booking.dateFrom).toLocaleDateString();
   const dateTo = new Date(booking.dateTo).toLocaleDateString();

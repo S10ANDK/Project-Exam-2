@@ -2,7 +2,7 @@ import React from 'react';
 import { ErrorMessageContainer } from './index.styled';
 
 /*
-    Error message component
+    Reusable error message component
 */
 
 function ErrorMessage() {

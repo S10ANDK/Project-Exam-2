@@ -1,5 +1,9 @@
 import { API_URL, API_AUTH_REGISTER } from '../constants/urls';
 
+/*
+    Function for registering user, POST request
+*/
+
 const method = 'POST';
 
 export async function registerProfile(profileData) {

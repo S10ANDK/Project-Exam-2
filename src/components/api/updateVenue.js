@@ -2,7 +2,7 @@ import { API_URL, API_VENUES } from '../constants/urls';
 import accessToken from './localStorage/accessToken';
 
 /*
-    Function for updating venue, PUT request
+    Reusable function for updating venue, PUT request
 */
 
 export async function updateVenue(id, data) {

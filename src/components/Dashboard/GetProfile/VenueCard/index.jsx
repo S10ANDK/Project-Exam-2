@@ -4,6 +4,10 @@ import * as S from './index.styled';
 import GuestIcon from '../../../../assets/user.png';
 import RatingIcon from '../../../../assets/starblue.png';
 
+/*
+  Card component for Venues
+*/
+
 function VenueCard({ venue }) {
   const [imageError, setImageError] = useState(false);
 

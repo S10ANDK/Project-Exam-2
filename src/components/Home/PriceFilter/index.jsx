@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import * as S from './index.styled';
 
+/*
+  Component with inputs for filtering venues based on min and max price
+*/
+
 function PriceFilter({ setMinPrice, setMaxPrice, setPageIndex }) {
   const [tempMinPrice, setTempMinPrice] = useState('');
   const [tempMaxPrice, setTempMaxPrice] = useState('');

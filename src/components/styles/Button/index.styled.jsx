@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+/*
+  Default styles for buttons
+*/
+
 export const StyledButtonRed = styled.button`
   background: ${(props) => props.theme.color.secondary};
   color: ${(props) => props.theme.color.white};
