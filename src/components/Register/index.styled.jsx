@@ -85,6 +85,6 @@ export const RegistrationSuccessMessage = styled.div`
 
 export const RegistrationErrorMessage = styled.div`
   display: block;
-  color: ${(props) => props.theme.color.secondary};
+  color: ${(props) => props.theme.color.error};
   margin-bottom: 10px;
 `;
