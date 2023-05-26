@@ -14,6 +14,12 @@ export const VenueCardContainer = styled(Link)`
     border: 1px solid #dbdbdb;
     box-shadow: 2px 3px 3px 2.5px rgba(0, 0, 0, 0.08);
   }
+
+  @media (min-width: 550px) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
 `;
 
 export const VenueImage = styled.img`
@@ -21,24 +27,32 @@ export const VenueImage = styled.img`
   height: 200px;
   object-fit: cover;
   border-radius: 10px 10px 0px 0px;
-  @media (min-width: 600px) {
-    height: 270px;
+
+  @media (min-width: 550px) {
+    width: 200px;
+    border-radius: 10px 0px 0px 10px;
+    padding-right: 10px;
   }
 `;
 
 export const VenueContent = styled.div`
   padding: 10px 20px 20px;
 
-  @media (min-width: 600px) {
+  @media (min-width: 550px) {
     padding: 20px 20px;
+    width: 100%;
   }
 `;
 
 export const HeadingAndRatingContainer = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+
+  @media (min-width: 550px) {
+  }
 `;
 
 export const VenueHeading = styled.h2`
@@ -62,6 +76,10 @@ export const GuestsAndPriceContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-top: 20px;
+
+  @media (min-width: 550px) {
+    margin-top: 40px;
+  }
 `;
 
 export const IconContainer = styled.div`
@@ -89,7 +107,7 @@ export const ManageVenueButton = styled(StyledButtonBlue)`
   margin-top: 20px;
   width: 100%;
 
-  @media (min-width: 600px) {
-    margin-top: 30px;
+  @media (min-width: 550px) {
+    margin-top: 20px;
   }
 `;
