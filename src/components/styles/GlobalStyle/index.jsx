@@ -76,6 +76,11 @@ const GlobalStyle = createGlobalStyle`
         border: 1px solid #e9e9e9;
         border-radius: 10px;
         outline-color: var(--color-accent-two);
+        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.06);
+    }
+
+    input[type='checkbox'] {
+        box-shadow: none;
     }
 
     input {
