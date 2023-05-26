@@ -2,6 +2,11 @@ import styled from 'styled-components';
 import { Form } from '../../styles/Form/index.styled';
 import { StyledButtonRed } from '../../styles/Button/index.styled';
 import Container from '../../styles/Container/index.styled';
+import { RegistrationErrorMessage } from '../../Register/index.styled';
+
+export const FormErrorMessage = styled(RegistrationErrorMessage)`
+  margin: 0px 0px 30px;
+`;
 
 export const ListVenueContainer = styled(Container)``;
 

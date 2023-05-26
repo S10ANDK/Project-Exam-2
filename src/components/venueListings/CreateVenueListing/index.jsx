@@ -75,7 +75,9 @@ function CreateVenueListing() {
           <S.FormDivOne>
             <label htmlFor="name">name</label>
             <input name="name" type="text" {...register('name')} />
-            {errors?.name && <p>{errors.name.message}</p>}
+            {errors?.name && (
+              <S.FormErrorMessage>{errors.name.message}</S.FormErrorMessage>
+            )}
 
             <label htmlFor="description">description</label>
             <textarea
@@ -85,7 +87,9 @@ function CreateVenueListing() {
               cols="3"
               {...register('description')}
             />
-            <p>{errors?.description?.message}</p>
+            <S.FormErrorMessage>
+              {errors?.description?.message}
+            </S.FormErrorMessage>
 
             <S.AddMoreImagesHeading>Add images:</S.AddMoreImagesHeading>
 
@@ -100,7 +104,9 @@ function CreateVenueListing() {
                   {...register(`media.${index}`)}
                 />
                 {errors.media && errors.media[index] && (
-                  <p>{errors?.media[index]?.message}</p>
+                  <S.FormErrorMessage>
+                    {errors?.media[index]?.message}
+                  </S.FormErrorMessage>
                 )}
                 {index === fields.length - 1 && (
                   <S.RemoveMediaButtonContainer>
@@ -124,7 +130,7 @@ function CreateVenueListing() {
             <label htmlFor="price">price</label>
             <input name="price" type="number" min={0} {...register('price')} />
             {errors.price && errors.price.message && (
-              <p>{errors.price.message}</p>
+              <S.FormErrorMessage>{errors.price.message}</S.FormErrorMessage>
             )}
           </S.FormDivOne>
 
@@ -147,7 +153,7 @@ function CreateVenueListing() {
               {...register('rating')}
             />
             {errors.rating && errors.rating.message && (
-              <p>{errors.rating.message}</p>
+              <S.FormErrorMessage>{errors.rating.message}</S.FormErrorMessage>
             )}
             <S.CheckboxWrapper>
               <S.CheckboxContainer>
