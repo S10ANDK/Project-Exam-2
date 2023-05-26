@@ -180,11 +180,11 @@ export const SecondaryHeadingContainer = styled.div`
   padding-top: 20px;
   border-top: 1px solid ${(props) => props.theme.color.borders};
 
-  p {
+  h2 {
     font-size: 1.2rem;
     font-family: Serenity, sans-serif;
-    font-weight: 600;
-    margin: 0;
+    font-weight: 500;
+    margin: 10px 0px;
   }
 `;
 
@@ -201,7 +201,7 @@ export const StyledLink = styled(Link)`
 `;
 
 export const BookingsContainer = styled.div`
-  margin: 10px auto;
+  margin: 20px auto;
 `;
 
 export const DashboardMessageContainer = styled.div`
