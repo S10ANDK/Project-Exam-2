@@ -40,7 +40,7 @@ export const AboutText = styled.p`
 
 export const AllBrandAdjectivesContainer = styled.div`
   width: 100%;
-  margin-top: 40px;
+  margin: 40px auto;
 
   @media (min-width: 1000px) {
     text-align: center;
@@ -56,7 +56,7 @@ export const BrandAdjectivesContainer = styled.div`
   margin: 30px auto;
   background: #f6f6f6;
   border-radius: 200px;
-  padding: 20px;
+  padding: 20px 0px;
 
   p {
     width: 100%;
@@ -69,6 +69,7 @@ export const BrandAdjectivesContainer = styled.div`
     display: flex;
     justify-content: space-evenly;
     text-align: center;
+    padding: 20px;
   }
 `;
 
@@ -94,4 +95,38 @@ export const BrandAdjectiveFive = styled.p`
 
 export const BrandAdjectiveSix = styled.p`
   color: #d53666;
+`;
+
+export const AllColorBoxesContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: auto;
+`;
+
+export const ColorBoxContainer = styled.div`
+  max-width: 100px;
+  width: 100%;
+  margin: 20px auto;
+  text-align: center;
+
+  @media (min-width: 480px) {
+    max-width: 200px;
+  }
+
+  @media (min-width: 768px) {
+    max-width: 300px;
+  }
+
+  @media (min-width: 1024px) {
+    max-width: 400px;
+  }
+`;
+
+export const ColorBox = styled.img`
+  width: 100%;
+
+  max-width: 200px;
 `;
