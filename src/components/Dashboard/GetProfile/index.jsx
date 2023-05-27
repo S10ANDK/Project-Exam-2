@@ -162,7 +162,7 @@ function GetProfile() {
         {isModalOpen && (
           <S.Overlay onClick={closeModal}>
             <S.Modal onClick={(e) => e.stopPropagation()}>
-              <S.ModalHeading>Update Avatar</S.ModalHeading>
+              <S.ModalHeading>update avatar</S.ModalHeading>
               <S.StyledInput
                 type="url"
                 value={newAvatarUrl}
