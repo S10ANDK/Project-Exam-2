@@ -7,7 +7,6 @@ export const VenueCardContainer = styled(Link)`
   justify-content: center;
   align-items: center;
   width: 300px;
-  /* height: 401.16px; */
   margin: auto;
   border: 1px solid ${(props) => props.theme.color.borders};
   border-radius: 10px;
@@ -75,14 +74,15 @@ export const RatingIconStyled = styled.img`
 
 export const DescriptionContainer = styled.div`
   width: 100%;
+  height: 64px;
 
-  height: 55px;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
-  padding-bottom: 10px;
+  p {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+  }
 `;
 
 export const NoDescriptionMessage = styled.p`
