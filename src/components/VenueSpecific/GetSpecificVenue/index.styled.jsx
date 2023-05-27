@@ -260,6 +260,13 @@ export const LoginMessageContainer = styled.div`
     text-decoration: underline;
     text-underline-offset: 2px;
   }
+
+  @media (min-width: 1200px) {
+    width: 500px;
+    margin: 40px auto 0px;
+    flex-direction: row;
+    margin: 10px 35px;
+  }
 `;
 
 export const LocationAndFacilitiesContainer = styled.div`
