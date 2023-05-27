@@ -155,7 +155,7 @@ function CreateVenueListing() {
               {...register('maxGuests')}
             />
 
-            <label htmlFor="rating">rating</label>
+            <label htmlFor="rating">rating (1-5)</label>
             <S.SmallInputField
               name="rating"
               type="number"
