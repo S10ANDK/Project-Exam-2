@@ -298,6 +298,7 @@ export const LocationContainer = styled.div`
   flex-direction: row;
   line-height: 22px;
   max-width: 230px;
+  margin: auto;
 
   img {
     width: 25px;
@@ -311,6 +312,7 @@ export const LocationContainer = styled.div`
 
   @media (min-width: 550px) {
     min-width: 200px;
+    margin: 0;
   }
 `;
 
