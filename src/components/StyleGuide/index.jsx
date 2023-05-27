@@ -8,6 +8,11 @@ import BlueBox from '../../assets/style-guide/blue.png';
 import LightBlueBox from '../../assets/style-guide/light-blue.png';
 import BrownBox from '../../assets/style-guide/brown.png';
 import GreyBox from '../../assets/style-guide/grey.png';
+import UserIcon from '../../assets/user.png';
+import RatingIcon from '../../assets/starblue.png';
+import PlaceHolderImage from '../../assets/placeholderImage.png';
+import LocationIcon from '../../assets/location.png';
+import ProfileIcon from '../../assets/profile.png';
 
 /*
   Style Guide component
@@ -25,9 +30,10 @@ function StyleGuide() {
         <S.LogoContainer>
           <S.Logo src={Logo} />
         </S.LogoContainer>
+
         <S.AboutAndBrandAdjectivesContainer>
           <S.AboutTextContainer>
-            <h2>About Holidaze</h2>
+            <h2>about holidaze</h2>
             <S.AboutText>
               Holidaze is your go-to online platform for distinctive bed and
               breakfast rentals worldwide. We connect travelers with unique
@@ -37,7 +43,7 @@ function StyleGuide() {
             </S.AboutText>
           </S.AboutTextContainer>
           <S.AllBrandAdjectivesContainer>
-            <h2>Brand Adjectives</h2>
+            <h2>brand adjectives</h2>
             <S.BrandAdjectivesContainer>
               <S.BrandAdjectiveOne>Adventurous</S.BrandAdjectiveOne>
               <S.BrandAdjectiveTwo>Inviting</S.BrandAdjectiveTwo>
@@ -52,7 +58,8 @@ function StyleGuide() {
             </S.BrandAdjectivesContainer>
           </S.AllBrandAdjectivesContainer>
         </S.AboutAndBrandAdjectivesContainer>
-        <h2>Color Theme Palette</h2>
+
+        <h2>color theme palette</h2>
         <S.AllColorBoxesContainer>
           <S.ColorBoxContainer>
             <S.ColorBox src={RedBox} alt="Red color" />
@@ -80,6 +87,40 @@ function StyleGuide() {
             <p>Hex: #F2F2F2</p>
           </S.ColorBoxContainer>
         </S.AllColorBoxesContainer>
+
+        <h2>typography</h2>
+        <S.AllTypographyContainer>
+          <S.TypographyContainerOne>
+            <h3>this is an example of a header</h3>
+            <p>Serenity</p>
+          </S.TypographyContainerOne>
+          <S.TypographyContainerTwo>
+            <h3>this is an example of a header</h3>
+            <p>Open Sans</p>
+          </S.TypographyContainerTwo>
+          <S.TypographyContainerThree>
+            <h3>this is an example of body text</h3>
+            <p>Open Sans</p>
+          </S.TypographyContainerThree>
+        </S.AllTypographyContainer>
+        <S.StylingInfoContainer>
+          <p>
+            In keeping with our unique aesthetic and branding style, Holidaze
+            maintains a distinctive lowercase typography approach for most
+            headings, buttons, and links, in harmony with our uppercase logo.
+            This design decision underlines our commitment to creating a
+            cohesive, inviting, and easily recognizable visual experience across
+            our platform.
+          </p>
+        </S.StylingInfoContainer>
+        <h2>assets</h2>
+        <S.AssetsContainer>
+          <S.Asset src={UserIcon} alt="user icon asset" />
+          <S.Asset src={RatingIcon} alt="rating icon asset" />
+          <S.Asset src={ProfileIcon} alt="profile icon asset" />
+          <S.Asset src={LocationIcon} alt="location icon asset" />
+          <S.Asset src={PlaceHolderImage} alt="placeholder image asset" />
+        </S.AssetsContainer>
       </Container>
     </>
   );

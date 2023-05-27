@@ -40,7 +40,7 @@ export const AboutText = styled.p`
 
 export const AllBrandAdjectivesContainer = styled.div`
   width: 100%;
-  margin: 40px auto;
+  margin: 40px auto 60px;
 
   @media (min-width: 1000px) {
     text-align: center;
@@ -103,7 +103,7 @@ export const AllColorBoxesContainer = styled.div`
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
-  margin: auto;
+  margin: 0px auto 40px;
 `;
 
 export const ColorBoxContainer = styled.div`
@@ -127,6 +127,84 @@ export const ColorBoxContainer = styled.div`
 
 export const ColorBox = styled.img`
   width: 100%;
-
   max-width: 200px;
+`;
+
+export const AllTypographyContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+
+  @media (min-width: 1000px) {
+    flex-direction: row;
+    text-align: left;
+  }
+`;
+
+export const TypographyContainerOne = styled.div`
+  font-family: Serenity, sans-serif;
+  margin: 10px;
+
+  h3 {
+    font-size: 2rem;
+  }
+`;
+
+export const TypographyContainerTwo = styled.div`
+  font-family: Open Sans, sans-serif;
+  margin: 10px;
+
+  h3 {
+    font-size: 1.2rem;
+  }
+`;
+
+export const TypographyContainerThree = styled.div`
+  margin: 10px;
+
+  h3 {
+    font-family: Open Sans, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+  }
+`;
+
+export const StylingInfoContainer = styled.div`
+  text-align: left;
+  width: 100%;
+  max-width: 300px;
+  margin: auto;
+  border: 1px solid ${(props) => props.theme.color.borders};
+  border-radius: 20px;
+  margin: 40px auto 60px;
+
+  @media (min-width: 550px) {
+    max-width: 450px;
+  }
+
+  @media (min-width: 1000px) {
+    max-width: 600px;
+  }
+
+  p {
+    padding: 20px;
+  }
+`;
+
+export const AssetsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 20px auto;
+`;
+
+export const Asset = styled.img`
+  width: 100%;
+  max-width: 150px;
+  margin: 20px;
 `;
