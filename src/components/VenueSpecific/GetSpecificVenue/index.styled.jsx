@@ -250,9 +250,11 @@ export const BookingSuccessMessage = styled.div`
   }
 `;
 
-export const LoginMessageContainer = styled.p`
+export const LoginMessageContainer = styled.div`
   text-align: left;
   margin-left: 35px;
+  max-width: 500px;
+  margin: auto;
 
   :hover {
     text-decoration: underline;
