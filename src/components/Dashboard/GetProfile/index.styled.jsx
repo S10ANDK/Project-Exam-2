@@ -81,6 +81,7 @@ export const AvatarImage = styled.img`
   width: 200px;
   height: 200px;
   border-radius: 200px;
+  object-fit: cover;
   cursor: pointer;
 
   @media (min-width: 1200px) {
