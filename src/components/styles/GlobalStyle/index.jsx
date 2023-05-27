@@ -89,6 +89,11 @@ const GlobalStyle = createGlobalStyle`
         height: 35px;
     }
 
+    .react-datepicker-wrapper {
+        position: relative;
+        z-index: 1;
+    }
+
     .react-datepicker__input-container {
         width: 60%;
     }

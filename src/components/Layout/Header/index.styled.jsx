@@ -19,7 +19,6 @@ export const Header = styled.header`
 `;
 
 export const HeaderContentWrapper = styled.div`
-  position: sticky;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

@@ -41,13 +41,13 @@ export const HamburgerIcon = styled.div`
 
 export const NavBox = styled.nav`
   background: var(--color-accent-one);
-  color: ${(props) => props.theme.color.white};
   position: fixed;
-  top: 0;
+  z-index: 100;
+  color: ${(props) => props.theme.color.white};
+  top: 70px;
   left: 0;
   width: 100%;
   height: 100%;
-  margin-top: 70px;
   padding: 25px 0px;
   transform: ${({ active }) =>
     active ? 'translateY(0%)' : 'translateY(100%)'};

@@ -398,6 +398,7 @@ export const OwnerEmail = styled.p`
 
 export const ImageContainer = styled.div`
   position: relative;
+  z-index: 1;
   display: flex;
   justify-content: end;
   align-items: start;

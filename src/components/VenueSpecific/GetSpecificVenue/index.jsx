@@ -293,9 +293,7 @@ function GetSpecificVenue() {
                         onChange={(e) => setGuests(e.target.value)}
                         required
                       />
-                      <p>
-                        {'//'} max {venue.maxGuests}
-                      </p>
+                      <p>max {venue.maxGuests}</p>
                     </S.GuestContainer>
                     <DatePicker
                       selected={dateFrom}
