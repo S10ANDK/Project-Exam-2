@@ -1,70 +1,93 @@
-# Getting Started with Create React App
+# Holidaze
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the repository for the Holidaze website, a platform for renting bnb's worldwide. The website has been developed as a submission for the Projects Exam 2 for the Front End Development course at Noroff - School of Technology and Digital Media.
 
-## Available Scripts
+## Getting Started
 
-In the project directory, you can run:
+These instructions will help you get a copy of the project up and running on your local machine for development and testing purposes.
 
-### `npm start`
+## Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+You'll need Node.js and npm installed on your computer.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+From your command line:
 
-### `npm test`
+<pre>
+# Check node version, should be v12 or higher
+node --version
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Check npm version, should be v6 or higher
+npm --version
+</pre>
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Firstly, clone the repository to your local machine using Git:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<pre>
+# Clone this repository
+$ git clone https://github.com/yourusername/holidaze.git
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Go into the repository
+$ cd holidaze
+</pre>
 
-### `npm run eject`
+Then install the dependencies in the local node_modules folder:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<pre>
+# Install dependencies
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+$ npm install
+To run the development server:
+</pre>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<pre>
+# Start the development server
+$ npm start
+</pre>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The application should now be up and running at http://localhost:3000!
 
-## Learn More
+## For Testers
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+We encourage testers to write and execute their own unit tests. The project setup includes Jest, a popular JavaScript testing framework. Please follow the steps below:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Install Project Dependencies: Ensure that you've followed the installation steps as mentioned above.
 
-### Code Splitting
+2. Write Tests: Create your test files following the naming convention componentName.test.js, where componentName is the name of the component you're testing.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+3. Run Tests: Once you've written your tests, you can run them using the following command:
 
-### Analyzing the Bundle Size
+<pre>
+npm test
+</pre>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+This command will initiate Jest's test runner, which will execute all the tests present in your project.
 
-### Making a Progressive Web App
+During the testing phase, I would suggest that you cover the following areas:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Functionality: Ensure all functionalities are working as expected.
+- Design: Check the design across different browsers and screen sizes for compatibility.
+- Performance: Verify that the site loads quickly and runs smoothly.
+- Accessibility: Validate the website against WCAG standards.
+- Usability: Confirm that the user experience is intuitive and the content is understandable.
 
-### Advanced Configuration
+Feel free to report any issues that you find so that they can be addressed.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Built With
 
-### Deployment
+- React
+- Styled-Components
+- Helmet-Async
+- React Hook Form
+- Yup
+- Lodash
+- React DatePicker
+- Date-fns
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Author
 
-### `npm run build` fails to minify
+Stian Dille Kornbakk
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Initial work - [S10ANDK](https://github.com/S10ANDK)
+Connect with me on [LinkedIn](https://www.linkedin.com/in/stian-dille-kornbakk-335b5a159/)
