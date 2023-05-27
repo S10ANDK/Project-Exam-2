@@ -93,8 +93,8 @@ const GlobalStyle = createGlobalStyle`
         width: 60%;
     }
 
-    .react-datepicker__close-icon::after {
-        transform: translateY(-4px) translateX(5px);
+    .react-datepicker__close-icon {
+        display: none;
     }
 
     .react-datepicker__input-container input {
