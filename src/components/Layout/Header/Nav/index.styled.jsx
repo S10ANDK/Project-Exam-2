@@ -57,6 +57,7 @@ export const NavBox = styled.nav`
 
   @media (min-width: 1000px) {
     width: 100%;
+    top: 0;
     box-shadow: none;
     padding: 0;
     transition: none;

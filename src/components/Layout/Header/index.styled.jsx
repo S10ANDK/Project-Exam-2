@@ -24,6 +24,10 @@ export const HeaderContentWrapper = styled.div`
   justify-content: space-between;
   width: 100%;
   margin: auto;
+
+  @media (min-width: 1000px) {
+    position: sticky;
+  }
 `;
 
 export const LogoAndNavWrapper = styled.div`
