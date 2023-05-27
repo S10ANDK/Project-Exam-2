@@ -5,8 +5,8 @@ import * as yup from 'yup';
 */
 
 const listingSchema = yup.object().shape({
-  name: yup.string().required(),
-  description: yup.string().required(),
+  name: yup.string().trim().required(),
+  description: yup.string().trim().required(),
   media: yup
     .array()
     .of(yup.string().url())
@@ -26,11 +26,11 @@ const listingSchema = yup.object().shape({
     pets: yup.boolean().required(),
   }),
   location: yup.object().shape({
-    address: yup.string(),
-    city: yup.string(),
-    zip: yup.string(),
-    country: yup.string(),
-    continent: yup.string(),
+    address: yup.string().trim(),
+    city: yup.string().trim(),
+    zip: yup.string().trim(),
+    country: yup.string().trim(),
+    continent: yup.string().trim(),
   }),
 });
 
