@@ -93,8 +93,8 @@ function Register() {
         <>
           <S.RegisterMessage>
             Join our community to discover unique spaces around the world, or
-            share your own. Register today and embark on your next unforgettable
-            journey with Holidaze!
+            share your own. Register today (with a @stud.noroff.no account) and
+            embark on your next unforgettable journey with Holidaze!
           </S.RegisterMessage>
           <S.RegisterForm onSubmit={handleSubmit(onSubmit)}>
             <div>

@@ -72,8 +72,8 @@ function Login() {
       <h1>login</h1>
       <S.LoginGreetingContainer>
         <p>
-          Log in with your noroff account, and discover your next adventure with
-          Holidaze!
+          Log in with your Noroff student account, and discover your next
+          adventure with Holidaze!
         </p>
       </S.LoginGreetingContainer>
       <S.LoginForm onSubmit={handleSubmit(onSubmit)}>
