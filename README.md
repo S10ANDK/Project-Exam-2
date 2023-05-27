@@ -37,13 +37,13 @@ Then install the dependencies in the local node_modules folder:
 <pre>
 # Install dependencies
 
-$ npm install
+$ npm i
 To run the development server:
 </pre>
 
 <pre>
 # Start the development server
-$ npm start
+$ npm run start
 </pre>
 
 The application should now be up and running at http://localhost:3000!
@@ -94,5 +94,5 @@ Feel free to report any issues that you find so that they can be addressed.
 
 Stian Dille Kornbakk
 
-Initial work - [S10ANDK](https://github.com/S10ANDK)
-Connect with me on [LinkedIn](https://www.linkedin.com/in/stian-dille-kornbakk-335b5a159/)
+- Initial work - [S10ANDK](https://github.com/S10ANDK)
+- Connect with me on [LinkedIn](https://www.linkedin.com/in/stian-dille-kornbakk-335b5a159/)
