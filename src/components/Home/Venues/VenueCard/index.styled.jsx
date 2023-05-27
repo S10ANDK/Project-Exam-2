@@ -76,7 +76,7 @@ export const RatingIconStyled = styled.img`
 export const DescriptionContainer = styled.div`
   width: 100%;
 
-  height: 58px;
+  height: 55px;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 3;
