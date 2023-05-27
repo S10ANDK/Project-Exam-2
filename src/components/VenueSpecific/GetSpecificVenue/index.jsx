@@ -298,7 +298,7 @@ function GetSpecificVenue() {
                     <DatePicker
                       selected={dateFrom}
                       onChange={(date) => {
-                        if (dateTo) {
+                        if (dateTo && date && date <= dateTo) {
                           const newDateRange = eachDayOfInterval({
                             start: date,
                             end: dateTo,
@@ -318,7 +318,7 @@ function GetSpecificVenue() {
                               'Some dates in the selected range are already booked'
                             );
                           }
-                        } else {
+                        } else if (!dateTo && date) {
                           setDateFrom(date);
                           setDateRangeError('');
                         }
@@ -338,24 +338,29 @@ function GetSpecificVenue() {
                     <DatePicker
                       selected={dateTo}
                       onChange={(date) => {
-                        const newDateRange = eachDayOfInterval({
-                          start: dateFrom,
-                          end: date,
-                        }).map((date) => date.toISOString().split('T')[0]);
+                        if (dateFrom && date && date >= dateFrom) {
+                          const newDateRange = eachDayOfInterval({
+                            start: dateFrom,
+                            end: date,
+                          }).map((date) => date.toISOString().split('T')[0]);
 
-                        const isOverlap = bookingDates.some((bookedDate) =>
-                          newDateRange.includes(
-                            bookedDate.toISOString().split('T')[0]
-                          )
-                        );
+                          const isOverlap = bookingDates.some((bookedDate) =>
+                            newDateRange.includes(
+                              bookedDate.toISOString().split('T')[0]
+                            )
+                          );
 
-                        if (!isOverlap) {
+                          if (!isOverlap) {
+                            setDateTo(date);
+                            setDateRangeError('');
+                          } else {
+                            setDateRangeError(
+                              'Some dates in the selected range are already booked'
+                            );
+                          }
+                        } else if (!dateFrom && date) {
                           setDateTo(date);
                           setDateRangeError('');
-                        } else {
-                          setDateRangeError(
-                            'Some dates in the selected range are already booked'
-                          );
                         }
                       }}
                       selectsEnd
