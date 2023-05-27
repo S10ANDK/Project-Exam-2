@@ -50,8 +50,10 @@ export const VenueImage = styled.img`
 export const BookingID = styled.p`
   max-width: 180px;
   margin: auto;
+  font-weight: 600;
 
   span {
+    font-weight: 400;
     text-align: left;
     display: block;
     margin-top: 5px;
