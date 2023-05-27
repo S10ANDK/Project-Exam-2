@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-// import { Link } from 'react-router-dom';
 import { StyledButtonBlue } from '../../../styles/Button/index.styled';
 
 export const BookingCard = styled.div`
