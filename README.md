@@ -1,4 +1,4 @@
-# Holidaze
+# Holidaze (project-exam-2)
 
 This is the repository for the Holidaze website, a platform for renting bnb's worldwide. The website has been developed as a submission for the Projects Exam 2 for the Front End Development course at Noroff - School of Technology and Digital Media.
 
@@ -84,6 +84,11 @@ Feel free to report any issues that you find so that they can be addressed.
 - Lodash
 - React DatePicker
 - Date-fns
+- Noroff API
+
+## Website Link
+
+(Link goes here)
 
 ## Author
 
