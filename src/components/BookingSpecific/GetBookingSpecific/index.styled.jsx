@@ -3,12 +3,13 @@ import { StyledButtonBlue } from '../../styles/Button/index.styled';
 
 export const BookingContainer = styled.div`
   max-width: 600px;
-  margin: 100px auto 0px;
+  margin: 20px auto 0px;
 
   @media (min-width: 650px) {
     border: 1px solid ${(props) => props.theme.color.borders};
     border-radius: 20px;
     box-shadow: ${(props) => props.theme.boxShadow};
+    margin: 100px auto 0px;
   }
 `;
 
@@ -43,9 +44,13 @@ export const VenueImage = styled.img`
   height: 280px;
   border-radius: 20px;
   text-align: center;
+  object-fit: cover;
 `;
 
 export const BookingID = styled.p`
+  max-width: 180px;
+  margin: auto;
+
   span {
     text-align: left;
     display: block;
