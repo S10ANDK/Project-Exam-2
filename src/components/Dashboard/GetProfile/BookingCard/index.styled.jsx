@@ -59,7 +59,7 @@ export const Wrapper = styled.div`
 
 export const DateToAndFromContainer = styled.h2`
   text-align: left;
-  color: ${(props) => props.theme.color.secondary};
+  color: ${(props) => props.theme.color.accentOne};
   font-size: 1.1rem;
   font-weight: 600;
 `;

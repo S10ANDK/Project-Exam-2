@@ -99,7 +99,7 @@ export const Price = styled.p`
   margin-right: 0px;
   text-align: right;
   span {
-    color: ${(props) => props.theme.color.secondary};
+    color: ${(props) => props.theme.color.black};
     font-weight: 600;
   }
 `;

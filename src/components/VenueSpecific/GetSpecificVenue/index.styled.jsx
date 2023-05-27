@@ -139,7 +139,7 @@ export const MaxGuestsContainer = styled(RatingContainer)`
 export const Price = styled.p`
   margin-right: 0px;
   font-size: 1.2rem;
-  color: ${(props) => props.theme.color.secondary};
+  color: ${(props) => props.theme.color.black};
   font-weight: 600;
 
   span {

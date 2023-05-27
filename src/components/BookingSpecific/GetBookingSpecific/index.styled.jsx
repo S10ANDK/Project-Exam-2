@@ -58,7 +58,7 @@ export const Guests = styled.p`
 `;
 
 export const DateToAndFrom = styled.h2`
-  color: ${(props) => props.theme.color.secondary};
+  color: ${(props) => props.theme.color.accentOne};
   font-size: 1.1rem;
   font-weight: 600;
 `;
