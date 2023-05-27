@@ -31,6 +31,14 @@ export const ListVenueForm = styled(Form)`
   }
 `;
 
+export const SmallInputField = styled.input`
+  max-width: 100px;
+`;
+
+export const PriceInput = styled.input`
+  max-width: 250px;
+`;
+
 export const FormDivOne = styled.div`
   grid-row: 1;
   grid-column: 1;
@@ -58,7 +66,7 @@ export const CheckboxWrapper = styled.div`
 
   @media (min-width: 1200px) {
     border-top: none;
-    margin-top: 50px;
+    margin-top: 0px;
   }
 `;
 

@@ -148,7 +148,7 @@ function UpdateVenueListing() {
             <textarea
               name="description"
               type="text"
-              rows="5"
+              rows="10"
               cols="3"
               {...register('description')}
             />
@@ -193,7 +193,12 @@ function UpdateVenueListing() {
             </S.AddMoreMediaButton>
 
             <label htmlFor="price">price</label>
-            <input name="price" type="number" min={0} {...register('price')} />
+            <S.PriceInput
+              name="price"
+              type="number"
+              min={0}
+              {...register('price')}
+            />
             {errors.price && errors.price.message && (
               <S.FormErrorMessage>{errors.price.message}</S.FormErrorMessage>
             )}
@@ -201,7 +206,7 @@ function UpdateVenueListing() {
 
           <S.FormDivTwo>
             <label htmlFor="maxGuests">maximum guests</label>
-            <input
+            <S.SmallInputField
               name="maxGuests"
               type="number"
               min={0}
@@ -209,7 +214,7 @@ function UpdateVenueListing() {
             />
 
             <label htmlFor="rating">rating</label>
-            <input
+            <S.SmallInputField
               name="rating"
               type="number"
               defaultValue={0}
