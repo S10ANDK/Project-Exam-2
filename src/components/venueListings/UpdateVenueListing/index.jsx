@@ -210,6 +210,7 @@ function UpdateVenueListing() {
               name="maxGuests"
               type="number"
               min={0}
+              max={100}
               {...register('maxGuests')}
             />
 
