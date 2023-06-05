@@ -4,11 +4,29 @@
 
 This is the repository for the Holidaze website, a platform for renting bnb's worldwide. The website has been developed as a submission for the Projects Exam 2 for the Front End Development course at Noroff - School of Technology and Digital Media.
 
+## Description
+
+- The aim for this website is to let users book or rent out venues
+- The users can register as customers or venue managers
+- This websites are targeting people who wish to travel and wants afforadble bnb's
+
+## Built With
+
+- React
+- Styled-Components
+- Helmet-Async
+- React Hook Form
+- Yup
+- Lodash
+- React DatePicker
+- Date-fns
+- Noroff API
+
 ## Getting Started
 
 These instructions will help you get a copy of the project up and running on your local machine for development and testing purposes.
 
-## Prerequisites
+### Prerequisites
 
 You'll need Node.js and npm installed on your computer.
 
@@ -22,7 +40,7 @@ node --version
 npm --version
 </pre>
 
-## Installation
+### Installation
 
 Firstly, clone the repository to your local machine using Git:
 
@@ -41,6 +59,8 @@ Then install the dependencies in the local node_modules folder:
 
 $ npm i
 </pre>
+
+### Running
 
 To run the development server:
 
@@ -77,18 +97,6 @@ During the testing phase, I would suggest that you cover the following areas:
 
 Feel free to report any issues that you find so that they can be addressed.
 
-## Built With
-
-- React
-- Styled-Components
-- Helmet-Async
-- React Hook Form
-- Yup
-- Lodash
-- React DatePicker
-- Date-fns
-- Noroff API
-
 ## Website Link
 
 https://bnb-holidaze.netlify.app/
@@ -101,4 +109,4 @@ Stian Dille Kornbakk
 
 ## Contact 
 
-- Connect with me on [LinkedIn](https://www.linkedin.com/in/stian-dille-kornbakk-335b5a159/)
+Connect with me on [LinkedIn](https://www.linkedin.com/in/stian-dille-kornbakk-335b5a159/)
