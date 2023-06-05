@@ -98,4 +98,7 @@ https://bnb-holidaze.netlify.app/
 Stian Dille Kornbakk
 
 - Initial work - [S10ANDK](https://github.com/S10ANDK)
+
+## Contact 
+
 - Connect with me on [LinkedIn](https://www.linkedin.com/in/stian-dille-kornbakk-335b5a159/)
