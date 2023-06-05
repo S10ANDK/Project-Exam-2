@@ -1,5 +1,7 @@
 # Holidaze (project-exam-2)
 
+![Image of the Holidaze website](src/assets/readme/holidaze.png)
+
 This is the repository for the Holidaze website, a platform for renting bnb's worldwide. The website has been developed as a submission for the Projects Exam 2 for the Front End Development course at Noroff - School of Technology and Digital Media.
 
 ## Getting Started
@@ -38,8 +40,9 @@ Then install the dependencies in the local node_modules folder:
 # Install dependencies
 
 $ npm i
-To run the development server:
 </pre>
+
+To run the development server:
 
 <pre>
 # Start the development server
