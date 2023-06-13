@@ -8,7 +8,7 @@ This is the repository for the Holidaze website, a platform for renting bnb's wo
 
 - The aim for this website is to let users book or rent out venues
 - The users can register as customers or venue managers
-- This websites are targeting people who wish to travel and wants afforadble bnb's
+- This website is targeting people who wish to travel and wants affordable bnb's
 
 ## Built With
 
