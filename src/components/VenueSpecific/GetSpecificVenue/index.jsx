@@ -17,6 +17,7 @@ import { parseISO, eachDayOfInterval, differenceInDays } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
 import profileName from '../../api/localStorage/profileName';
 import BookingCard from './BookingCard';
+import { placeholderTexts } from '../../bookingCardPlaceholderText';
 import 'react-datepicker/dist/react-datepicker.css';
 
 /*
@@ -156,6 +157,9 @@ function GetSpecificVenue() {
     }
   };
 
+  const selectedText =
+    placeholderTexts[Math.floor(Math.random() * placeholderTexts.length)];
+
   return (
     <>
       <Helmet>
@@ -258,7 +262,11 @@ function GetSpecificVenue() {
                 <S.VenueManager>by {venue.owner.name} </S.VenueManager>
               </S.VenueManagerContainer>
               <S.DescriptionContainer>
-                {venue.description}
+                {venue.description.length >= 80 ? (
+                  <p>{venue.description}</p>
+                ) : (
+                  <p>{selectedText}</p>
+                )}
               </S.DescriptionContainer>
             </S.VenueNameAndDescriptionContainer>
             <S.maxGuestsAndPriceContainer>
