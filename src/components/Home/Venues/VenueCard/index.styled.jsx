@@ -22,6 +22,7 @@ export const VenueCardContainer = styled(Link)`
 
 export const VenueCartInfoContainer = styled.div`
   width: 260px;
+  height: 90px;
   padding: 0px 20px;
   margin: 0px 20px;
 `;
@@ -116,4 +117,11 @@ export const GuestsContainer = styled.div`
 export const PriceContainer = styled.div`
   font-size: 1.2rem;
   font-weight: 600;
+`;
+
+export const MetaIcon = styled.img`
+  width: 20px;
+  height: 20px;
+  object-fit: cover;
+  margin: 5px 5px 0px 0px;
 `;

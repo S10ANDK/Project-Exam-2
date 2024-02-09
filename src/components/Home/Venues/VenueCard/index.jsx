@@ -3,6 +3,14 @@ import * as S from './index.styled';
 import placeholderImage from '../../../../assets/placeholderImage.png';
 import ratingIcon from '../../../../assets/starblue.png';
 import guestIcon from '../../../../assets/user.png';
+import breakfastIcon from '../../../../assets/breakfast_icon.png';
+import breakfastTrueIcon from '../../../../assets/breakfast_black.png';
+import petsIcon from '../../../../assets/pets.png';
+import petsTrueIcon from '../../../../assets/pets_black.png';
+import parkingIcon from '../../../../assets/parking.png';
+import parkingTrueIcon from '../../../../assets/parking_black.png';
+import wifiIcon from '../../../../assets/wifi.png';
+import wifiTrueIcon from '../../../../assets/wifi_black.png';
 import { VenueCardContainerFadeIn } from '../../../styles/FadeInContainer/index.styled';
 
 /*
@@ -38,7 +46,28 @@ const VenueCard = ({ venue }) => {
           )}
         </S.VenueNameAndRatingContainer>
 
-        <S.DescriptionContainer>
+        {venue.meta.pets === false ? (
+          <S.MetaIcon src={petsIcon} alt="No Pets Allowed" />
+        ) : (
+          <S.MetaIcon src={petsTrueIcon} alt="Pets Allowed" />
+        )}
+        {venue.meta.wifi === false ? (
+          <S.MetaIcon src={wifiIcon} alt="No Wifi Available" />
+        ) : (
+          <S.MetaIcon src={wifiTrueIcon} alt="Wifi Available" />
+        )}
+        {venue.meta.breakfast === false ? (
+          <S.MetaIcon src={breakfastIcon} alt="No Breakfast Available" />
+        ) : (
+          <S.MetaIcon src={breakfastTrueIcon} alt="Breakfast Available" />
+        )}
+        {venue.meta.parking === false ? (
+          <S.MetaIcon src={parkingIcon} alt="No Parking Available" />
+        ) : (
+          <S.MetaIcon src={parkingTrueIcon} alt="Parking Available" />
+        )}
+
+        {/* <S.DescriptionContainer>
           {venue.description.length ? (
             <p>{venue.description}</p>
           ) : (
@@ -46,7 +75,7 @@ const VenueCard = ({ venue }) => {
               No description provided..
             </S.NoDescriptionMessage>
           )}
-        </S.DescriptionContainer>
+        </S.DescriptionContainer> */}
       </S.VenueCartInfoContainer>
       <S.GuestsAndPriceContainer>
         <S.GuestsContainer>
