@@ -50,7 +50,6 @@ function DisplayVenueList({
         if (maxGuests) {
           results = results.filter((venue) => venue.maxGuests <= maxGuests);
         }
-        console.log(results);
         setVenues(results);
         setFilteredVenues(results);
       } catch (error) {
