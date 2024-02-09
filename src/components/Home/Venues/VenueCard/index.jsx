@@ -46,6 +46,17 @@ const VenueCard = ({ venue }) => {
           )}
         </S.VenueNameAndRatingContainer>
 
+        <S.DescriptionContainer>
+          {venue.description.length >= 50 ? (
+            <p>{venue.description}</p>
+          ) : (
+            <S.NoDescriptionMessage>
+              Learn more about this place and book your stay today. Embark on
+              your new adventure...
+            </S.NoDescriptionMessage>
+          )}
+        </S.DescriptionContainer>
+
         {venue.meta.pets === false ? (
           <S.MetaIcon src={petsIcon} alt="No Pets Allowed" />
         ) : (
@@ -66,16 +77,6 @@ const VenueCard = ({ venue }) => {
         ) : (
           <S.MetaIcon src={parkingTrueIcon} alt="Parking Available" />
         )}
-
-        {/* <S.DescriptionContainer>
-          {venue.description.length ? (
-            <p>{venue.description}</p>
-          ) : (
-            <S.NoDescriptionMessage>
-              No description provided..
-            </S.NoDescriptionMessage>
-          )}
-        </S.DescriptionContainer> */}
       </S.VenueCartInfoContainer>
       <S.GuestsAndPriceContainer>
         <S.GuestsContainer>

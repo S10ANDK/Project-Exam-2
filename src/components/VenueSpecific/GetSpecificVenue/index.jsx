@@ -262,7 +262,7 @@ function GetSpecificVenue() {
                 <S.VenueManager>by {venue.owner.name} </S.VenueManager>
               </S.VenueManagerContainer>
               <S.DescriptionContainer>
-                {venue.description.length >= 80 ? (
+                {venue.description.length >= 50 ? (
                   <p>{venue.description}</p>
                 ) : (
                   <p>{selectedText}</p>
